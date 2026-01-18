@@ -1,0 +1,888 @@
+---
+// Futuristic landing page for onprem.in
+---
+
+<div class="landing">
+	<!-- Animated circuit/datacenter background -->
+	<div class="circuit-bg">
+		<svg class="circuit-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+			<defs>
+				<!-- Gradient for circuit traces -->
+				<linearGradient id="traceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+					<stop offset="0%" stop-color="#44d62c" stop-opacity="0" />
+					<stop offset="50%" stop-color="#44d62c" stop-opacity="0.8" />
+					<stop offset="100%" stop-color="#44d62c" stop-opacity="0" />
+				</linearGradient>
+
+				<!-- Glow filter -->
+				<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+					<feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+					<feMerge>
+						<feMergeNode in="coloredBlur"/>
+						<feMergeNode in="SourceGraphic"/>
+					</feMerge>
+				</filter>
+
+				<!-- Node pulse animation gradient -->
+				<radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+					<stop offset="0%" stop-color="#44d62c" stop-opacity="0.8" />
+					<stop offset="100%" stop-color="#44d62c" stop-opacity="0" />
+				</radialGradient>
+			</defs>
+
+			<!-- Static circuit traces (background layer) -->
+			<g class="circuit-traces" opacity="0.15">
+				<!-- Horizontal traces -->
+				<path d="M0 200 H400 L450 250 H800" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M0 400 H300 L350 350 H600 L650 400 H1000" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M0 600 H200 L250 650 H500 L550 600 H900" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M0 800 H350 L400 750 H700" stroke="#44d62c" stroke-width="1" fill="none" />
+
+				<path d="M1920 300 H1500 L1450 350 H1100" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1920 500 H1600 L1550 450 H1200 L1150 500 H900" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1920 700 H1400 L1350 650 H1000" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1920 900 H1550 L1500 850 H1200" stroke="#44d62c" stroke-width="1" fill="none" />
+
+				<!-- Vertical traces -->
+				<path d="M300 0 V200 L350 250 V500" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M500 1080 V800 L550 750 V400" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1400 0 V300 L1350 350 V600" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1600 1080 V700 L1550 650 V300" stroke="#44d62c" stroke-width="1" fill="none" />
+
+				<!-- Diagonal connections -->
+				<path d="M200 100 L400 300 L400 500 L600 700" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1700 150 L1500 350 L1500 550 L1300 750" stroke="#44d62c" stroke-width="1" fill="none" />
+			</g>
+
+			<!-- Circuit nodes (intersection points) -->
+			<g class="circuit-nodes">
+				<!-- Left side nodes -->
+				<circle cx="400" cy="250" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="350" cy="350" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="250" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="400" cy="750" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="300" cy="200" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="550" cy="750" r="4" fill="#44d62c" opacity="0.4" class="node" />
+
+				<!-- Right side nodes -->
+				<circle cx="1450" cy="350" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="1550" cy="450" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="1350" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="1500" cy="850" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="1400" cy="300" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="1550" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
+			</g>
+
+			<!-- Animated data signals -->
+			<g class="data-signals" filter="url(#glow)">
+				<!-- Signal 1 -->
+				<circle r="3" fill="#44d62c" class="signal signal-1">
+					<animateMotion dur="4s" repeatCount="indefinite">
+						<mpath href="#signal-path-1" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-1" d="M0 200 H400 L450 250 H800 L850 300 H1100" fill="none" stroke="none" />
+
+				<!-- Signal 2 -->
+				<circle r="3" fill="#44d62c" class="signal signal-2">
+					<animateMotion dur="5s" repeatCount="indefinite">
+						<mpath href="#signal-path-2" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-2" d="M1920 500 H1600 L1550 450 H1200 L1150 500 H900 L850 450 H600" fill="none" stroke="none" />
+
+				<!-- Signal 3 -->
+				<circle r="3" fill="#44d62c" class="signal signal-3">
+					<animateMotion dur="6s" repeatCount="indefinite">
+						<mpath href="#signal-path-3" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-3" d="M300 0 V200 L350 250 V500 L400 550 V800" fill="none" stroke="none" />
+
+				<!-- Signal 4 -->
+				<circle r="3" fill="#44d62c" class="signal signal-4">
+					<animateMotion dur="4.5s" repeatCount="indefinite">
+						<mpath href="#signal-path-4" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-4" d="M1600 1080 V700 L1550 650 V300 L1500 250 V0" fill="none" stroke="none" />
+
+				<!-- Signal 5 - diagonal -->
+				<circle r="3" fill="#44d62c" class="signal signal-5">
+					<animateMotion dur="5.5s" repeatCount="indefinite">
+						<mpath href="#signal-path-5" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-5" d="M200 100 L400 300 L400 500 L600 700 L600 900" fill="none" stroke="none" />
+			</g>
+
+			<!-- Server rack icons (left) -->
+			<g class="server-rack" transform="translate(80, 300)" opacity="0.3">
+				<rect x="0" y="0" width="60" height="120" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
+				<rect x="8" y="10" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="28" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="46" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="64" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="82" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="100" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<!-- Blinking LEDs -->
+				<circle cx="48" cy="16" r="2" fill="#44d62c" class="led led-1" />
+				<circle cx="48" cy="34" r="2" fill="#44d62c" class="led led-2" />
+				<circle cx="48" cy="52" r="2" fill="#44d62c" class="led led-3" />
+				<circle cx="48" cy="70" r="2" fill="#44d62c" class="led led-4" />
+				<circle cx="48" cy="88" r="2" fill="#44d62c" class="led led-5" />
+				<circle cx="48" cy="106" r="2" fill="#44d62c" class="led led-6" />
+			</g>
+
+			<!-- Server rack icons (right) -->
+			<g class="server-rack" transform="translate(1780, 450)" opacity="0.3">
+				<rect x="0" y="0" width="60" height="120" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
+				<rect x="8" y="10" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="28" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="46" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="64" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="82" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<rect x="8" y="100" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+				<!-- Blinking LEDs -->
+				<circle cx="12" cy="16" r="2" fill="#44d62c" class="led led-7" />
+				<circle cx="12" cy="34" r="2" fill="#44d62c" class="led led-8" />
+				<circle cx="12" cy="52" r="2" fill="#44d62c" class="led led-9" />
+				<circle cx="12" cy="70" r="2" fill="#44d62c" class="led led-10" />
+				<circle cx="12" cy="88" r="2" fill="#44d62c" class="led led-11" />
+				<circle cx="12" cy="106" r="2" fill="#44d62c" class="led led-12" />
+			</g>
+
+			<!-- Network hub (bottom left) -->
+			<g class="network-hub" transform="translate(150, 750)" opacity="0.25">
+				<rect x="0" y="0" width="100" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
+				<circle cx="20" cy="20" r="4" fill="#44d62c" class="port-light" />
+				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" />
+				<circle cx="60" cy="20" r="4" fill="#44d62c" class="port-light" />
+				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" />
+			</g>
+
+			<!-- Network hub (bottom right) -->
+			<g class="network-hub" transform="translate(1670, 820)" opacity="0.25">
+				<rect x="0" y="0" width="100" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
+				<circle cx="20" cy="20" r="4" fill="#44d62c" class="port-light" />
+				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" />
+				<circle cx="60" cy="20" r="4" fill="#44d62c" class="port-light" />
+				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" />
+			</g>
+
+			<!-- Chip/CPU icons -->
+			<g class="cpu-chip" transform="translate(50, 600)" opacity="0.2">
+				<rect x="10" y="10" width="40" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
+				<!-- Pins -->
+				<line x1="0" y1="20" x2="10" y2="20" stroke="#44d62c" stroke-width="1" />
+				<line x1="0" y1="30" x2="10" y2="30" stroke="#44d62c" stroke-width="1" />
+				<line x1="0" y1="40" x2="10" y2="40" stroke="#44d62c" stroke-width="1" />
+				<line x1="50" y1="20" x2="60" y2="20" stroke="#44d62c" stroke-width="1" />
+				<line x1="50" y1="30" x2="60" y2="30" stroke="#44d62c" stroke-width="1" />
+				<line x1="50" y1="40" x2="60" y2="40" stroke="#44d62c" stroke-width="1" />
+				<line x1="20" y1="0" x2="20" y2="10" stroke="#44d62c" stroke-width="1" />
+				<line x1="30" y1="0" x2="30" y2="10" stroke="#44d62c" stroke-width="1" />
+				<line x1="40" y1="0" x2="40" y2="10" stroke="#44d62c" stroke-width="1" />
+				<line x1="20" y1="50" x2="20" y2="60" stroke="#44d62c" stroke-width="1" />
+				<line x1="30" y1="50" x2="30" y2="60" stroke="#44d62c" stroke-width="1" />
+				<line x1="40" y1="50" x2="40" y2="60" stroke="#44d62c" stroke-width="1" />
+				<!-- Core -->
+				<rect x="22" y="22" width="16" height="16" fill="#44d62c" opacity="0.4" class="cpu-core" />
+			</g>
+
+			<g class="cpu-chip" transform="translate(1810, 200)" opacity="0.2">
+				<rect x="10" y="10" width="40" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
+				<!-- Pins -->
+				<line x1="0" y1="20" x2="10" y2="20" stroke="#44d62c" stroke-width="1" />
+				<line x1="0" y1="30" x2="10" y2="30" stroke="#44d62c" stroke-width="1" />
+				<line x1="0" y1="40" x2="10" y2="40" stroke="#44d62c" stroke-width="1" />
+				<line x1="50" y1="20" x2="60" y2="20" stroke="#44d62c" stroke-width="1" />
+				<line x1="50" y1="30" x2="60" y2="30" stroke="#44d62c" stroke-width="1" />
+				<line x1="50" y1="40" x2="60" y2="40" stroke="#44d62c" stroke-width="1" />
+				<line x1="20" y1="0" x2="20" y2="10" stroke="#44d62c" stroke-width="1" />
+				<line x1="30" y1="0" x2="30" y2="10" stroke="#44d62c" stroke-width="1" />
+				<line x1="40" y1="0" x2="40" y2="10" stroke="#44d62c" stroke-width="1" />
+				<line x1="20" y1="50" x2="20" y2="60" stroke="#44d62c" stroke-width="1" />
+				<line x1="30" y1="50" x2="30" y2="60" stroke="#44d62c" stroke-width="1" />
+				<line x1="40" y1="50" x2="40" y2="60" stroke="#44d62c" stroke-width="1" />
+				<!-- Core -->
+				<rect x="22" y="22" width="16" height="16" fill="#44d62c" opacity="0.4" class="cpu-core" />
+			</g>
+
+			<!-- Binary data streams -->
+			<g class="binary-stream" opacity="0.1">
+				<text x="180" y="180" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-1">10110101</text>
+				<text x="1650" y="250" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-2">01101001</text>
+				<text x="120" y="850" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-3">11010110</text>
+				<text x="1720" y="650" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-4">00101101</text>
+			</g>
+
+			<!-- Connection lines between elements -->
+			<g class="connections" opacity="0.1">
+				<line x1="140" y1="360" x2="300" y2="200" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="1840" y1="510" x2="1600" y2="700" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="200" y1="770" x2="500" y2="600" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="1720" y1="840" x2="1400" y2="700" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
+			</g>
+		</svg>
+	</div>
+
+	<!-- Overlay gradient for depth -->
+	<div class="bg-overlay"></div>
+
+	<!-- Animated background glows -->
+	<div class="bg-glow bg-glow-1"></div>
+	<div class="bg-glow bg-glow-2"></div>
+	<div class="bg-glow bg-glow-3"></div>
+
+	<!-- Floating particles -->
+	<div class="particles">
+		{Array.from({ length: 15 }).map((_, i) => (
+			<div class="particle" style={`--delay: ${i * 0.7}s; --x: ${Math.random() * 100}%; --duration: ${18 + Math.random() * 15}s;`}></div>
+		))}
+	</div>
+
+	<!-- Main content -->
+	<main class="content">
+		<!-- Logo/Brand -->
+		<div class="brand">
+			<div class="logo">
+				<img src="/favicon.svg" alt="onprem.in" class="logo-icon" />
+				<span class="logo-text">onprem<span class="logo-dot">.in</span></span>
+			</div>
+		</div>
+
+		<!-- Hero -->
+		<div class="hero">
+			<div class="status-badge">
+				<span class="status-dot"></span>
+				<span>Coming Soon</span>
+			</div>
+
+			<h1 class="title">
+				<span class="title-line">Your Infrastructure.</span>
+				<span class="title-line gradient-text">Your Control.</span>
+			</h1>
+
+			<p class="subtitle">
+				Next-generation on-premise software solutions designed for enterprises that demand security, performance, and complete ownership.
+			</p>
+		</div>
+
+		<!-- Features hint -->
+		<div class="features">
+			<div class="feature">
+				<div class="feature-icon">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+						<path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+					</svg>
+				</div>
+				<span>Secure</span>
+			</div>
+			<div class="feature">
+				<div class="feature-icon">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+						<path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+					</svg>
+				</div>
+				<span>Fast</span>
+			</div>
+			<div class="feature">
+				<div class="feature-icon">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+						<path d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/>
+					</svg>
+				</div>
+				<span>Self-Hosted</span>
+			</div>
+		</div>
+
+		<!-- Waiting List -->
+		<div class="waiting-list">
+			<iframe name="hidden-landing-form" id="hidden-landing-form" style="display:none;"></iframe>
+
+			<form
+				class="waitlist-form"
+				id="waitlist-form"
+				action="https://docs.google.com/forms/d/e/1FAIpQLSdmypu25LKFRnerbdorlPk60dvwwFen7YFB2le05cdxkdZvzQ/formResponse"
+				method="POST"
+				target="hidden-landing-form"
+			>
+				<div class="input-group">
+					<input
+						type="email"
+						name="entry.887339015"
+						id="waitlist-email"
+						placeholder="Enter your email"
+						required
+						class="waitlist-input"
+					/>
+					<input type="hidden" name="entry.1769037418" id="waitlist-email-validation" />
+					<button type="submit" class="waitlist-button" id="waitlist-btn">
+						<span class="btn-text">Join Waitlist</span>
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+							<path d="M5 12h14m-7-7l7 7-7 7"/>
+						</svg>
+					</button>
+				</div>
+				<p class="form-message" id="waitlist-message"></p>
+			</form>
+			<p class="waitlist-hint">Be the first to know when we launch</p>
+		</div>
+
+		<script>
+			const waitlistForm = document.getElementById('waitlist-form');
+			const waitlistEmail = document.getElementById('waitlist-email');
+			const waitlistValidation = document.getElementById('waitlist-email-validation');
+			const waitlistBtn = document.getElementById('waitlist-btn');
+			const waitlistMessage = document.getElementById('waitlist-message');
+			const hiddenLandingFrame = document.getElementById('hidden-landing-form');
+
+			waitlistEmail.addEventListener('input', () => {
+				waitlistValidation.value = waitlistEmail.value;
+			});
+
+			waitlistForm.addEventListener('submit', (e) => {
+				const email = waitlistEmail.value.trim();
+				if (!email) {
+					e.preventDefault();
+					return;
+				}
+
+				waitlistValidation.value = email;
+
+				const btnText = waitlistBtn.querySelector('.btn-text');
+				btnText.textContent = 'Joining...';
+				waitlistBtn.disabled = true;
+
+				hiddenLandingFrame.onload = () => {
+					waitlistMessage.textContent = '✓ You\'re on the list!';
+					waitlistMessage.className = 'form-message success';
+					waitlistEmail.value = '';
+					waitlistValidation.value = '';
+					btnText.textContent = 'Join Waitlist';
+					waitlistBtn.disabled = false;
+
+					setTimeout(() => {
+						waitlistMessage.textContent = '';
+						waitlistMessage.className = 'form-message';
+					}, 5000);
+				};
+			});
+		</script>
+	</main>
+</div>
+
+<style>
+	.landing {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		overflow: hidden;
+		padding-top: 5rem;
+		isolation: isolate;
+	}
+
+	/* Circuit background */
+	.circuit-bg {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	.circuit-svg {
+		width: 100%;
+		height: 100%;
+		opacity: 1;
+	}
+
+	/* Overlay gradient for depth */
+	.bg-overlay {
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 15, 0.5) 60%, rgba(10, 10, 15, 0.7) 100%);
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	/* Data signals glow animation */
+	.signal {
+		filter: drop-shadow(0 0 6px #44d62c);
+	}
+
+	.signal-1 { opacity: 0.9; }
+	.signal-2 { opacity: 0.8; }
+	.signal-3 { opacity: 0.85; }
+	.signal-4 { opacity: 0.75; }
+	.signal-5 { opacity: 0.8; }
+
+	/* LED blinking animations */
+	.led {
+		animation: ledBlink 1s ease-in-out infinite;
+	}
+
+	.led-1 { animation-delay: 0s; }
+	.led-2 { animation-delay: 0.15s; }
+	.led-3 { animation-delay: 0.3s; }
+	.led-4 { animation-delay: 0.45s; }
+	.led-5 { animation-delay: 0.6s; }
+	.led-6 { animation-delay: 0.75s; }
+	.led-7 { animation-delay: 0.1s; }
+	.led-8 { animation-delay: 0.25s; }
+	.led-9 { animation-delay: 0.4s; }
+	.led-10 { animation-delay: 0.55s; }
+	.led-11 { animation-delay: 0.7s; }
+	.led-12 { animation-delay: 0.85s; }
+
+	@keyframes ledBlink {
+		0%, 100% { opacity: 1; fill: #44d62c; }
+		50% { opacity: 0.2; fill: #2ea318; }
+	}
+
+	/* Port lights animation */
+	.port-light {
+		animation: portPulse 2s ease-in-out infinite;
+	}
+
+	.port-light:nth-child(2) { animation-delay: 0.5s; }
+	.port-light:nth-child(3) { animation-delay: 1s; }
+	.port-light:nth-child(4) { animation-delay: 1.5s; }
+
+	@keyframes portPulse {
+		0%, 100% { opacity: 0.3; }
+		50% { opacity: 1; }
+	}
+
+	/* CPU core pulse */
+	.cpu-core {
+		animation: corePulse 3s ease-in-out infinite;
+	}
+
+	@keyframes corePulse {
+		0%, 100% { opacity: 0.3; }
+		50% { opacity: 0.8; }
+	}
+
+	/* Binary text animation */
+	.binary {
+		animation: binaryFade 4s ease-in-out infinite;
+	}
+
+	.binary-1 { animation-delay: 0s; }
+	.binary-2 { animation-delay: 1s; }
+	.binary-3 { animation-delay: 2s; }
+	.binary-4 { animation-delay: 3s; }
+
+	@keyframes binaryFade {
+		0%, 100% { opacity: 0.05; }
+		50% { opacity: 0.2; }
+	}
+
+	/* Connection lines animation */
+	.connection-line {
+		animation: dashMove 3s linear infinite;
+	}
+
+	@keyframes dashMove {
+		0% { stroke-dashoffset: 0; }
+		100% { stroke-dashoffset: 16; }
+	}
+
+	/* Node pulse animation */
+	.node {
+		animation: nodePulse 4s ease-in-out infinite;
+	}
+
+	.circuit-nodes .node:nth-child(odd) { animation-delay: 0s; }
+	.circuit-nodes .node:nth-child(even) { animation-delay: 2s; }
+
+	@keyframes nodePulse {
+		0%, 100% { opacity: 0.3; r: 4; }
+		50% { opacity: 0.7; r: 6; }
+	}
+
+	/* Server unit activity */
+	.server-unit {
+		animation: serverActivity 2s ease-in-out infinite;
+	}
+
+	.server-unit:nth-child(2) { animation-delay: 0.2s; }
+	.server-unit:nth-child(3) { animation-delay: 0.4s; }
+	.server-unit:nth-child(4) { animation-delay: 0.6s; }
+	.server-unit:nth-child(5) { animation-delay: 0.8s; }
+	.server-unit:nth-child(6) { animation-delay: 1s; }
+	.server-unit:nth-child(7) { animation-delay: 1.2s; }
+
+	@keyframes serverActivity {
+		0%, 100% { opacity: 0.2; }
+		50% { opacity: 0.5; }
+	}
+
+	/* Background effects */
+	.bg-glow {
+		position: absolute;
+		border-radius: 50%;
+		filter: blur(120px);
+		opacity: 0.35;
+		pointer-events: none;
+		animation: float 20s ease-in-out infinite;
+		z-index: 2;
+	}
+
+	.bg-glow-1 {
+		width: 600px;
+		height: 600px;
+		background: radial-gradient(circle, #44d62c 0%, transparent 70%);
+		top: -200px;
+		right: -100px;
+		animation-delay: 0s;
+	}
+
+	.bg-glow-2 {
+		width: 500px;
+		height: 500px;
+		background: radial-gradient(circle, #2ea318 0%, transparent 70%);
+		bottom: -150px;
+		left: -100px;
+		animation-delay: -7s;
+	}
+
+	.bg-glow-3 {
+		width: 400px;
+		height: 400px;
+		background: radial-gradient(circle, #44d62c 0%, transparent 70%);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		animation-delay: -14s;
+		opacity: 0.15;
+	}
+
+	@keyframes float {
+		0%, 100% { transform: translate(0, 0) scale(1); }
+		33% { transform: translate(30px, -30px) scale(1.1); }
+		66% { transform: translate(-20px, 20px) scale(0.9); }
+	}
+
+	/* Particles */
+	.particles {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		overflow: hidden;
+		z-index: 3;
+	}
+
+	.particle {
+		position: absolute;
+		width: 3px;
+		height: 3px;
+		background: #44d62c;
+		border-radius: 50%;
+		left: var(--x);
+		bottom: -20px;
+		animation: rise var(--duration) linear infinite;
+		animation-delay: var(--delay);
+		opacity: 0;
+		box-shadow: 0 0 6px #44d62c;
+	}
+
+	@keyframes rise {
+		0% {
+			bottom: -20px;
+			opacity: 0;
+		}
+		10% {
+			opacity: 0.5;
+		}
+		90% {
+			opacity: 0.5;
+		}
+		100% {
+			bottom: 100%;
+			opacity: 0;
+		}
+	}
+
+	/* Content */
+	.content {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		position: relative;
+		z-index: 10;
+		text-align: center;
+		gap: 2rem;
+	}
+
+	/* Brand */
+	.brand {
+		animation: fadeInDown 0.8s ease-out;
+	}
+
+	.logo {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.logo-icon {
+		width: 48px;
+		height: 48px;
+		object-fit: contain;
+	}
+
+	.logo-text {
+		font-size: 1.75rem;
+		font-weight: 600;
+		color: #fff;
+		letter-spacing: -0.02em;
+	}
+
+	.logo-dot {
+		color: #44d62c;
+	}
+
+	/* Hero */
+	.hero {
+		max-width: 700px;
+		animation: fadeInUp 0.8s ease-out 0.2s backwards;
+	}
+
+	.status-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		background: rgba(68, 214, 44, 0.1);
+		border: 1px solid rgba(68, 214, 44, 0.4);
+		border-radius: 100px;
+		font-size: 0.875rem;
+		color: #44d62c;
+		margin-bottom: 1.5rem;
+	}
+
+	.status-dot {
+		width: 8px;
+		height: 8px;
+		background: #44d62c;
+		border-radius: 50%;
+		box-shadow: 0 0 8px #44d62c;
+		animation: blink 1s ease-in-out infinite;
+	}
+
+	@keyframes blink {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.2; }
+	}
+
+	.title {
+		font-size: clamp(2.5rem, 8vw, 4rem);
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.03em;
+		margin-bottom: 1.5rem;
+	}
+
+	.title-line {
+		display: block;
+	}
+
+	.gradient-text {
+		color: #44d62c;
+		text-shadow: 0 0 40px rgba(68, 214, 44, 0.5);
+	}
+
+	.subtitle {
+		font-size: 1.125rem;
+		color: #a1a1aa;
+		max-width: 540px;
+		margin: 0 auto;
+		line-height: 1.7;
+	}
+
+	/* Features */
+	.features {
+		display: flex;
+		gap: 2rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		animation: fadeInUp 0.8s ease-out 0.4s backwards;
+	}
+
+	.feature {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #71717a;
+		font-size: 0.875rem;
+	}
+
+	.feature-icon {
+		width: 20px;
+		height: 20px;
+		color: #44d62c;
+	}
+
+	.feature-icon svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	/* Waiting List */
+	.waiting-list {
+		animation: fadeInUp 0.8s ease-out 0.6s backwards;
+		width: 100%;
+		max-width: 500px;
+	}
+
+	.waitlist-form {
+		width: 100%;
+	}
+
+	.input-group {
+		display: flex;
+		gap: 0.75rem;
+		background: rgba(18, 18, 23, 0.8);
+		border: 1px solid rgba(68, 214, 44, 0.3);
+		border-radius: 12px;
+		padding: 0.5rem;
+		transition: all 0.3s ease;
+	}
+
+	.input-group:focus-within {
+		border-color: rgba(68, 214, 44, 0.6);
+		box-shadow: 0 0 0 3px rgba(68, 214, 44, 0.1);
+	}
+
+	.waitlist-input {
+		flex: 1;
+		background: transparent;
+		border: none;
+		color: #e4e4e7;
+		font-size: 1rem;
+		padding: 0.75rem 1rem;
+		outline: none;
+	}
+
+	.waitlist-input::placeholder {
+		color: #52525b;
+	}
+
+	.waitlist-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.5rem;
+		background: linear-gradient(135deg, #44d62c, #2ea318);
+		color: #0a0a0f;
+		font-size: 0.95rem;
+		font-weight: 600;
+		border: none;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		white-space: nowrap;
+	}
+
+	.waitlist-button:hover:not(:disabled) {
+		transform: translateY(-1px);
+		box-shadow: 0 4px 20px rgba(68, 214, 44, 0.4);
+	}
+
+	.waitlist-button:disabled {
+		opacity: 0.7;
+		cursor: not-allowed;
+		transform: none;
+	}
+
+	.waitlist-button svg {
+		width: 18px;
+		height: 18px;
+		transition: transform 0.3s ease;
+	}
+
+	.waitlist-button:hover:not(:disabled) svg {
+		transform: translateX(3px);
+	}
+
+	.form-message {
+		font-size: 0.875rem;
+		margin-top: 0.75rem;
+		min-height: 1.25rem;
+		transition: all 0.3s ease;
+	}
+
+	.form-message.success {
+		color: #44d62c;
+	}
+
+	.form-message.error {
+		color: #ef4444;
+	}
+
+	.waitlist-hint {
+		margin-top: 1rem;
+		font-size: 0.875rem;
+		color: #52525b;
+	}
+
+	/* Animations */
+	@keyframes fadeInDown {
+		from {
+			opacity: 0;
+			transform: translateY(-20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fadeInUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Responsive */
+	@media (max-width: 640px) {
+		.content {
+			padding: 1.5rem;
+			gap: 1.5rem;
+		}
+
+		.logo-text {
+			font-size: 1.5rem;
+		}
+
+		.features {
+			gap: 1rem;
+		}
+
+		.input-group {
+			flex-direction: column;
+			padding: 0.75rem;
+		}
+
+		.waitlist-input {
+			padding: 0.75rem;
+		}
+
+		.waitlist-button {
+			width: 100%;
+			justify-content: center;
+			padding: 0.875rem 1.5rem;
+		}
+	}
+</style>

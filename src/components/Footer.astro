@@ -1,0 +1,621 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- Brand Section -->
+    <div class="footer-section brand-section">
+      <div class="footer-brand">
+        <img src="/favicon.svg" alt="onprem.in" class="brand-icon" />
+        <div class="brand-text-wrapper">
+          <span class="brand-bracket">[</span>
+          <span class="brand-text">onprem</span>
+          <span class="brand-dot">.</span>
+          <span class="brand-text">in</span>
+          <span class="brand-bracket">]</span>
+        </div>
+      </div>
+      <p class="footer-tagline">
+        <span class="prompt">$</span> Your infrastructure. Your control.
+      </p>
+      <div class="status-line">
+        <span class="status-dot"></span>
+        <span class="status-text">Building the future of on-premise</span>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3 class="section-title">
+        <span class="title-prompt">~/</span>navigate
+      </h3>
+      <ul class="footer-links">
+        <li><a href="/"><span class="link-icon">→</span>Home</a></li>
+        <li><a href="/products"><span class="link-icon">→</span>Products</a></li>
+        <li><a href="/solutions"><span class="link-icon">→</span>Solutions</a></li>
+        <li><a href="/blog"><span class="link-icon">→</span>Blog</a></li>
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div class="footer-section">
+      <h3 class="section-title">
+        <span class="title-prompt">$</span>resources
+      </h3>
+      <ul class="footer-links">
+        <li><a href="/blog"><span class="link-icon">→</span>Technical Guides</a></li>
+        <li><a href="https://github.com/onpremware" target="_blank" rel="noopener"><span class="link-icon">→</span>GitHub</a></li>
+        <li><a href="/blog"><span class="link-icon">→</span>Documentation</a></li>
+        <li><a href="mailto:hello@onprem.in"><span class="link-icon">→</span>Support</a></li>
+      </ul>
+    </div>
+
+    <!-- Connect -->
+    <div class="footer-section">
+      <h3 class="section-title">
+        <span class="title-prompt">#</span>connect
+      </h3>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@onprem.in"><span class="link-icon">→</span>hello@onprem.in</a></li>
+        <li><a href="https://x.com/onpremware" target="_blank" rel="noopener"><span class="link-icon">→</span>@onpremware</a></li>
+        <li><a href="https://linkedin.com/company/onpremware" target="_blank" rel="noopener"><span class="link-icon">→</span>LinkedIn</a></li>
+        <li><a href="https://github.com/onpremware" target="_blank" rel="noopener"><span class="link-icon">→</span>GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Newsletter Section -->
+  <div class="newsletter-section">
+    <div class="newsletter-content">
+      <div class="newsletter-header">
+        <div class="terminal-prompt">
+          <span class="prompt-user">user@onprem.in</span>
+          <span class="prompt-separator">:</span>
+          <span class="prompt-path">~/subscribe</span>
+          <span class="prompt-symbol">$</span>
+        </div>
+        <h3 class="newsletter-title">Stay in the loop</h3>
+        <p class="newsletter-description">
+          Get notified when we launch products, publish new technical posts, and share infrastructure insights.
+        </p>
+      </div>
+
+      <!-- Hidden iframe for Google Form submission -->
+      <iframe name="hidden-google-form" id="hidden-google-form" style="display:none;"></iframe>
+
+      <form
+        class="newsletter-form"
+        id="newsletter-form"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSdmypu25LKFRnerbdorlPk60dvwwFen7YFB2le05cdxkdZvzQ/formResponse"
+        method="POST"
+        target="hidden-google-form"
+      >
+        <div class="input-wrapper">
+          <span class="input-prompt">&gt;</span>
+          <input
+            type="email"
+            name="entry.887339015"
+            id="newsletter-email"
+            placeholder="your.email@company.com"
+            required
+            class="email-input"
+          />
+          <!-- Hidden duplicate for email validation field -->
+          <input type="hidden" name="entry.1769037418" id="newsletter-email-validation" />
+          <button type="submit" class="submit-button" id="subscribe-btn">
+            <span class="btn-text">subscribe</span>
+            <span class="button-icon">↗</span>
+          </button>
+        </div>
+        <p class="form-message" id="form-message"></p>
+      </form>
+
+      <script>
+        const form = document.getElementById('newsletter-form');
+        const emailInput = document.getElementById('newsletter-email');
+        const emailValidation = document.getElementById('newsletter-email-validation');
+        const submitBtn = document.getElementById('subscribe-btn');
+        const formMessage = document.getElementById('form-message');
+        const hiddenIframe = document.getElementById('hidden-google-form');
+
+        // Sync email to validation field on input
+        emailInput.addEventListener('input', () => {
+          emailValidation.value = emailInput.value;
+        });
+
+        form.addEventListener('submit', (e) => {
+          const email = emailInput.value.trim();
+          if (!email) {
+            e.preventDefault();
+            return;
+          }
+
+          // Ensure validation field is synced
+          emailValidation.value = email;
+
+          // Update button state
+          const btnText = submitBtn.querySelector('.btn-text');
+          btnText.textContent = 'sending...';
+          submitBtn.disabled = true;
+
+          // Listen for iframe load (indicates form was submitted)
+          hiddenIframe.onload = () => {
+            // Show success message
+            formMessage.textContent = '✓ Subscribed successfully!';
+            formMessage.className = 'form-message success';
+            emailInput.value = '';
+            emailValidation.value = '';
+            btnText.textContent = 'subscribe';
+            submitBtn.disabled = false;
+
+            // Clear message after 5 seconds
+            setTimeout(() => {
+              formMessage.textContent = '';
+              formMessage.className = 'form-message';
+            }, 5000);
+          };
+        });
+      </script>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-content">
+      <div class="copyright">
+        <span class="copyright-symbol">©</span>
+        <span>{currentYear}</span>
+        <span class="separator">//</span>
+        <span>ScaleNinja</span>
+        <span class="separator">//</span>
+        <span class="tagline">Infrastructure Sovereignty</span>
+      </div>
+
+      <div class="footer-meta">
+        <a href="/privacy">Privacy</a>
+        <span class="separator">|</span>
+        <a href="/terms">Terms</a>
+        <span class="separator">|</span>
+        <span class="build-info">
+          <span class="build-label">build:</span>
+          <span class="build-hash">v1.0.0</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #0a0a0f;
+    border-top: 1px solid rgba(68, 214, 44, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 20;
+  }
+
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(68, 214, 44, 0.5) 50%,
+      transparent 100%
+    );
+  }
+
+  .footer-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Brand Section */
+  .brand-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .brand-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .brand-text-wrapper {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-bracket,
+  .brand-dot {
+    color: #44d62c;
+  }
+
+  .footer-tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #a1a1aa;
+    line-height: 1.6;
+  }
+
+  .prompt {
+    color: #44d62c;
+    margin-right: 0.5rem;
+  }
+
+  .status-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #71717a;
+  }
+
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    background: #44d62c;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(68, 214, 44, 0.6);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Footer Sections */
+  .footer-section h3.section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #d4d4d8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .title-prompt {
+    color: #44d62c;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .footer-links li a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #a1a1aa;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .link-icon {
+    color: #44d62c;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    font-size: 0.75rem;
+  }
+
+  .footer-links li a:hover {
+    color: #44d62c;
+    transform: translateX(4px);
+  }
+
+  .footer-links li a:hover .link-icon {
+    opacity: 1;
+  }
+
+  /* Newsletter Section */
+  .newsletter-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    border-top: 1px solid rgba(68, 214, 44, 0.1);
+    border-bottom: 1px solid rgba(68, 214, 44, 0.1);
+  }
+
+  .newsletter-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .newsletter-header {
+    margin-bottom: 2rem;
+  }
+
+  .terminal-prompt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #71717a;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .prompt-user {
+    color: #44d62c;
+  }
+
+  .prompt-separator {
+    color: #71717a;
+    margin: 0 0.5rem;
+  }
+
+  .prompt-path {
+    color: #a1a1aa;
+  }
+
+  .prompt-symbol {
+    color: #44d62c;
+    margin-left: 0.5rem;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .newsletter-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .newsletter-description {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .newsletter-form {
+    position: relative;
+  }
+
+  .input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(18, 18, 23, 0.8);
+    border: 1px solid rgba(68, 214, 44, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .input-wrapper:focus-within {
+    border-color: rgba(68, 214, 44, 0.6);
+    box-shadow: 0 0 0 3px rgba(68, 214, 44, 0.1);
+  }
+
+  .input-prompt {
+    font-family: 'JetBrains Mono', monospace;
+    color: #44d62c;
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+  }
+
+  .email-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #e4e4e7;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  .email-input::placeholder {
+    color: #52525b;
+  }
+
+  .submit-button {
+    background: #44d62c;
+    color: #0a0a0f;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .submit-button:hover {
+    background: #3bc225;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(68, 214, 44, 0.3);
+  }
+
+  .button-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .submit-button:hover .button-icon {
+    transform: translate(2px, -2px);
+  }
+
+  .submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .form-message {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    min-height: 1.25rem;
+    transition: all 0.3s ease;
+  }
+
+  .form-message.success {
+    color: #44d62c;
+  }
+
+  .form-message.error {
+    color: #ef4444;
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    background: #08080c;
+    border-top: 1px solid rgba(68, 214, 44, 0.1);
+  }
+
+  .footer-bottom-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .copyright {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #71717a;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .copyright-symbol {
+    color: #44d62c;
+  }
+
+  .separator {
+    color: #52525b;
+    margin: 0 0.25rem;
+  }
+
+  .tagline {
+    color: #52525b;
+    font-style: italic;
+  }
+
+  .footer-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #71717a;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-meta a {
+    color: #71717a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-meta a:hover {
+    color: #44d62c;
+  }
+
+  .build-info {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .build-label {
+    color: #52525b;
+  }
+
+  .build-hash {
+    color: #44d62c;
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+
+    .brand-section {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      padding: 3rem 1.5rem 2rem;
+      gap: 2rem;
+    }
+
+    .newsletter-section {
+      padding: 2rem 1.5rem;
+    }
+
+    .newsletter-title {
+      font-size: 1.5rem;
+    }
+
+    .input-wrapper {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .submit-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .copyright,
+    .footer-meta {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+</style>

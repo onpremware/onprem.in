@@ -1,0 +1,561 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+
+const products = [];
+
+/*
+const products = [
+  {
+    name: "DataVault",
+    category: "Database Platform",
+    description: "Self-hosted database infrastructure with automated backups, replication, and monitoring. PostgreSQL, MySQL, MongoDB - your choice, your hardware.",
+    features: [
+      "Automated failover & replication",
+      "Point-in-time recovery",
+      "Performance analytics",
+      "Zero vendor lock-in"
+    ],
+    status: "Coming Soon"
+  },
+  {
+    name: "SecureGate",
+    category: "Identity & Access",
+    description: "Zero-trust authentication platform. SSO, MFA, RBAC - all running on your infrastructure with complete audit trails.",
+    features: [
+      "OIDC/SAML support",
+      "Hardware token integration",
+      "Compliance-ready logging",
+      "Self-service user management"
+    ],
+    status: "Coming Soon"
+  },
+  {
+    name: "CloudBreak",
+    category: "Migration Tools",
+    description: "Automated cloud-to-premise migration platform. Extract your data and applications from AWS/GCP/Azure without the pain.",
+    features: [
+      "Infrastructure discovery",
+      "Automated dependency mapping",
+      "Zero-downtime migrations",
+      "Cost analysis & optimization"
+    ],
+    status: "Coming Soon"
+  },
+  {
+    name: "ObserveStack",
+    category: "Monitoring Platform",
+    description: "Complete observability stack: metrics, logs, traces, and alerts. Grafana, Prometheus, Loki - integrated and optimized.",
+    features: [
+      "Pre-configured dashboards",
+      "Intelligent alerting",
+      "Long-term storage",
+      "Multi-cluster support"
+    ],
+    status: "Coming Soon"
+  },
+  {
+    name: "EdgeProxy",
+    category: "API Gateway",
+    description: "High-performance API gateway and reverse proxy. Rate limiting, caching, authentication - at line speed.",
+    features: [
+      "Sub-millisecond latency",
+      "Dynamic routing",
+      "Request transformation",
+      "Built-in DDoS protection"
+    ],
+    status: "Coming Soon"
+  },
+  {
+    name: "BackupForge",
+    category: "Backup & Recovery",
+    description: "Enterprise backup solution for on-premise infrastructure. Incremental, encrypted, tested - because backups only matter when you need them.",
+    features: [
+      "Incremental forever backups",
+      "Automated restore testing",
+      "Encryption at rest & in transit",
+      "Disaster recovery orchestration"
+    ],
+    status: "Coming Soon"
+  }
+];
+*/
+---
+
+<Layout
+  title="Products | onprem.in"
+  description="Self-hosted infrastructure products designed for enterprises that demand control, security, and performance."
+>
+  <Navigation />
+
+  <div class="page">
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <main class="container">
+      <header class="header">
+        <div class="breadcrumb">
+          <span class="prompt">root@onprem.in</span>
+          <span class="separator">:</span>
+          <span class="path">~/products</span>
+          <span class="cursor">$</span>
+        </div>
+
+        <h1 class="title">
+          <span class="title-symbol">&gt;&gt;</span>
+          Coming soon...
+        </h1>
+
+        <p class="subtitle">
+          Enterprise-grade software designed to run on your infrastructure.
+          You own and control your apps and data. No subscription. No surprises.
+        </p>
+      </header>
+
+      <div class="products-grid">
+        {products.map((product, index) => (
+          <article class="product-card" style={`--delay: ${index * 0.1}s`}>
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="category">{product.category}</span>
+                <span class="status">{product.status}</span>
+              </div>
+              <h2 class="product-name">
+                <span class="name-bracket">[</span>
+                {product.name}
+                <span class="name-bracket">]</span>
+              </h2>
+            </div>
+
+            <p class="product-description">{product.description}</p>
+
+            <ul class="feature-list">
+              {product.features.map(feature => (
+                <li>
+                  <span class="feature-check">✓</span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a href="mailto:hello@onprem.in" class="learn-more">
+              <span>Get Early Access</span>
+              <span class="arrow">→</span>
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <section class="philosophy">
+        <div class="philosophy-content">
+          <h2 class="philosophy-title">Our Philosophy</h2>
+          <div class="philosophy-grid">
+            <div class="principle">
+              <div class="principle-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"/>
+                </svg>
+              </div>
+              <h3>Your Data, Your Control</h3>
+              <p>No cloud dependencies. No external API calls. Your infrastructure is truly yours.</p>
+            </div>
+
+            <div class="principle">
+              <div class="principle-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                </svg>
+              </div>
+              <h3>Open Standards</h3>
+              <p>Built on proven technologies. Compatible with existing tools. No proprietary lock-in.</p>
+            </div>
+
+            <div class="principle">
+              <div class="principle-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <h3>Performance First</h3>
+              <p>Optimized for bare metal. Every millisecond matters. No cloud overhead tax.</p>
+            </div>
+
+            <div class="principle">
+              <div class="principle-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+              </div>
+              <h3>Security by Design</h3>
+              <p>Defense in depth. Zero trust. Auditable code. No telemetry, ever.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2>Ready to Deploy?</h2>
+          <p>Get notified when products launch and access our early adopter program.</p>
+          <a href="mailto:hello@onprem.in" class="cta-button">
+            <span>Join Waitlist</span>
+            <span class="button-cursor">_</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    padding-top: 5rem;
+    position: relative;
+  }
+
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(68, 214, 44, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 214, 44, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .bg-glow {
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(68, 214, 44, 0.15) 0%, transparent 70%);
+    top: -200px;
+    right: -200px;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    animation: float 20s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, 50px); }
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .breadcrumb {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #52525b;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .prompt {
+    color: #44d62c;
+  }
+
+  .separator {
+    color: #71717a;
+    margin: 0 0.5rem;
+  }
+
+  .path {
+    color: #a1a1aa;
+  }
+
+  .cursor {
+    color: #44d62c;
+    margin-left: 0.5rem;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .title-symbol {
+    color: #44d62c;
+    margin-right: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    max-width: 700px;
+    line-height: 1.7;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 2rem;
+    margin-bottom: 6rem;
+  }
+
+  .product-card {
+    background: rgba(18, 18, 23, 0.6);
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out backwards;
+    animation-delay: var(--delay);
+  }
+
+  .product-card:hover {
+    border-color: rgba(68, 214, 44, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(68, 214, 44, 0.1);
+  }
+
+  .card-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .category {
+    color: #71717a;
+    font-weight: 500;
+  }
+
+  .status {
+    color: #44d62c;
+    background: rgba(68, 214, 44, 0.1);
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .product-name {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .name-bracket {
+    color: #44d62c;
+  }
+
+  .product-description {
+    color: #a1a1aa;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-list {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .feature-list li {
+    color: #d4d4d8;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+  }
+
+  .feature-check {
+    color: #44d62c;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .learn-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #44d62c;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap 0.3s ease;
+  }
+
+  .learn-more:hover {
+    gap: 0.75rem;
+  }
+
+  .arrow {
+    transition: transform 0.3s ease;
+  }
+
+  .learn-more:hover .arrow {
+    transform: translateX(4px);
+  }
+
+  .philosophy {
+    margin-bottom: 6rem;
+    animation: fadeInUp 0.6s ease-out 0.3s backwards;
+  }
+
+  .philosophy-content {
+    background: rgba(18, 18, 23, 0.4);
+    border: 1px solid rgba(68, 214, 44, 0.15);
+    border-radius: 16px;
+    padding: 3rem;
+  }
+
+  .philosophy-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .principle {
+    text-align: center;
+  }
+
+  .principle-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 1rem;
+    color: #44d62c;
+  }
+
+  .principle-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .principle h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .principle p {
+    color: #a1a1aa;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(68, 214, 44, 0.03);
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    border-radius: 16px;
+    animation: fadeInUp 0.6s ease-out 0.4s backwards;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    color: #a1a1aa;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: #44d62c;
+    color: #0a0a0f;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid #44d62c;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: transparent;
+    color: #44d62c;
+    box-shadow: 0 0 30px rgba(68, 214, 44, 0.3);
+  }
+
+  .button-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 3rem 1.5rem;
+    }
+
+    .products-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .philosophy-content {
+      padding: 2rem 1.5rem;
+    }
+
+    .philosophy-grid {
+      gap: 2rem;
+    }
+
+    .cta-section {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

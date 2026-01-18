@@ -1,22 +1,73 @@
+---
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = "onprem.in | On-Premise Software Solutions",
+	description = "Next-generation on-premise software products and services. Your infrastructure, your control, our expertise."
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content={description} />
+		<meta name="theme-color" content="#0a0a0f" />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+		<title>{title}</title>
 	</head>
 	<body>
 		<slot />
+		<Footer />
 	</body>
 </html>
 
-<style>
-	html,
-	body {
+<style is:global>
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
 		margin: 0;
-		width: 100%;
-		height: 100%;
+		padding: 0;
+	}
+
+	html {
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+
+	body {
+		min-height: 100vh;
+		background: #0a0a0f;
+		color: #e4e4e7;
+		overflow-x: hidden;
+		line-height: 1.6;
+	}
+
+	::selection {
+		background: rgba(68, 214, 44, 0.3);
+		color: #fff;
+	}
+
+	code, pre {
+		font-family: 'JetBrains Mono', monospace;
 	}
 </style>

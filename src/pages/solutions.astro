@@ -1,0 +1,707 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+
+const solutions = [
+  {
+    title: "Enterprise",
+    icon: "building",
+    tagline: "Fort Knox for Your Data",
+    description: "Regulatory compliance, data sovereignty, and enterprise-grade security for organizations that can't afford to trust the cloud.",
+    challenges: [
+      "GDPR/HIPAA/SOC2 compliance requirements",
+      "Multi-country data residency mandates",
+      "Unpredictable cloud costs at scale",
+      "Third-party data breach exposure"
+    ],
+    solutions: [
+      "On-premise infrastructure with full sovereignty",
+      "Automated compliance monitoring & reporting",
+      "Predictable CapEx vs. runaway OpEx",
+      "Zero third-party data sharing"
+    ],
+    outcomes: [
+      "60% reduction in compliance costs",
+      "100% data residency guarantee",
+      "70% cost savings at scale",
+      "Eliminated vendor risk exposure"
+    ]
+  },
+  {
+    title: "Startups",
+    icon: "rocket",
+    tagline: "Build on Your Terms",
+    description: "Start lean, scale smart. Self-hosted infrastructure that grows with you without the cloud tax.",
+    challenges: [
+      "$10k/month cloud bills at seed stage",
+      "Vendor lock-in from day one",
+      "Unpredictable scaling costs",
+      "Investor concerns about burn rate"
+    ],
+    solutions: [
+      "Lean infrastructure with predictable costs",
+      "Docker/Kubernetes from the start",
+      "Easy cloud hybrid when you need it",
+      "Modern DevOps without the cloud markup"
+    ],
+    outcomes: [
+      "80% infrastructure cost reduction",
+      "Zero vendor lock-in",
+      "Better unit economics",
+      "Full control over your stack"
+    ]
+  },
+  {
+    title: "SMBs",
+    icon: "briefcase",
+    tagline: "Enterprise Tech, SMB Budget",
+    description: "Professional infrastructure without enterprise prices. Your business data stays your business.",
+    challenges: [
+      "Can't afford enterprise cloud contracts",
+      "Need control but lack in-house expertise",
+      "Data privacy concerns",
+      "Monthly cloud costs eating profits"
+    ],
+    solutions: [
+      "Turnkey on-premise solutions",
+      "Managed infrastructure support",
+      "Simple pricing, no surprises",
+      "Local data, local control"
+    ],
+    outcomes: [
+      "Enterprise features at SMB prices",
+      "Fixed monthly infrastructure costs",
+      "Customer data stays private",
+      "Professional image, professional tools"
+    ]
+  }
+];
+
+const useCases = [
+  {
+    title: "SaaS Migration",
+    description: "Reduce AWS bills by 70% while improving performance and maintaining uptime.",
+    tech: ["Kubernetes", "PostgreSQL", "Redis", "Monitoring"]
+  },
+  {
+    title: "Regulated Industries",
+    description: "Healthcare, finance, government - meet compliance without compromising on modern tech.",
+    tech: ["Air-gapped networks", "FIPS 140-2", "Audit logging", "Encryption"]
+  },
+  {
+    title: "Data-Intensive Apps",
+    description: "Analytics, ML, video processing - eliminate egress fees and get local performance.",
+    tech: ["GPU clusters", "High-performance storage", "Low-latency networking"]
+  },
+  {
+    title: "Multi-Tenant Platforms",
+    description: "Give enterprise customers dedicated infrastructure without cloud premium pricing.",
+    tech: ["Tenant isolation", "Custom domains", "Dedicated resources"]
+  }
+];
+---
+
+<Layout
+  title="Solutions | onprem.in"
+  description="On-premise infrastructure solutions tailored for enterprises, startups, and SMBs."
+>
+  <Navigation />
+
+  <div class="page">
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <main class="container">
+      <header class="header">
+        <div class="breadcrumb">
+          <span class="prompt">root@onprem.in</span>
+          <span class="separator">:</span>
+          <span class="path">~/solutions</span>
+          <span class="cursor">$</span>
+        </div>
+
+        <h1 class="title">
+          Solutions for Every Scale
+        </h1>
+
+        <p class="subtitle">
+          From seed-stage startups to Fortune 500 enterprises,
+          <br />we help you build infrastructure that scales on your terms.
+        </p>
+      </header>
+
+      <div class="solutions-grid">
+        {solutions.map((solution, index) => (
+          <article class="solution-card" style={`--delay: ${index * 0.15}s`}>
+            <div class="card-header">
+              <div class="icon-container">
+                {solution.icon === 'building' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
+                )}
+                {solution.icon === 'rocket' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9 22l1.5-9L3 8l9-1.5L17 3l-1.5 9L22 17l-9 1.5L9 22z M12 12l3 3"/>
+                  </svg>
+                )}
+                {solution.icon === 'briefcase' && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zM14 2H10a2 2 0 00-2 2v3h8V4a2 2 0 00-2-2z"/>
+                  </svg>
+                )}
+              </div>
+              <div class="header-text">
+                <h2 class="solution-title">{solution.title}</h2>
+                <p class="tagline">{solution.tagline}</p>
+              </div>
+            </div>
+
+            <p class="description">{solution.description}</p>
+
+            <div class="section">
+              <h3 class="section-title">
+                <span class="title-icon">//</span> Challenges
+              </h3>
+              <ul class="challenge-list">
+                {solution.challenges.map(challenge => (
+                  <li>
+                    <span class="bullet">×</span>
+                    {challenge}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="section">
+              <h3 class="section-title">
+                <span class="title-icon">&gt;</span> Our Approach
+              </h3>
+              <ul class="solution-list">
+                {solution.solutions.map(item => (
+                  <li>
+                    <span class="bullet">→</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="section outcomes">
+              <h3 class="section-title">
+                <span class="title-icon">✓</span> Results
+              </h3>
+              <ul class="outcome-list">
+                {solution.outcomes.map(outcome => (
+                  <li>
+                    <span class="bullet">+</span>
+                    {outcome}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <a href="mailto:hello@onprem.in" class="contact-link">
+              Discuss your needs →
+            </a>
+          </article>
+        ))}
+      </div>
+
+      <section class="use-cases">
+        <h2 class="section-heading">
+          <span class="heading-symbol">$</span>
+          Common Use Cases
+        </h2>
+
+        <div class="use-cases-grid">
+          {useCases.map((useCase, index) => (
+            <div class="use-case" style={`--delay: ${0.5 + index * 0.1}s`}>
+              <h3>{useCase.title}</h3>
+              <p>{useCase.description}</p>
+              <div class="tech-tags">
+                {useCase.tech.map(tech => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="process">
+        <h2 class="section-heading">
+          <span class="heading-symbol">#</span>
+          How We Work
+        </h2>
+
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <div class="step-content">
+              <h3>Discovery</h3>
+              <p>We audit your current infrastructure, identify pain points, and map compliance requirements.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <div class="step-content">
+              <h3>Design</h3>
+              <p>Custom architecture designed for your needs. No cookie-cutter solutions.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <div class="step-content">
+              <h3>Deploy</h3>
+              <p>We build and test your infrastructure. You maintain full visibility throughout.</p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <div class="step-content">
+              <h3>Support</h3>
+              <p>Ongoing support, monitoring, and optimization. We're partners, not vendors.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2>Let's Build Something</h2>
+          <p>Every infrastructure is unique. Let's discuss yours.</p>
+          <a href="mailto:hello@onprem.in" class="cta-button">
+            <span>Start Conversation</span>
+            <span class="button-cursor">_</span>
+          </a>
+        </div>
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    padding-top: 5rem;
+    position: relative;
+  }
+
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(68, 214, 44, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 214, 44, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+  }
+
+  .bg-glow-1 {
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(68, 214, 44, 0.15) 0%, transparent 70%);
+    top: 10%;
+    right: -200px;
+    animation: float 25s ease-in-out infinite;
+  }
+
+  .bg-glow-2 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(46, 163, 24, 0.1) 0%, transparent 70%);
+    bottom: 10%;
+    left: -200px;
+    animation: float 20s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-30px, 30px); }
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .breadcrumb {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #52525b;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .prompt { color: #44d62c; }
+  .separator { color: #71717a; margin: 0 0.5rem; }
+  .path { color: #a1a1aa; }
+
+  .cursor {
+    color: #44d62c;
+    margin-left: 0.5rem;
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    line-height: 1.7;
+  }
+
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 6rem;
+  }
+
+  .solution-card {
+    background: rgba(18, 18, 23, 0.6);
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out backwards;
+    animation-delay: var(--delay);
+  }
+
+  .solution-card:hover {
+    border-color: rgba(68, 214, 44, 0.5);
+    box-shadow: 0 12px 40px rgba(68, 214, 44, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .icon-container {
+    width: 64px;
+    height: 64px;
+    background: rgba(68, 214, 44, 0.1);
+    border: 1px solid rgba(68, 214, 44, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #44d62c;
+    flex-shrink: 0;
+  }
+
+  .icon-container svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .solution-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #44d62c;
+    letter-spacing: 0.02em;
+  }
+
+  .description {
+    color: #a1a1aa;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+
+  .section {
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #d4d4d8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .title-icon {
+    color: #44d62c;
+  }
+
+  .challenge-list,
+  .solution-list,
+  .outcome-list {
+    list-style: none;
+  }
+
+  .challenge-list li,
+  .solution-list li,
+  .outcome-list li {
+    padding: 0.5rem 0;
+    color: #d4d4d8;
+    display: flex;
+    align-items: start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .bullet {
+    color: #44d62c;
+    font-family: 'JetBrains Mono', monospace;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .contact-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #44d62c;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .contact-link:hover {
+    gap: 0.75rem;
+    text-shadow: 0 0 20px rgba(68, 214, 44, 0.5);
+  }
+
+  .section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .heading-symbol {
+    color: #44d62c;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .use-cases {
+    margin-bottom: 6rem;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .use-case {
+    background: rgba(18, 18, 23, 0.4);
+    border: 1px solid rgba(68, 214, 44, 0.15);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out backwards;
+    animation-delay: var(--delay);
+  }
+
+  .use-case:hover {
+    border-color: rgba(68, 214, 44, 0.4);
+    background: rgba(18, 18, 23, 0.6);
+  }
+
+  .use-case h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .use-case p {
+    color: #a1a1aa;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #44d62c;
+    background: rgba(68, 214, 44, 0.1);
+    border: 1px solid rgba(68, 214, 44, 0.3);
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+  }
+
+  .process {
+    margin-bottom: 6rem;
+  }
+
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .process-step {
+    position: relative;
+    animation: fadeInUp 0.6s ease-out backwards;
+    animation-delay: calc(0.6s + var(--delay, 0s));
+  }
+
+  .process-step:nth-child(1) { --delay: 0s; }
+  .process-step:nth-child(2) { --delay: 0.1s; }
+  .process-step:nth-child(3) { --delay: 0.2s; }
+  .process-step:nth-child(4) { --delay: 0.3s; }
+
+  .step-number {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 3rem;
+    font-weight: 700;
+    color: rgba(68, 214, 44, 0.2);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+
+  .step-content p {
+    color: #a1a1aa;
+    line-height: 1.6;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: rgba(68, 214, 44, 0.03);
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    border-radius: 16px;
+    animation: fadeInUp 0.6s ease-out 0.8s backwards;
+  }
+
+  .cta-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+
+  .cta-content p {
+    font-size: 1.125rem;
+    color: #a1a1aa;
+    margin-bottom: 2rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: #44d62c;
+    color: #0a0a0f;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 1px solid #44d62c;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: transparent;
+    color: #44d62c;
+    box-shadow: 0 0 30px rgba(68, 214, 44, 0.3);
+  }
+
+  .button-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 3rem 1.5rem;
+    }
+
+    .solutions-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .use-cases-grid,
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-section {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

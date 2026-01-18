@@ -1,0 +1,200 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="nav">
+  <div class="nav-container">
+    <a href="/" class="nav-brand">
+      <img src="/favicon.svg" alt="onprem.in" class="brand-icon" />
+      <span class="brand-bracket">[</span>
+      <span class="brand-text">onprem</span>
+      <span class="brand-dot">.</span>
+      <span class="brand-text">in</span>
+      <span class="brand-bracket">]</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="/" class={currentPath === '/' ? 'active' : ''}>
+        <span class="link-symbol">~/</span>home
+      </a>
+      <a href="/products" class={currentPath.startsWith('/products') ? 'active' : ''}>
+        <span class="link-symbol">$</span>products
+      </a>
+      <a href="/solutions" class={currentPath.startsWith('/solutions') ? 'active' : ''}>
+        <span class="link-symbol">&gt;</span>solutions
+      </a>
+      <a href="/blog" class={currentPath.startsWith('/blog') ? 'active' : ''}>
+        <span class="link-symbol">#</span>blog
+      </a>
+    </div>
+
+    <a href="mailto:hello@onprem.in" class="nav-cta">
+      <span class="cta-text">contact</span>
+      <span class="cta-cursor">_</span>
+    </a>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 15, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(68, 214, 44, 0.15);
+  }
+
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.25rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .nav-brand {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+
+  .nav-brand:hover {
+    color: #44d62c;
+    text-shadow: 0 0 20px rgba(68, 214, 44, 0.5);
+  }
+
+  .nav-brand:hover .brand-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .brand-bracket {
+    color: #44d62c;
+    font-weight: 400;
+  }
+
+  .brand-dot {
+    color: #44d62c;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #a1a1aa;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    position: relative;
+    letter-spacing: 0.02em;
+  }
+
+  .link-symbol {
+    color: #44d62c;
+    margin-right: 0.25rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .nav-links a:hover .link-symbol,
+  .nav-links a.active .link-symbol {
+    opacity: 1;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+  }
+
+  .nav-links a.active {
+    color: #44d62c;
+  }
+
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: #44d62c;
+    box-shadow: 0 0 8px rgba(68, 214, 44, 0.5);
+  }
+
+  .nav-cta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #0a0a0f;
+    background: #44d62c;
+    padding: 0.625rem 1.25rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid #44d62c;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .cta-cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .nav-cta:hover {
+    background: transparent;
+    color: #44d62c;
+    box-shadow: 0 0 20px rgba(68, 214, 44, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 1rem 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      order: 3;
+      width: 100%;
+      gap: 1.5rem;
+      justify-content: flex-start;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(68, 214, 44, 0.15);
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+    }
+
+    .link-symbol {
+      opacity: 1;
+    }
+  }
+</style>

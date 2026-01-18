@@ -1,0 +1,494 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+
+const allPosts = await getCollection('blog');
+const relatedPosts = allPosts
+  .filter(p => p.slug !== post.slug && p.data.category === post.data.category)
+  .slice(0, 2);
+---
+
+<Layout
+  title={`${post.data.title} | onprem.in`}
+  description={post.data.description}
+>
+  <Navigation />
+
+  <div class="page">
+    <div class="bg-grid"></div>
+
+    <main class="container">
+      <article class="article">
+        <header class="article-header">
+          <div class="breadcrumb">
+            <a href="/blog">← blog</a>
+          </div>
+
+          <div class="meta">
+            <span class="category">{post.data.category}</span>
+            <span class="separator">/</span>
+            <time datetime={post.data.publishDate.toISOString()}>
+              {formatDate(post.data.publishDate)}
+            </time>
+          </div>
+
+          <h1 class="article-title">{post.data.title}</h1>
+
+          <p class="article-description">{post.data.description}</p>
+
+          <div class="tags">
+            {post.data.tags.map(tag => (
+              <span class="tag">#{tag}</span>
+            ))}
+          </div>
+        </header>
+
+        <div class="content">
+          <Content />
+        </div>
+
+        <footer class="article-footer">
+          <div class="footer-content">
+            <p>Written by {post.data.author}</p>
+            <p>Published on {formatDate(post.data.publishDate)}</p>
+          </div>
+        </footer>
+      </article>
+
+      {relatedPosts.length > 0 && (
+        <aside class="related">
+          <h2 class="related-title">
+            <span class="title-symbol">//</span>
+            Related Posts
+          </h2>
+
+          <div class="related-grid">
+            {relatedPosts.map(relatedPost => (
+              <a href={`/blog/${relatedPost.slug}`} class="related-card">
+                <div class="related-meta">
+                  <span class="category">{relatedPost.data.category}</span>
+                  <span class="date">{formatDate(relatedPost.data.publishDate)}</span>
+                </div>
+                <h3>{relatedPost.data.title}</h3>
+                <p>{relatedPost.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </aside>
+      )}
+
+      <div class="back-link">
+        <a href="/blog">
+          <span>←</span> Back to all posts
+        </a>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  .page {
+    min-height: 100vh;
+    padding-top: 5rem;
+    position: relative;
+  }
+
+  .bg-grid {
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(68, 214, 44, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(68, 214, 44, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .article {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  .article-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(68, 214, 44, 0.15);
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #71717a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: #44d62c;
+  }
+
+  .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: #71717a;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .category {
+    color: #44d62c;
+    font-weight: 600;
+  }
+
+  .separator {
+    color: #52525b;
+  }
+
+  .article-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .article-description {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .tags {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: #71717a;
+    background: rgba(68, 214, 44, 0.05);
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    padding: 0.375rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  .content {
+    margin-bottom: 4rem;
+  }
+
+  .article-footer {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(68, 214, 44, 0.15);
+    margin-bottom: 4rem;
+  }
+
+  .footer-content {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.875rem;
+    color: #71717a;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .related {
+    margin-bottom: 4rem;
+    animation: fadeInUp 0.6s ease-out 0.3s backwards;
+  }
+
+  .related-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .title-symbol {
+    color: #44d62c;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .related-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .related-card {
+    background: rgba(18, 18, 23, 0.6);
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: block;
+  }
+
+  .related-card:hover {
+    border-color: rgba(68, 214, 44, 0.5);
+    box-shadow: 0 8px 32px rgba(68, 214, 44, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .related-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .related-meta .category {
+    color: #44d62c;
+    font-weight: 600;
+  }
+
+  .related-meta .date {
+    color: #71717a;
+  }
+
+  .related-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .related-card p {
+    color: #a1a1aa;
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  .back-link {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(68, 214, 44, 0.15);
+  }
+
+  .back-link a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: #71717a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .back-link a:hover {
+    color: #44d62c;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 3rem 1.5rem;
+    }
+
+    .footer-content {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Markdown content styling */
+  .content h1,
+  .content h2,
+  .content h3,
+  .content h4,
+  .content h5,
+  .content h6 {
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .content h1 { font-size: 2rem; }
+  .content h2 { font-size: 1.75rem; }
+  .content h3 { font-size: 1.5rem; }
+  .content h4 { font-size: 1.25rem; }
+
+  .content p {
+    color: #d4d4d8;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+  }
+
+  .content a {
+    color: #44d62c;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(68, 214, 44, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .content a:hover {
+    border-bottom-color: #44d62c;
+    text-shadow: 0 0 20px rgba(68, 214, 44, 0.3);
+  }
+
+  .content ul,
+  .content ol {
+    color: #d4d4d8;
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+    line-height: 1.8;
+  }
+
+  .content ul li,
+  .content ol li {
+    margin-bottom: 0.5rem;
+  }
+
+  .content ul {
+    list-style-type: none;
+  }
+
+  .content ul li::before {
+    content: "→";
+    color: #44d62c;
+    font-weight: 600;
+    display: inline-block;
+    width: 1.5rem;
+    margin-left: -1.5rem;
+  }
+
+  .content blockquote {
+    border-left: 3px solid #44d62c;
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    color: #a1a1aa;
+    font-style: italic;
+  }
+
+  .content code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9em;
+    background: rgba(68, 214, 44, 0.1);
+    color: #44d62c;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    border: 1px solid rgba(68, 214, 44, 0.2);
+  }
+
+  .content pre {
+    background: rgba(18, 18, 23, 0.8);
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+
+  .content pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.875rem;
+    color: #d4d4d8;
+  }
+
+  .content hr {
+    border: none;
+    border-top: 1px solid rgba(68, 214, 44, 0.15);
+    margin: 3rem 0;
+  }
+
+  .content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  .content table th,
+  .content table td {
+    border: 1px solid rgba(68, 214, 44, 0.2);
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  .content table th {
+    background: rgba(68, 214, 44, 0.1);
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .content table td {
+    color: #d4d4d8;
+  }
+
+  .content img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 2rem 0;
+  }
+
+  .content strong {
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .content em {
+    color: #a1a1aa;
+  }
+</style>
