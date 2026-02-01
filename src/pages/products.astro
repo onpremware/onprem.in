@@ -2,9 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 
-const products = [];
-
-/*
 const products = [
   {
     name: "DataVault",
@@ -79,7 +76,6 @@ const products = [
     status: "Coming Soon"
   }
 ];
-*/
 ---
 
 <Layout
@@ -537,6 +533,10 @@ const products = [
   }
 
   @media (max-width: 768px) {
+    .page {
+      padding-top: 8rem;
+    }
+
     .container {
       padding: 3rem 1.5rem;
     }
