@@ -1,5 +1,6 @@
 ---
 // Futuristic landing page for onprem.in
+import WaitlistForm from './WaitlistForm.astro';
 ---
 
 <div class="landing">
@@ -299,77 +300,8 @@
 
 		<!-- Waiting List -->
 		<div class="waiting-list">
-			<iframe name="hidden-landing-form" id="hidden-landing-form" style="display:none;"></iframe>
-
-			<form
-				class="waitlist-form"
-				id="waitlist-form"
-				action="https://docs.google.com/forms/d/e/1FAIpQLSdmypu25LKFRnerbdorlPk60dvwwFen7YFB2le05cdxkdZvzQ/formResponse"
-				method="POST"
-				target="hidden-landing-form"
-			>
-				<div class="input-group">
-					<input
-						type="email"
-						name="entry.887339015"
-						id="waitlist-email"
-						placeholder="Enter your email"
-						required
-						class="waitlist-input"
-					/>
-					<input type="hidden" name="entry.1769037418" id="waitlist-email-validation" />
-					<button type="submit" class="waitlist-button" id="waitlist-btn">
-						<span class="btn-text">Join Waitlist</span>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-							<path d="M5 12h14m-7-7l7 7-7 7"/>
-						</svg>
-					</button>
-				</div>
-				<p class="form-message" id="waitlist-message"></p>
-			</form>
-			<p class="waitlist-hint">Be the first to know when we launch</p>
+			<WaitlistForm id="landing" highlightHint />
 		</div>
-
-		<script>
-			const waitlistForm = document.getElementById('waitlist-form');
-			const waitlistEmail = document.getElementById('waitlist-email');
-			const waitlistValidation = document.getElementById('waitlist-email-validation');
-			const waitlistBtn = document.getElementById('waitlist-btn');
-			const waitlistMessage = document.getElementById('waitlist-message');
-			const hiddenLandingFrame = document.getElementById('hidden-landing-form');
-
-			waitlistEmail.addEventListener('input', () => {
-				waitlistValidation.value = waitlistEmail.value;
-			});
-
-			waitlistForm.addEventListener('submit', (e) => {
-				const email = waitlistEmail.value.trim();
-				if (!email) {
-					e.preventDefault();
-					return;
-				}
-
-				waitlistValidation.value = email;
-
-				const btnText = waitlistBtn.querySelector('.btn-text');
-				btnText.textContent = 'Joining...';
-				waitlistBtn.disabled = true;
-
-				hiddenLandingFrame.onload = () => {
-					waitlistMessage.textContent = '✓ You\'re on the list!';
-					waitlistMessage.className = 'form-message success';
-					waitlistEmail.value = '';
-					waitlistValidation.value = '';
-					btnText.textContent = 'Join Waitlist';
-					waitlistBtn.disabled = false;
-
-					setTimeout(() => {
-						waitlistMessage.textContent = '';
-						waitlistMessage.className = 'form-message';
-					}, 5000);
-				};
-			});
-		</script>
 	</main>
 </div>
 
@@ -737,98 +669,6 @@
 	/* Waiting List */
 	.waiting-list {
 		animation: fadeInUp 0.8s ease-out 0.6s backwards;
-		width: 100%;
-		max-width: 500px;
-	}
-
-	.waitlist-form {
-		width: 100%;
-	}
-
-	.input-group {
-		display: flex;
-		gap: 0.75rem;
-		background: rgba(18, 18, 23, 0.8);
-		border: 1px solid rgba(68, 214, 44, 0.3);
-		border-radius: 12px;
-		padding: 0.5rem;
-		transition: all 0.3s ease;
-	}
-
-	.input-group:focus-within {
-		border-color: rgba(68, 214, 44, 0.6);
-		box-shadow: 0 0 0 3px rgba(68, 214, 44, 0.1);
-	}
-
-	.waitlist-input {
-		flex: 1;
-		background: transparent;
-		border: none;
-		color: #e4e4e7;
-		font-size: 1rem;
-		padding: 0.75rem 1rem;
-		outline: none;
-	}
-
-	.waitlist-input::placeholder {
-		color: #52525b;
-	}
-
-	.waitlist-button {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		background: linear-gradient(135deg, #44d62c, #2ea318);
-		color: #0a0a0f;
-		font-size: 0.95rem;
-		font-weight: 600;
-		border: none;
-		border-radius: 8px;
-		cursor: pointer;
-		transition: all 0.3s ease;
-		white-space: nowrap;
-	}
-
-	.waitlist-button:hover:not(:disabled) {
-		transform: translateY(-1px);
-		box-shadow: 0 4px 20px rgba(68, 214, 44, 0.4);
-	}
-
-	.waitlist-button:disabled {
-		opacity: 0.7;
-		cursor: not-allowed;
-		transform: none;
-	}
-
-	.waitlist-button svg {
-		width: 18px;
-		height: 18px;
-		transition: transform 0.3s ease;
-	}
-
-	.waitlist-button:hover:not(:disabled) svg {
-		transform: translateX(3px);
-	}
-
-	.form-message {
-		font-size: 0.875rem;
-		margin-top: 0.75rem;
-		min-height: 1.25rem;
-		transition: all 0.3s ease;
-	}
-
-	.form-message.success {
-		color: #44d62c;
-	}
-
-	.form-message.error {
-		color: #ef4444;
-	}
-
-	.waitlist-hint {
-		font-size: 0.875rem;
-		color: #44d62c;
 	}
 
 	/* Animations */
@@ -873,21 +713,6 @@
 
 		.features {
 			gap: 1rem;
-		}
-
-		.input-group {
-			flex-direction: column;
-			padding: 0.75rem;
-		}
-
-		.waitlist-input {
-			padding: 0.75rem;
-		}
-
-		.waitlist-button {
-			width: 100%;
-			justify-content: center;
-			padding: 0.875rem 1.5rem;
 		}
 	}
 </style>

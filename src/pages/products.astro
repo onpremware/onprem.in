@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
+import WaitlistForm from '../components/WaitlistForm.astro';
 
 const products = [];
 /*
@@ -184,10 +185,7 @@ const products = [
         <div class="cta-content">
           <h2>Ready to Deploy?</h2>
           <p>Get notified when products launch and access our early adopter program.</p>
-          <a href="mailto:hello@onprem.in" class="cta-button">
-            <span>Join Waitlist</span>
-            <span class="button-cursor">_</span>
-          </a>
+          <WaitlistForm id="products" hint="Be the first to access our early adopter program" highlightHint />
         </div>
       </section>
     </main>
@@ -486,30 +484,8 @@ const products = [
     margin-bottom: 2rem;
   }
 
-  .cta-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 2.5rem;
-    background: #44d62c;
-    color: #0a0a0f;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1rem;
-    font-weight: 600;
-    border: 1px solid #44d62c;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .cta-button:hover {
-    background: transparent;
-    color: #44d62c;
-    box-shadow: 0 0 30px rgba(68, 214, 44, 0.3);
-  }
-
-  .button-cursor {
-    animation: blink 1s step-end infinite;
+  .cta-content :global(.waitlist-wrapper) {
+    margin: 0 auto;
   }
 
   @keyframes fadeInUp {
