@@ -15,10 +15,20 @@ import WaitlistForm from './WaitlistForm.astro';
 					<stop offset="100%" stop-color="#44d62c" stop-opacity="0" />
 				</linearGradient>
 
-				<!-- Glow filter -->
+				<!-- Enhanced glow filter -->
 				<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-					<feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+					<feGaussianBlur stdDeviation="4" result="coloredBlur"/>
 					<feMerge>
+						<feMergeNode in="coloredBlur"/>
+						<feMergeNode in="SourceGraphic"/>
+					</feMerge>
+				</filter>
+
+				<!-- Stronger glow for accents -->
+				<filter id="glowStrong" x="-100%" y="-100%" width="300%" height="300%">
+					<feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+					<feMerge>
+						<feMergeNode in="coloredBlur"/>
 						<feMergeNode in="coloredBlur"/>
 						<feMergeNode in="SourceGraphic"/>
 					</feMerge>
@@ -26,58 +36,99 @@ import WaitlistForm from './WaitlistForm.astro';
 
 				<!-- Node pulse animation gradient -->
 				<radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-					<stop offset="0%" stop-color="#44d62c" stop-opacity="0.8" />
+					<stop offset="0%" stop-color="#44d62c" stop-opacity="0.9" />
 					<stop offset="100%" stop-color="#44d62c" stop-opacity="0" />
 				</radialGradient>
+
+				<!-- Cyan accent gradient for futuristic look -->
+				<linearGradient id="cyanAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+					<stop offset="0%" stop-color="#00ffff" stop-opacity="0.6" />
+					<stop offset="100%" stop-color="#44d62c" stop-opacity="0.8" />
+				</linearGradient>
+
+				<!-- Grid pattern -->
+				<pattern id="gridPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+					<path d="M 60 0 L 0 0 0 60" fill="none" stroke="#44d62c" stroke-width="0.3" opacity="0.3"/>
+				</pattern>
+
+				<!-- Hexagon pattern -->
+				<pattern id="hexPattern" width="50" height="43.3" patternUnits="userSpaceOnUse">
+					<path d="M25 0 L50 14.43 L50 43.3 L25 57.73 L0 43.3 L0 14.43 Z" fill="none" stroke="#44d62c" stroke-width="0.2" opacity="0.15"/>
+				</pattern>
 			</defs>
 
-			<!-- Static circuit traces (background layer) -->
-			<g class="circuit-traces" opacity="0.15">
-				<!-- Horizontal traces -->
-				<path d="M0 200 H400 L450 250 H800" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M0 400 H300 L350 350 H600 L650 400 H1000" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M0 600 H200 L250 650 H500 L550 600 H900" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M0 800 H350 L400 750 H700" stroke="#44d62c" stroke-width="1" fill="none" />
+			<!-- Hex grid background layer -->
+			<rect width="100%" height="100%" fill="url(#hexPattern)" opacity="0.4" />
 
-				<path d="M1920 300 H1500 L1450 350 H1100" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1920 500 H1600 L1550 450 H1200 L1150 500 H900" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1920 700 H1400 L1350 650 H1000" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1920 900 H1550 L1500 850 H1200" stroke="#44d62c" stroke-width="1" fill="none" />
+			<!-- Static circuit traces (background layer) - enhanced visibility -->
+			<g class="circuit-traces" opacity="0.25">
+				<!-- Horizontal traces -->
+				<path d="M0 200 H400 L450 250 H800" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M0 400 H300 L350 350 H600 L650 400 H1000" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M0 600 H200 L250 650 H500 L550 600 H900" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M0 800 H350 L400 750 H700" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M0 150 H180 L220 190 H450" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M0 950 H280 L330 900 H550" stroke="#44d62c" stroke-width="1" fill="none" />
+
+				<path d="M1920 300 H1500 L1450 350 H1100" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M1920 500 H1600 L1550 450 H1200 L1150 500 H900" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M1920 700 H1400 L1350 650 H1000" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M1920 900 H1550 L1500 850 H1200" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M1920 180 H1700 L1650 230 H1400" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1920 1000 H1650 L1600 950 H1350" stroke="#44d62c" stroke-width="1" fill="none" />
 
 				<!-- Vertical traces -->
-				<path d="M300 0 V200 L350 250 V500" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M500 1080 V800 L550 750 V400" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1400 0 V300 L1350 350 V600" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1600 1080 V700 L1550 650 V300" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M300 0 V200 L350 250 V500" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M500 1080 V800 L550 750 V400" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M1400 0 V300 L1350 350 V600" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M1600 1080 V700 L1550 650 V300" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M150 0 V150 L180 180 V350" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1750 0 V180 L1700 230 V400" stroke="#44d62c" stroke-width="1" fill="none" />
 
 				<!-- Diagonal connections -->
-				<path d="M200 100 L400 300 L400 500 L600 700" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1700 150 L1500 350 L1500 550 L1300 750" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M200 100 L400 300 L400 500 L600 700" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M1700 150 L1500 350 L1500 550 L1300 750" stroke="#44d62c" stroke-width="1.5" fill="none" />
+				<path d="M100 500 L300 700 L300 850" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1800 550 L1600 750 L1600 900" stroke="#44d62c" stroke-width="1" fill="none" />
+
+				<!-- Central cross circuits -->
+				<path d="M700 0 V300 L750 350 V500" stroke="#44d62c" stroke-width="1" fill="none" />
+				<path d="M1200 1080 V750 L1150 700 V500" stroke="#44d62c" stroke-width="1" fill="none" />
 			</g>
 
-			<!-- Circuit nodes (intersection points) -->
+			<!-- Enhanced circuit nodes (intersection points) -->
 			<g class="circuit-nodes">
 				<!-- Left side nodes -->
-				<circle cx="400" cy="250" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="350" cy="350" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="250" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="400" cy="750" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="300" cy="200" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="550" cy="750" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="400" cy="250" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="350" cy="350" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="250" cy="650" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="400" cy="750" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="300" cy="200" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="550" cy="750" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="180" cy="180" r="4" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="330" cy="900" r="4" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="300" cy="700" r="4" fill="#44d62c" opacity="0.5" class="node" />
 
 				<!-- Right side nodes -->
-				<circle cx="1450" cy="350" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1550" cy="450" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1350" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1500" cy="850" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1400" cy="300" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1550" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
+				<circle cx="1450" cy="350" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1550" cy="450" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1350" cy="650" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1500" cy="850" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1400" cy="300" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1550" cy="650" r="5" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1650" cy="230" r="4" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1600" cy="950" r="4" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1600" cy="750" r="4" fill="#44d62c" opacity="0.5" class="node" />
+
+				<!-- Central nodes -->
+				<circle cx="750" cy="350" r="4" fill="#44d62c" opacity="0.5" class="node" />
+				<circle cx="1150" cy="700" r="4" fill="#44d62c" opacity="0.5" class="node" />
 			</g>
 
-			<!-- Animated data signals -->
-			<g class="data-signals" filter="url(#glow)">
+			<!-- Animated data signals - more signals -->
+			<g class="data-signals" filter="url(#glowStrong)">
 				<!-- Signal 1 -->
-				<circle r="3" fill="#44d62c" class="signal signal-1">
+				<circle r="4" fill="#44d62c" class="signal signal-1">
 					<animateMotion dur="4s" repeatCount="indefinite">
 						<mpath href="#signal-path-1" />
 					</animateMotion>
@@ -85,7 +136,7 @@ import WaitlistForm from './WaitlistForm.astro';
 				<path id="signal-path-1" d="M0 200 H400 L450 250 H800 L850 300 H1100" fill="none" stroke="none" />
 
 				<!-- Signal 2 -->
-				<circle r="3" fill="#44d62c" class="signal signal-2">
+				<circle r="4" fill="#44d62c" class="signal signal-2">
 					<animateMotion dur="5s" repeatCount="indefinite">
 						<mpath href="#signal-path-2" />
 					</animateMotion>
@@ -93,7 +144,7 @@ import WaitlistForm from './WaitlistForm.astro';
 				<path id="signal-path-2" d="M1920 500 H1600 L1550 450 H1200 L1150 500 H900 L850 450 H600" fill="none" stroke="none" />
 
 				<!-- Signal 3 -->
-				<circle r="3" fill="#44d62c" class="signal signal-3">
+				<circle r="4" fill="#44d62c" class="signal signal-3">
 					<animateMotion dur="6s" repeatCount="indefinite">
 						<mpath href="#signal-path-3" />
 					</animateMotion>
@@ -101,7 +152,7 @@ import WaitlistForm from './WaitlistForm.astro';
 				<path id="signal-path-3" d="M300 0 V200 L350 250 V500 L400 550 V800" fill="none" stroke="none" />
 
 				<!-- Signal 4 -->
-				<circle r="3" fill="#44d62c" class="signal signal-4">
+				<circle r="4" fill="#44d62c" class="signal signal-4">
 					<animateMotion dur="4.5s" repeatCount="indefinite">
 						<mpath href="#signal-path-4" />
 					</animateMotion>
@@ -109,121 +160,424 @@ import WaitlistForm from './WaitlistForm.astro';
 				<path id="signal-path-4" d="M1600 1080 V700 L1550 650 V300 L1500 250 V0" fill="none" stroke="none" />
 
 				<!-- Signal 5 - diagonal -->
-				<circle r="3" fill="#44d62c" class="signal signal-5">
+				<circle r="4" fill="#44d62c" class="signal signal-5">
 					<animateMotion dur="5.5s" repeatCount="indefinite">
 						<mpath href="#signal-path-5" />
 					</animateMotion>
 				</circle>
 				<path id="signal-path-5" d="M200 100 L400 300 L400 500 L600 700 L600 900" fill="none" stroke="none" />
+
+				<!-- Signal 6 - cyan accent -->
+				<circle r="3" fill="#00ffff" class="signal signal-6">
+					<animateMotion dur="7s" repeatCount="indefinite">
+						<mpath href="#signal-path-6" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-6" d="M0 400 H300 L350 350 H600 L650 400 H1000 L1050 350 H1400" fill="none" stroke="none" />
+
+				<!-- Signal 7 -->
+				<circle r="3" fill="#00ffff" class="signal signal-7">
+					<animateMotion dur="6.5s" repeatCount="indefinite">
+						<mpath href="#signal-path-7" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-7" d="M1920 700 H1400 L1350 650 H1000 L950 700 H600" fill="none" stroke="none" />
+
+				<!-- Signal 8 - vertical -->
+				<circle r="3" fill="#44d62c" class="signal signal-8">
+					<animateMotion dur="5s" repeatCount="indefinite">
+						<mpath href="#signal-path-8" />
+					</animateMotion>
+				</circle>
+				<path id="signal-path-8" d="M700 0 V300 L750 350 V500 L800 550 V800" fill="none" stroke="none" />
 			</g>
 
-			<!-- Server rack icons (left) -->
-			<g class="server-rack" transform="translate(80, 300)" opacity="0.3">
-				<rect x="0" y="0" width="60" height="120" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<rect x="8" y="10" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="28" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="46" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="64" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="82" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="100" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
+			<!-- Server rack icons (left top) -->
+			<g class="server-rack" transform="translate(60, 150)" opacity="0.45">
+				<rect x="0" y="0" width="70" height="140" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<rect x="8" y="10" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="30" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="50" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="70" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="90" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="110" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
 				<!-- Blinking LEDs -->
-				<circle cx="48" cy="16" r="2" fill="#44d62c" class="led led-1" />
-				<circle cx="48" cy="34" r="2" fill="#44d62c" class="led led-2" />
-				<circle cx="48" cy="52" r="2" fill="#44d62c" class="led led-3" />
-				<circle cx="48" cy="70" r="2" fill="#44d62c" class="led led-4" />
-				<circle cx="48" cy="88" r="2" fill="#44d62c" class="led led-5" />
-				<circle cx="48" cy="106" r="2" fill="#44d62c" class="led led-6" />
+				<circle cx="56" cy="17" r="2.5" fill="#44d62c" class="led led-1" filter="url(#glow)" />
+				<circle cx="56" cy="37" r="2.5" fill="#44d62c" class="led led-2" filter="url(#glow)" />
+				<circle cx="56" cy="57" r="2.5" fill="#44d62c" class="led led-3" filter="url(#glow)" />
+				<circle cx="56" cy="77" r="2.5" fill="#44d62c" class="led led-4" filter="url(#glow)" />
+				<circle cx="56" cy="97" r="2.5" fill="#44d62c" class="led led-5" filter="url(#glow)" />
+				<circle cx="56" cy="117" r="2.5" fill="#44d62c" class="led led-6" filter="url(#glow)" />
+				<!-- Activity LEDs (cyan) -->
+				<circle cx="48" cy="17" r="1.5" fill="#00ffff" class="led-activity led-a1" />
+				<circle cx="48" cy="37" r="1.5" fill="#00ffff" class="led-activity led-a2" />
+				<circle cx="48" cy="57" r="1.5" fill="#00ffff" class="led-activity led-a3" />
 			</g>
 
-			<!-- Server rack icons (right) -->
-			<g class="server-rack" transform="translate(1780, 450)" opacity="0.3">
-				<rect x="0" y="0" width="60" height="120" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<rect x="8" y="10" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="28" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="46" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="64" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="82" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="100" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<!-- Blinking LEDs -->
-				<circle cx="12" cy="16" r="2" fill="#44d62c" class="led led-7" />
-				<circle cx="12" cy="34" r="2" fill="#44d62c" class="led led-8" />
-				<circle cx="12" cy="52" r="2" fill="#44d62c" class="led led-9" />
-				<circle cx="12" cy="70" r="2" fill="#44d62c" class="led led-10" />
-				<circle cx="12" cy="88" r="2" fill="#44d62c" class="led led-11" />
-				<circle cx="12" cy="106" r="2" fill="#44d62c" class="led led-12" />
+			<!-- Server rack icons (left middle) -->
+			<g class="server-rack" transform="translate(80, 420)" opacity="0.4">
+				<rect x="0" y="0" width="70" height="140" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<rect x="8" y="10" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="30" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="50" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="70" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="90" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="110" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<circle cx="56" cy="17" r="2.5" fill="#44d62c" class="led led-7" filter="url(#glow)" />
+				<circle cx="56" cy="37" r="2.5" fill="#44d62c" class="led led-8" filter="url(#glow)" />
+				<circle cx="56" cy="57" r="2.5" fill="#44d62c" class="led led-9" filter="url(#glow)" />
+				<circle cx="56" cy="77" r="2.5" fill="#44d62c" class="led led-10" filter="url(#glow)" />
+				<circle cx="56" cy="97" r="2.5" fill="#44d62c" class="led led-11" filter="url(#glow)" />
+				<circle cx="56" cy="117" r="2.5" fill="#44d62c" class="led led-12" filter="url(#glow)" />
+			</g>
+
+			<!-- Server rack icons (left bottom) -->
+			<g class="server-rack" transform="translate(50, 700)" opacity="0.35">
+				<rect x="0" y="0" width="70" height="140" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<rect x="8" y="10" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="30" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="50" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="70" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="90" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="110" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<circle cx="56" cy="17" r="2.5" fill="#44d62c" class="led led-1" filter="url(#glow)" />
+				<circle cx="56" cy="37" r="2.5" fill="#00ffff" class="led led-2" filter="url(#glow)" />
+				<circle cx="56" cy="57" r="2.5" fill="#44d62c" class="led led-3" filter="url(#glow)" />
+				<circle cx="56" cy="77" r="2.5" fill="#44d62c" class="led led-4" filter="url(#glow)" />
+				<circle cx="56" cy="97" r="2.5" fill="#00ffff" class="led led-5" filter="url(#glow)" />
+				<circle cx="56" cy="117" r="2.5" fill="#44d62c" class="led led-6" filter="url(#glow)" />
+			</g>
+
+			<!-- Server rack icons (right top) -->
+			<g class="server-rack" transform="translate(1790, 120)" opacity="0.45">
+				<rect x="0" y="0" width="70" height="140" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<rect x="8" y="10" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="30" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="50" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="70" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="90" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="110" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<circle cx="14" cy="17" r="2.5" fill="#44d62c" class="led led-7" filter="url(#glow)" />
+				<circle cx="14" cy="37" r="2.5" fill="#44d62c" class="led led-8" filter="url(#glow)" />
+				<circle cx="14" cy="57" r="2.5" fill="#44d62c" class="led led-9" filter="url(#glow)" />
+				<circle cx="14" cy="77" r="2.5" fill="#44d62c" class="led led-10" filter="url(#glow)" />
+				<circle cx="14" cy="97" r="2.5" fill="#44d62c" class="led led-11" filter="url(#glow)" />
+				<circle cx="14" cy="117" r="2.5" fill="#44d62c" class="led led-12" filter="url(#glow)" />
+				<circle cx="22" cy="17" r="1.5" fill="#00ffff" class="led-activity led-a1" />
+				<circle cx="22" cy="57" r="1.5" fill="#00ffff" class="led-activity led-a3" />
+			</g>
+
+			<!-- Server rack icons (right middle) -->
+			<g class="server-rack" transform="translate(1780, 400)" opacity="0.4">
+				<rect x="0" y="0" width="70" height="140" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<rect x="8" y="10" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="30" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="50" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="70" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="90" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="110" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<circle cx="14" cy="17" r="2.5" fill="#44d62c" class="led led-1" filter="url(#glow)" />
+				<circle cx="14" cy="37" r="2.5" fill="#44d62c" class="led led-2" filter="url(#glow)" />
+				<circle cx="14" cy="57" r="2.5" fill="#44d62c" class="led led-3" filter="url(#glow)" />
+				<circle cx="14" cy="77" r="2.5" fill="#44d62c" class="led led-4" filter="url(#glow)" />
+				<circle cx="14" cy="97" r="2.5" fill="#44d62c" class="led led-5" filter="url(#glow)" />
+				<circle cx="14" cy="117" r="2.5" fill="#44d62c" class="led led-6" filter="url(#glow)" />
+			</g>
+
+			<!-- Server rack icons (right bottom) -->
+			<g class="server-rack" transform="translate(1800, 680)" opacity="0.35">
+				<rect x="0" y="0" width="70" height="140" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<rect x="8" y="10" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="30" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="50" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="70" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="90" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<rect x="8" y="110" width="54" height="14" rx="2" fill="#44d62c" opacity="0.35" class="server-unit" />
+				<circle cx="14" cy="17" r="2.5" fill="#00ffff" class="led led-7" filter="url(#glow)" />
+				<circle cx="14" cy="37" r="2.5" fill="#44d62c" class="led led-8" filter="url(#glow)" />
+				<circle cx="14" cy="57" r="2.5" fill="#44d62c" class="led led-9" filter="url(#glow)" />
+				<circle cx="14" cy="77" r="2.5" fill="#00ffff" class="led led-10" filter="url(#glow)" />
+				<circle cx="14" cy="97" r="2.5" fill="#44d62c" class="led led-11" filter="url(#glow)" />
+				<circle cx="14" cy="117" r="2.5" fill="#44d62c" class="led led-12" filter="url(#glow)" />
+			</g>
+
+			<!-- Network switch (left top) -->
+			<g class="network-switch" transform="translate(170, 310)" opacity="0.4">
+				<rect x="0" y="0" width="120" height="50" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<!-- Ports row 1 -->
+				<rect x="10" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="22" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="34" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="46" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="58" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="70" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="82" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="94" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<!-- Ports row 2 -->
+				<rect x="10" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="22" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="34" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="46" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="58" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="70" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="82" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="94" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<!-- Status LEDs -->
+				<circle cx="108" cy="15" r="2" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="108" cy="25" r="2" fill="#00ffff" class="port-light" filter="url(#glow)" />
+				<circle cx="108" cy="35" r="2" fill="#44d62c" class="port-light" filter="url(#glow)" />
+			</g>
+
+			<!-- Network switch (right top) -->
+			<g class="network-switch" transform="translate(1630, 280)" opacity="0.4">
+				<rect x="0" y="0" width="120" height="50" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<rect x="10" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="22" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="34" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="46" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="58" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="70" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="82" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="94" y="10" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="10" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="22" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="34" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="46" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="58" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="70" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="82" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<rect x="94" y="26" width="8" height="10" rx="1" fill="#44d62c" opacity="0.4" class="switch-port" />
+				<circle cx="108" cy="15" r="2" fill="#00ffff" class="port-light" filter="url(#glow)" />
+				<circle cx="108" cy="25" r="2" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="108" cy="35" r="2" fill="#44d62c" class="port-light" filter="url(#glow)" />
 			</g>
 
 			<!-- Network hub (bottom left) -->
-			<g class="network-hub" transform="translate(150, 750)" opacity="0.25">
-				<rect x="0" y="0" width="100" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<circle cx="20" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="60" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" />
+			<g class="network-hub" transform="translate(140, 870)" opacity="0.35">
+				<rect x="0" y="0" width="130" height="45" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<circle cx="20" cy="22" r="5" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="45" cy="22" r="5" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="70" cy="22" r="5" fill="#00ffff" class="port-light" filter="url(#glow)" />
+				<circle cx="95" cy="22" r="5" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="115" cy="22" r="5" fill="#44d62c" class="port-light" filter="url(#glow)" />
 			</g>
 
 			<!-- Network hub (bottom right) -->
-			<g class="network-hub" transform="translate(1670, 820)" opacity="0.25">
-				<rect x="0" y="0" width="100" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<circle cx="20" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="60" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" />
+			<g class="network-hub" transform="translate(1650, 890)" opacity="0.35">
+				<rect x="0" y="0" width="130" height="45" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1.5" />
+				<circle cx="20" cy="22" r="5" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="45" cy="22" r="5" fill="#00ffff" class="port-light" filter="url(#glow)" />
+				<circle cx="70" cy="22" r="5" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="95" cy="22" r="5" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="115" cy="22" r="5" fill="#00ffff" class="port-light" filter="url(#glow)" />
 			</g>
 
-			<!-- Chip/CPU icons -->
-			<g class="cpu-chip" transform="translate(50, 600)" opacity="0.2">
-				<rect x="10" y="10" width="40" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<!-- Pins -->
-				<line x1="0" y1="20" x2="10" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="30" x2="10" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="40" x2="10" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="20" x2="60" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="30" x2="60" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="40" x2="60" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="0" x2="20" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="0" x2="30" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="0" x2="40" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="50" x2="20" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="50" x2="30" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="50" x2="40" y2="60" stroke="#44d62c" stroke-width="1" />
-				<!-- Core -->
-				<rect x="22" y="22" width="16" height="16" fill="#44d62c" opacity="0.4" class="cpu-core" />
+			<!-- Network hub (left middle) -->
+			<g class="network-hub" transform="translate(180, 600)" opacity="0.3">
+				<rect x="0" y="0" width="100" height="40" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1" />
+				<circle cx="20" cy="20" r="4" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="60" cy="20" r="4" fill="#00ffff" class="port-light" filter="url(#glow)" />
+				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" filter="url(#glow)" />
 			</g>
 
-			<g class="cpu-chip" transform="translate(1810, 200)" opacity="0.2">
-				<rect x="10" y="10" width="40" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<!-- Pins -->
-				<line x1="0" y1="20" x2="10" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="30" x2="10" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="40" x2="10" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="20" x2="60" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="30" x2="60" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="40" x2="60" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="0" x2="20" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="0" x2="30" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="0" x2="40" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="50" x2="20" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="50" x2="30" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="50" x2="40" y2="60" stroke="#44d62c" stroke-width="1" />
-				<!-- Core -->
-				<rect x="22" y="22" width="16" height="16" fill="#44d62c" opacity="0.4" class="cpu-core" />
+			<!-- Network hub (right middle) -->
+			<g class="network-hub" transform="translate(1640, 600)" opacity="0.3">
+				<rect x="0" y="0" width="100" height="40" rx="4" fill="rgba(68, 214, 44, 0.05)" stroke="#44d62c" stroke-width="1" />
+				<circle cx="20" cy="20" r="4" fill="#00ffff" class="port-light" filter="url(#glow)" />
+				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="60" cy="20" r="4" fill="#44d62c" class="port-light" filter="url(#glow)" />
+				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" filter="url(#glow)" />
 			</g>
 
-			<!-- Binary data streams -->
-			<g class="binary-stream" opacity="0.1">
-				<text x="180" y="180" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-1">10110101</text>
-				<text x="1650" y="250" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-2">01101001</text>
-				<text x="120" y="850" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-3">11010110</text>
-				<text x="1720" y="650" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-4">00101101</text>
+			<!-- Router icon (left top) -->
+			<g class="router-device" transform="translate(200, 160)" opacity="0.4">
+				<!-- Router body -->
+				<rect x="0" y="20" width="80" height="35" rx="4" fill="rgba(68, 214, 44, 0.1)" stroke="#44d62c" stroke-width="1.5" />
+				<!-- Antennas -->
+				<line x1="15" y1="20" x2="10" y2="0" stroke="#44d62c" stroke-width="2" stroke-linecap="round" />
+				<line x1="40" y1="20" x2="40" y2="0" stroke="#44d62c" stroke-width="2" stroke-linecap="round" />
+				<line x1="65" y1="20" x2="70" y2="0" stroke="#44d62c" stroke-width="2" stroke-linecap="round" />
+				<!-- Antenna tips -->
+				<circle cx="10" cy="0" r="3" fill="#44d62c" class="antenna-tip" filter="url(#glow)" />
+				<circle cx="40" cy="0" r="3" fill="#00ffff" class="antenna-tip" filter="url(#glow)" />
+				<circle cx="70" cy="0" r="3" fill="#44d62c" class="antenna-tip" filter="url(#glow)" />
+				<!-- Ports -->
+				<rect x="8" y="40" width="8" height="8" rx="1" fill="#44d62c" opacity="0.5" class="router-port" />
+				<rect x="20" y="40" width="8" height="8" rx="1" fill="#44d62c" opacity="0.5" class="router-port" />
+				<rect x="32" y="40" width="8" height="8" rx="1" fill="#00ffff" opacity="0.5" class="router-port" />
+				<rect x="44" y="40" width="8" height="8" rx="1" fill="#44d62c" opacity="0.5" class="router-port" />
+				<!-- Status LEDs -->
+				<circle cx="60" cy="30" r="2" fill="#44d62c" class="led led-1" filter="url(#glow)" />
+				<circle cx="68" cy="30" r="2" fill="#00ffff" class="led led-2" filter="url(#glow)" />
+				<!-- Signal waves -->
+				<path d="M75 10 Q85 15 75 20" stroke="#44d62c" stroke-width="1" fill="none" opacity="0.5" class="signal-wave" />
+				<path d="M80 5 Q95 15 80 25" stroke="#44d62c" stroke-width="1" fill="none" opacity="0.3" class="signal-wave" />
 			</g>
 
-			<!-- Connection lines between elements -->
-			<g class="connections" opacity="0.1">
-				<line x1="140" y1="360" x2="300" y2="200" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
-				<line x1="1840" y1="510" x2="1600" y2="700" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
-				<line x1="200" y1="770" x2="500" y2="600" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
-				<line x1="1720" y1="840" x2="1400" y2="700" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
+			<!-- Storage Array / NAS (right top) -->
+			<g class="storage-array" transform="translate(1640, 160)" opacity="0.4">
+				<!-- Main chassis -->
+				<rect x="0" y="0" width="90" height="70" rx="4" fill="rgba(68, 214, 44, 0.1)" stroke="#44d62c" stroke-width="1.5" />
+				<!-- Drive bays - row 1 -->
+				<rect x="8" y="8" width="16" height="24" rx="2" fill="#44d62c" opacity="0.3" class="drive-bay" />
+				<rect x="28" y="8" width="16" height="24" rx="2" fill="#44d62c" opacity="0.3" class="drive-bay" />
+				<rect x="48" y="8" width="16" height="24" rx="2" fill="#00ffff" opacity="0.25" class="drive-bay" />
+				<rect x="68" y="8" width="16" height="24" rx="2" fill="#44d62c" opacity="0.3" class="drive-bay" />
+				<!-- Drive bays - row 2 -->
+				<rect x="8" y="38" width="16" height="24" rx="2" fill="#44d62c" opacity="0.3" class="drive-bay" />
+				<rect x="28" y="38" width="16" height="24" rx="2" fill="#00ffff" opacity="0.25" class="drive-bay" />
+				<rect x="48" y="38" width="16" height="24" rx="2" fill="#44d62c" opacity="0.3" class="drive-bay" />
+				<rect x="68" y="38" width="16" height="24" rx="2" fill="#44d62c" opacity="0.3" class="drive-bay" />
+				<!-- Drive activity LEDs -->
+				<circle cx="16" cy="14" r="1.5" fill="#44d62c" class="drive-led led-1" filter="url(#glow)" />
+				<circle cx="36" cy="14" r="1.5" fill="#44d62c" class="drive-led led-3" filter="url(#glow)" />
+				<circle cx="56" cy="14" r="1.5" fill="#00ffff" class="drive-led led-5" filter="url(#glow)" />
+				<circle cx="76" cy="14" r="1.5" fill="#44d62c" class="drive-led led-7" filter="url(#glow)" />
+				<circle cx="16" cy="44" r="1.5" fill="#44d62c" class="drive-led led-2" filter="url(#glow)" />
+				<circle cx="36" cy="44" r="1.5" fill="#00ffff" class="drive-led led-4" filter="url(#glow)" />
+				<circle cx="56" cy="44" r="1.5" fill="#44d62c" class="drive-led led-6" filter="url(#glow)" />
+				<circle cx="76" cy="44" r="1.5" fill="#44d62c" class="drive-led led-8" filter="url(#glow)" />
+			</g>
+
+			<!-- Firewall device (bottom left) -->
+			<g class="firewall-device" transform="translate(300, 950)" opacity="0.35">
+				<!-- Shield shape body -->
+				<path d="M40 5 L75 15 L75 45 L40 65 L5 45 L5 15 Z" fill="rgba(68, 214, 44, 0.1)" stroke="#44d62c" stroke-width="1.5" />
+				<!-- Inner shield -->
+				<path d="M40 15 L60 22 L60 40 L40 52 L20 40 L20 22 Z" fill="rgba(68, 214, 44, 0.15)" stroke="#44d62c" stroke-width="1" />
+				<!-- Lock icon in center -->
+				<rect x="33" y="28" width="14" height="12" rx="2" fill="#44d62c" opacity="0.5" class="firewall-core" />
+				<path d="M36 28 L36 24 Q40 20 44 24 L44 28" fill="none" stroke="#00ffff" stroke-width="2" />
+				<!-- Status indicators -->
+				<circle cx="40" cy="58" r="2" fill="#44d62c" class="led led-1" filter="url(#glow)" />
+				<circle cx="25" cy="12" r="1.5" fill="#00ffff" class="led led-3" filter="url(#glow)" />
+				<circle cx="55" cy="12" r="1.5" fill="#44d62c" class="led led-5" filter="url(#glow)" />
+			</g>
+
+			<!-- Load Balancer (bottom right) -->
+			<g class="load-balancer" transform="translate(1720, 940)" opacity="0.35">
+				<!-- Main body -->
+				<rect x="0" y="15" width="80" height="50" rx="4" fill="rgba(68, 214, 44, 0.1)" stroke="#44d62c" stroke-width="1.5" />
+				<!-- Input arrow -->
+				<path d="M-15 40 L5 40" stroke="#44d62c" stroke-width="2" />
+				<path d="M0 35 L5 40 L0 45" fill="#44d62c" />
+				<!-- Distribution arrows -->
+				<line x1="75" y1="25" x2="95" y2="15" stroke="#44d62c" stroke-width="1.5" class="lb-arrow" />
+				<line x1="75" y1="40" x2="95" y2="40" stroke="#00ffff" stroke-width="1.5" class="lb-arrow" />
+				<line x1="75" y1="55" x2="95" y2="65" stroke="#44d62c" stroke-width="1.5" class="lb-arrow" />
+				<!-- Arrow heads -->
+				<circle cx="95" cy="15" r="3" fill="#44d62c" class="lb-endpoint" filter="url(#glow)" />
+				<circle cx="95" cy="40" r="3" fill="#00ffff" class="lb-endpoint" filter="url(#glow)" />
+				<circle cx="95" cy="65" r="3" fill="#44d62c" class="lb-endpoint" filter="url(#glow)" />
+				<!-- Internal bars (load visualization) -->
+				<rect x="15" y="25" width="45" height="6" rx="2" fill="rgba(68, 214, 44, 0.2)" />
+				<rect x="15" y="25" width="30" height="6" rx="2" fill="#44d62c" opacity="0.5" class="load-bar load-bar-1" />
+				<rect x="15" y="37" width="45" height="6" rx="2" fill="rgba(68, 214, 44, 0.2)" />
+				<rect x="15" y="37" width="38" height="6" rx="2" fill="#00ffff" opacity="0.4" class="load-bar load-bar-2" />
+				<rect x="15" y="49" width="45" height="6" rx="2" fill="rgba(68, 214, 44, 0.2)" />
+				<rect x="15" y="49" width="22" height="6" rx="2" fill="#44d62c" opacity="0.5" class="load-bar load-bar-3" />
+				<!-- Status LED -->
+				<circle cx="70" cy="58" r="2" fill="#44d62c" class="led led-1" filter="url(#glow)" />
+			</g>
+
+			<!-- UPS / Power Distribution (left middle-bottom) -->
+			<g class="ups-device" transform="translate(310, 580)" opacity="0.35">
+				<!-- Main body -->
+				<rect x="0" y="0" width="70" height="80" rx="4" fill="rgba(68, 214, 44, 0.1)" stroke="#44d62c" stroke-width="1.5" />
+				<!-- Battery cells -->
+				<rect x="10" y="10" width="50" height="20" rx="2" fill="#44d62c" opacity="0.3" class="battery-cell" />
+				<rect x="10" y="35" width="50" height="20" rx="2" fill="#44d62c" opacity="0.3" class="battery-cell" />
+				<!-- Charge level indicators -->
+				<rect x="12" y="12" width="46" height="16" rx="1" fill="rgba(68, 214, 44, 0.2)" />
+				<rect x="12" y="12" width="40" height="16" rx="1" fill="#44d62c" opacity="0.5" class="charge-level" />
+				<rect x="12" y="37" width="46" height="16" rx="1" fill="rgba(68, 214, 44, 0.2)" />
+				<rect x="12" y="37" width="35" height="16" rx="1" fill="#00ffff" opacity="0.4" class="charge-level" />
+				<!-- Power outlets -->
+				<circle cx="20" cy="65" r="4" fill="none" stroke="#44d62c" stroke-width="1.5" />
+				<circle cx="35" cy="65" r="4" fill="none" stroke="#44d62c" stroke-width="1.5" />
+				<circle cx="50" cy="65" r="4" fill="none" stroke="#00ffff" stroke-width="1.5" />
+				<!-- Power symbol -->
+				<path d="M33 62 L37 62 L35 68 L38 68 L33 75 L34 70 L31 70 Z" fill="#44d62c" opacity="0.6" class="power-symbol" />
+			</g>
+
+			<!-- KVM Switch (right middle-bottom) -->
+			<g class="kvm-switch" transform="translate(1590, 570)" opacity="0.35">
+				<!-- Main body -->
+				<rect x="0" y="0" width="100" height="45" rx="4" fill="rgba(68, 214, 44, 0.1)" stroke="#44d62c" stroke-width="1.5" />
+				<!-- Input ports (servers) -->
+				<rect x="8" y="8" width="10" height="12" rx="1" fill="#44d62c" opacity="0.4" class="kvm-port" />
+				<rect x="22" y="8" width="10" height="12" rx="1" fill="#00ffff" opacity="0.35" class="kvm-port" />
+				<rect x="36" y="8" width="10" height="12" rx="1" fill="#44d62c" opacity="0.4" class="kvm-port" />
+				<rect x="50" y="8" width="10" height="12" rx="1" fill="#44d62c" opacity="0.4" class="kvm-port" />
+				<!-- Selection indicator -->
+				<circle cx="27" cy="30" r="4" fill="#00ffff" class="kvm-selected" filter="url(#glow)" />
+				<!-- Output ports (console) -->
+				<rect x="70" y="12" width="20" height="20" rx="2" fill="rgba(68, 214, 44, 0.15)" stroke="#44d62c" stroke-width="1" />
+				<circle cx="80" cy="22" r="3" fill="#44d62c" class="led led-1" filter="url(#glow)" />
+				<!-- Labels -->
+				<line x1="13" y1="25" x2="13" y2="30" stroke="#44d62c" stroke-width="1" class="kvm-line" />
+				<line x1="27" y1="20" x2="27" y2="26" stroke="#00ffff" stroke-width="1.5" class="kvm-line" />
+				<line x1="41" y1="25" x2="41" y2="30" stroke="#44d62c" stroke-width="1" class="kvm-line" />
+				<line x1="55" y1="25" x2="55" y2="30" stroke="#44d62c" stroke-width="1" class="kvm-line" />
+			</g>
+
+			<!-- Ethernet cables visualization -->
+			<g class="ethernet-cables" opacity="0.25">
+				<!-- Left side cables -->
+				<path d="M130 220 Q160 220 170 310" stroke="#44d62c" stroke-width="2" fill="none" class="cable cable-1" />
+				<path d="M130 360 Q200 360 200 420" stroke="#00ffff" stroke-width="2" fill="none" class="cable cable-2" />
+				<path d="M150 490 Q200 530 200 600" stroke="#44d62c" stroke-width="2" fill="none" class="cable cable-3" />
+				<path d="M280 620 Q240 680 140 740" stroke="#44d62c" stroke-width="2" fill="none" class="cable cable-4" />
+				<path d="M120 840 Q140 850 160 870" stroke="#00ffff" stroke-width="2" fill="none" class="cable cable-5" />
+
+				<!-- Right side cables -->
+				<path d="M1790 190 Q1720 190 1700 280" stroke="#44d62c" stroke-width="2" fill="none" class="cable cable-6" />
+				<path d="M1780 470 Q1700 470 1690 540" stroke="#00ffff" stroke-width="2" fill="none" class="cable cable-7" />
+				<path d="M1740 620 Q1760 650 1800 720" stroke="#44d62c" stroke-width="2" fill="none" class="cable cable-8" />
+				<path d="M1750 305 Q1680 340 1640 380" stroke="#44d62c" stroke-width="2" fill="none" class="cable cable-9" />
+				<path d="M1800 820 Q1750 850 1700 890" stroke="#00ffff" stroke-width="2" fill="none" class="cable cable-10" />
+
+				<!-- Cross cables -->
+				<path d="M290 335 Q400 380 500 350" stroke="#44d62c" stroke-width="1.5" fill="none" class="cable cable-11" stroke-dasharray="6,4" />
+				<path d="M1630 305 Q1500 350 1400 320" stroke="#44d62c" stroke-width="1.5" fill="none" class="cable cable-12" stroke-dasharray="6,4" />
+			</g>
+
+			<!-- Binary data streams - enhanced -->
+			<g class="binary-stream" opacity="0.2">
+				<text x="160" y="130" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="11" class="binary binary-1">10110101</text>
+				<text x="100" y="500" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="11" class="binary binary-2">01101001</text>
+				<text x="160" y="680" fill="#00ffff" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-3">11010110</text>
+				<text x="80" y="920" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-4">00101101</text>
+				<text x="1700" y="100" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="11" class="binary binary-5">11001010</text>
+				<text x="1750" y="360" fill="#00ffff" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-6">01010101</text>
+				<text x="1680" y="570" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="11" class="binary binary-7">10101010</text>
+				<text x="1720" y="850" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-8">00110011</text>
+				<!-- Hex values for futuristic look -->
+				<text x="300" y="250" fill="#00ffff" font-family="JetBrains Mono, monospace" font-size="9" class="binary binary-9">0xFA7B</text>
+				<text x="1550" y="700" fill="#00ffff" font-family="JetBrains Mono, monospace" font-size="9" class="binary binary-10">0x3C2E</text>
+			</g>
+
+			<!-- Connection lines between elements - enhanced -->
+			<g class="connections" opacity="0.2">
+				<line x1="130" y1="290" x2="170" y2="310" stroke="#44d62c" stroke-width="1.5" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="150" y1="560" x2="180" y2="600" stroke="#44d62c" stroke-width="1.5" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="120" y1="840" x2="140" y2="870" stroke="#44d62c" stroke-width="1.5" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="1850" y1="260" x2="1750" y2="280" stroke="#44d62c" stroke-width="1.5" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="1850" y1="540" x2="1740" y2="600" stroke="#44d62c" stroke-width="1.5" stroke-dasharray="4,4" class="connection-line" />
+				<line x1="1870" y1="820" x2="1780" y2="890" stroke="#44d62c" stroke-width="1.5" stroke-dasharray="4,4" class="connection-line" />
+				<!-- Additional connections -->
+				<line x1="270" y1="215" x2="250" y2="250" stroke="#00ffff" stroke-width="1" stroke-dasharray="3,3" class="connection-line" />
+				<line x1="1720" y1="215" x2="1700" y2="250" stroke="#00ffff" stroke-width="1" stroke-dasharray="3,3" class="connection-line" />
+			</g>
+
+			<!-- Data flow indicators -->
+			<g class="data-flow" opacity="0.3">
+				<!-- Animated arrows/chevrons -->
+				<path d="M350 200 L360 210 L350 220" stroke="#44d62c" stroke-width="2" fill="none" class="chevron chevron-1" />
+				<path d="M370 200 L380 210 L370 220" stroke="#44d62c" stroke-width="2" fill="none" class="chevron chevron-2" />
+				<path d="M1550 450 L1540 460 L1550 470" stroke="#44d62c" stroke-width="2" fill="none" class="chevron chevron-3" />
+				<path d="M1530 450 L1520 460 L1530 470" stroke="#44d62c" stroke-width="2" fill="none" class="chevron chevron-4" />
 			</g>
 		</svg>
 	</div>
@@ -235,11 +589,15 @@ import WaitlistForm from './WaitlistForm.astro';
 	<div class="bg-glow bg-glow-1"></div>
 	<div class="bg-glow bg-glow-2"></div>
 	<div class="bg-glow bg-glow-3"></div>
+	<div class="bg-glow bg-glow-4"></div>
+
+	<!-- Scanline overlay for futuristic CRT effect -->
+	<div class="scanlines"></div>
 
 	<!-- Floating particles -->
 	<div class="particles">
-		{Array.from({ length: 15 }).map((_, i) => (
-			<div class="particle" style={`--delay: ${i * 0.7}s; --x: ${Math.random() * 100}%; --duration: ${18 + Math.random() * 15}s;`}></div>
+		{Array.from({ length: 20 }).map((_, i) => (
+			<div class={`particle ${i % 5 === 0 ? 'particle-cyan' : ''}`} style={`--delay: ${i * 0.5}s; --x: ${Math.random() * 100}%; --duration: ${15 + Math.random() * 12}s;`}></div>
 		))}
 	</div>
 
@@ -330,27 +688,30 @@ import WaitlistForm from './WaitlistForm.astro';
 		opacity: 1;
 	}
 
-	/* Overlay gradient for depth */
+	/* Overlay gradient for depth - adjusted for better visibility */
 	.bg-overlay {
 		position: absolute;
 		inset: 0;
-		background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 15, 0.5) 60%, rgba(10, 10, 15, 0.7) 100%);
+		background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 15, 0.3) 50%, rgba(10, 10, 15, 0.5) 100%);
 		pointer-events: none;
 		z-index: 1;
 	}
 
-	/* Data signals glow animation */
+	/* Data signals glow animation - enhanced */
 	.signal {
-		filter: drop-shadow(0 0 6px #44d62c);
+		filter: drop-shadow(0 0 8px #44d62c) drop-shadow(0 0 12px #44d62c);
 	}
 
-	.signal-1 { opacity: 0.9; }
-	.signal-2 { opacity: 0.8; }
-	.signal-3 { opacity: 0.85; }
-	.signal-4 { opacity: 0.75; }
-	.signal-5 { opacity: 0.8; }
+	.signal-1 { opacity: 1; }
+	.signal-2 { opacity: 0.95; }
+	.signal-3 { opacity: 0.9; }
+	.signal-4 { opacity: 0.85; }
+	.signal-5 { opacity: 0.9; }
+	.signal-6 { opacity: 0.85; filter: drop-shadow(0 0 8px #00ffff) drop-shadow(0 0 12px #00ffff); }
+	.signal-7 { opacity: 0.8; filter: drop-shadow(0 0 8px #00ffff) drop-shadow(0 0 12px #00ffff); }
+	.signal-8 { opacity: 0.85; }
 
-	/* LED blinking animations */
+	/* LED blinking animations - enhanced */
 	.led {
 		animation: ledBlink 1s ease-in-out infinite;
 	}
@@ -369,47 +730,226 @@ import WaitlistForm from './WaitlistForm.astro';
 	.led-12 { animation-delay: 0.85s; }
 
 	@keyframes ledBlink {
-		0%, 100% { opacity: 1; fill: #44d62c; }
-		50% { opacity: 0.2; fill: #2ea318; }
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.3; }
 	}
 
-	/* Port lights animation */
+	/* Activity LEDs - rapid blink for cyan accents */
+	.led-activity {
+		animation: activityBlink 0.3s ease-in-out infinite;
+	}
+
+	.led-a1 { animation-delay: 0s; }
+	.led-a2 { animation-delay: 0.1s; }
+	.led-a3 { animation-delay: 0.2s; }
+
+	@keyframes activityBlink {
+		0%, 100% { opacity: 0.8; }
+		50% { opacity: 0.2; }
+	}
+
+	/* Port lights animation - enhanced */
 	.port-light {
 		animation: portPulse 2s ease-in-out infinite;
 	}
 
-	.port-light:nth-child(2) { animation-delay: 0.5s; }
-	.port-light:nth-child(3) { animation-delay: 1s; }
-	.port-light:nth-child(4) { animation-delay: 1.5s; }
+	.port-light:nth-child(2) { animation-delay: 0.4s; }
+	.port-light:nth-child(3) { animation-delay: 0.8s; }
+	.port-light:nth-child(4) { animation-delay: 1.2s; }
+	.port-light:nth-child(5) { animation-delay: 1.6s; }
 
 	@keyframes portPulse {
-		0%, 100% { opacity: 0.3; }
+		0%, 100% { opacity: 0.4; }
 		50% { opacity: 1; }
 	}
 
-	/* CPU core pulse */
-	.cpu-core {
-		animation: corePulse 3s ease-in-out infinite;
+	/* Switch port animation */
+	.switch-port {
+		animation: switchPortGlow 3s ease-in-out infinite;
 	}
 
-	@keyframes corePulse {
+	.switch-port:nth-child(odd) { animation-delay: 0s; }
+	.switch-port:nth-child(even) { animation-delay: 1.5s; }
+
+	@keyframes switchPortGlow {
 		0%, 100% { opacity: 0.3; }
+		50% { opacity: 0.6; }
+	}
+
+	/* Router antenna pulse */
+	.antenna-tip {
+		animation: antennaPulse 2s ease-in-out infinite;
+	}
+
+	.antenna-tip:nth-child(2) { animation-delay: 0.3s; }
+	.antenna-tip:nth-child(3) { animation-delay: 0.6s; }
+
+	@keyframes antennaPulse {
+		0%, 100% { opacity: 0.5; r: 3; }
+		50% { opacity: 1; r: 4; }
+	}
+
+	/* Router port animation */
+	.router-port {
+		animation: routerPortGlow 2s ease-in-out infinite;
+	}
+
+	.router-port:nth-child(odd) { animation-delay: 0s; }
+	.router-port:nth-child(even) { animation-delay: 1s; }
+
+	@keyframes routerPortGlow {
+		0%, 100% { opacity: 0.4; }
 		50% { opacity: 0.8; }
 	}
 
-	/* Binary text animation */
+	/* Signal wave animation */
+	.signal-wave {
+		animation: signalWave 2s ease-in-out infinite;
+	}
+
+	@keyframes signalWave {
+		0%, 100% { opacity: 0.3; transform: scale(1); }
+		50% { opacity: 0.6; transform: scale(1.1); }
+	}
+
+	/* Storage drive bay animation */
+	.drive-bay {
+		animation: driveBayActivity 3s ease-in-out infinite;
+	}
+
+	.drive-bay:nth-child(odd) { animation-delay: 0s; }
+	.drive-bay:nth-child(even) { animation-delay: 1.5s; }
+
+	@keyframes driveBayActivity {
+		0%, 100% { opacity: 0.25; }
+		50% { opacity: 0.5; }
+	}
+
+	/* Drive LED rapid blink */
+	.drive-led {
+		animation: driveLedBlink 0.5s ease-in-out infinite;
+	}
+
+	.drive-led:nth-child(odd) { animation-delay: 0s; }
+	.drive-led:nth-child(even) { animation-delay: 0.25s; }
+
+	@keyframes driveLedBlink {
+		0%, 100% { opacity: 0.8; }
+		50% { opacity: 0.2; }
+	}
+
+	/* Firewall core pulse */
+	.firewall-core {
+		animation: firewallPulse 3s ease-in-out infinite;
+	}
+
+	@keyframes firewallPulse {
+		0%, 100% { opacity: 0.4; }
+		50% { opacity: 0.8; }
+	}
+
+	/* Load balancer bar animation */
+	.load-bar {
+		animation: loadBarPulse 2s ease-in-out infinite;
+	}
+
+	.load-bar-1 { animation-delay: 0s; }
+	.load-bar-2 { animation-delay: 0.7s; }
+	.load-bar-3 { animation-delay: 1.4s; }
+
+	@keyframes loadBarPulse {
+		0%, 100% { opacity: 0.4; }
+		50% { opacity: 0.7; }
+	}
+
+	/* Load balancer endpoint pulse */
+	.lb-endpoint {
+		animation: lbEndpointPulse 1.5s ease-in-out infinite;
+	}
+
+	.lb-endpoint:nth-child(1) { animation-delay: 0s; }
+	.lb-endpoint:nth-child(2) { animation-delay: 0.5s; }
+	.lb-endpoint:nth-child(3) { animation-delay: 1s; }
+
+	@keyframes lbEndpointPulse {
+		0%, 100% { opacity: 0.5; r: 3; }
+		50% { opacity: 1; r: 4; }
+	}
+
+	/* UPS battery cell animation */
+	.battery-cell {
+		animation: batteryCellGlow 4s ease-in-out infinite;
+	}
+
+	.battery-cell:nth-child(even) { animation-delay: 2s; }
+
+	@keyframes batteryCellGlow {
+		0%, 100% { opacity: 0.25; }
+		50% { opacity: 0.45; }
+	}
+
+	/* Charge level animation */
+	.charge-level {
+		animation: chargePulse 3s ease-in-out infinite;
+	}
+
+	@keyframes chargePulse {
+		0%, 100% { opacity: 0.4; }
+		50% { opacity: 0.7; }
+	}
+
+	/* Power symbol flash */
+	.power-symbol {
+		animation: powerFlash 2s ease-in-out infinite;
+	}
+
+	@keyframes powerFlash {
+		0%, 100% { opacity: 0.4; }
+		50% { opacity: 0.8; }
+	}
+
+	/* KVM port animation */
+	.kvm-port {
+		animation: kvmPortGlow 2.5s ease-in-out infinite;
+	}
+
+	.kvm-port:nth-child(odd) { animation-delay: 0s; }
+	.kvm-port:nth-child(even) { animation-delay: 1.25s; }
+
+	@keyframes kvmPortGlow {
+		0%, 100% { opacity: 0.3; }
+		50% { opacity: 0.6; }
+	}
+
+	/* KVM selected indicator */
+	.kvm-selected {
+		animation: kvmSelectedPulse 1.5s ease-in-out infinite;
+	}
+
+	@keyframes kvmSelectedPulse {
+		0%, 100% { opacity: 0.6; r: 4; }
+		50% { opacity: 1; r: 5; }
+	}
+
+	/* Binary text animation - enhanced */
 	.binary {
 		animation: binaryFade 4s ease-in-out infinite;
 	}
 
 	.binary-1 { animation-delay: 0s; }
-	.binary-2 { animation-delay: 1s; }
-	.binary-3 { animation-delay: 2s; }
-	.binary-4 { animation-delay: 3s; }
+	.binary-2 { animation-delay: 0.5s; }
+	.binary-3 { animation-delay: 1s; }
+	.binary-4 { animation-delay: 1.5s; }
+	.binary-5 { animation-delay: 2s; }
+	.binary-6 { animation-delay: 2.5s; }
+	.binary-7 { animation-delay: 3s; }
+	.binary-8 { animation-delay: 3.5s; }
+	.binary-9 { animation-delay: 0.25s; }
+	.binary-10 { animation-delay: 1.75s; }
 
 	@keyframes binaryFade {
-		0%, 100% { opacity: 0.05; }
-		50% { opacity: 0.2; }
+		0%, 100% { opacity: 0.1; }
+		50% { opacity: 0.4; }
 	}
 
 	/* Connection lines animation */
@@ -422,7 +962,46 @@ import WaitlistForm from './WaitlistForm.astro';
 		100% { stroke-dashoffset: 16; }
 	}
 
-	/* Node pulse animation */
+	/* Ethernet cables animation */
+	.cable {
+		animation: cableGlow 4s ease-in-out infinite;
+		stroke-linecap: round;
+	}
+
+	.cable-1 { animation-delay: 0s; }
+	.cable-2 { animation-delay: 0.4s; }
+	.cable-3 { animation-delay: 0.8s; }
+	.cable-4 { animation-delay: 1.2s; }
+	.cable-5 { animation-delay: 1.6s; }
+	.cable-6 { animation-delay: 0.2s; }
+	.cable-7 { animation-delay: 0.6s; }
+	.cable-8 { animation-delay: 1s; }
+	.cable-9 { animation-delay: 1.4s; }
+	.cable-10 { animation-delay: 1.8s; }
+	.cable-11 { animation-delay: 0.3s; }
+	.cable-12 { animation-delay: 0.9s; }
+
+	@keyframes cableGlow {
+		0%, 100% { opacity: 0.2; stroke-width: 2; }
+		50% { opacity: 0.5; stroke-width: 2.5; }
+	}
+
+	/* Data flow chevrons animation */
+	.chevron {
+		animation: chevronFlow 1.5s ease-in-out infinite;
+	}
+
+	.chevron-1 { animation-delay: 0s; }
+	.chevron-2 { animation-delay: 0.2s; }
+	.chevron-3 { animation-delay: 0s; }
+	.chevron-4 { animation-delay: 0.2s; }
+
+	@keyframes chevronFlow {
+		0%, 100% { opacity: 0.2; transform: translateX(0); }
+		50% { opacity: 0.6; transform: translateX(5px); }
+	}
+
+	/* Node pulse animation - enhanced */
 	.node {
 		animation: nodePulse 4s ease-in-out infinite;
 	}
@@ -431,11 +1010,11 @@ import WaitlistForm from './WaitlistForm.astro';
 	.circuit-nodes .node:nth-child(even) { animation-delay: 2s; }
 
 	@keyframes nodePulse {
-		0%, 100% { opacity: 0.3; r: 4; }
-		50% { opacity: 0.7; r: 6; }
+		0%, 100% { opacity: 0.4; r: 5; }
+		50% { opacity: 0.8; r: 7; }
 	}
 
-	/* Server unit activity */
+	/* Server unit activity - enhanced */
 	.server-unit {
 		animation: serverActivity 2s ease-in-out infinite;
 	}
@@ -448,16 +1027,16 @@ import WaitlistForm from './WaitlistForm.astro';
 	.server-unit:nth-child(7) { animation-delay: 1.2s; }
 
 	@keyframes serverActivity {
-		0%, 100% { opacity: 0.2; }
-		50% { opacity: 0.5; }
+		0%, 100% { opacity: 0.25; }
+		50% { opacity: 0.6; }
 	}
 
-	/* Background effects */
+	/* Background effects - enhanced with cyan accents */
 	.bg-glow {
 		position: absolute;
 		border-radius: 50%;
 		filter: blur(120px);
-		opacity: 0.35;
+		opacity: 0.4;
 		pointer-events: none;
 		animation: float 20s ease-in-out infinite;
 		z-index: 2;
@@ -475,10 +1054,11 @@ import WaitlistForm from './WaitlistForm.astro';
 	.bg-glow-2 {
 		width: 500px;
 		height: 500px;
-		background: radial-gradient(circle, #2ea318 0%, transparent 70%);
+		background: radial-gradient(circle, #00ffff 0%, #44d62c 30%, transparent 70%);
 		bottom: -150px;
 		left: -100px;
 		animation-delay: -7s;
+		opacity: 0.3;
 	}
 
 	.bg-glow-3 {
@@ -489,7 +1069,38 @@ import WaitlistForm from './WaitlistForm.astro';
 		left: 50%;
 		transform: translate(-50%, -50%);
 		animation-delay: -14s;
+		opacity: 0.2;
+	}
+
+	.bg-glow-4 {
+		width: 350px;
+		height: 350px;
+		background: radial-gradient(circle, #00ffff 0%, transparent 60%);
+		top: 20%;
+		left: 10%;
+		animation-delay: -10s;
 		opacity: 0.15;
+	}
+
+	/* Scanlines for futuristic CRT effect */
+	.scanlines {
+		position: absolute;
+		inset: 0;
+		background: repeating-linear-gradient(
+			0deg,
+			transparent,
+			transparent 2px,
+			rgba(0, 255, 255, 0.01) 2px,
+			rgba(0, 255, 255, 0.01) 4px
+		);
+		pointer-events: none;
+		z-index: 4;
+		animation: scanlineFlicker 8s linear infinite;
+	}
+
+	@keyframes scanlineFlicker {
+		0%, 100% { opacity: 0.3; }
+		50% { opacity: 0.5; }
 	}
 
 	@keyframes float {
@@ -518,7 +1129,12 @@ import WaitlistForm from './WaitlistForm.astro';
 		animation: rise var(--duration) linear infinite;
 		animation-delay: var(--delay);
 		opacity: 0;
-		box-shadow: 0 0 6px #44d62c;
+		box-shadow: 0 0 8px #44d62c, 0 0 12px #44d62c;
+	}
+
+	.particle-cyan {
+		background: #00ffff;
+		box-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff;
 	}
 
 	@keyframes rise {
@@ -527,10 +1143,10 @@ import WaitlistForm from './WaitlistForm.astro';
 			opacity: 0;
 		}
 		10% {
-			opacity: 0.5;
+			opacity: 0.6;
 		}
 		90% {
-			opacity: 0.5;
+			opacity: 0.6;
 		}
 		100% {
 			bottom: 100%;
