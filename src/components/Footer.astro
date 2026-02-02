@@ -57,9 +57,33 @@ const currentYear = new Date().getFullYear();
         const formMessage = document.getElementById('form-message');
         const hiddenIframe = document.getElementById('hidden-google-form');
 
+        let isSubmitting = false;
+
         // Sync email to validation field on input
         emailInput.addEventListener('input', () => {
           emailValidation.value = emailInput.value;
+        });
+
+        // Listen for iframe load (indicates form was submitted)
+        hiddenIframe.addEventListener('load', () => {
+          if (isSubmitting) {
+            isSubmitting = false;
+            const btnText = submitBtn.querySelector('.btn-text');
+
+            // Show success message
+            formMessage.textContent = '✓ Subscribed successfully!';
+            formMessage.className = 'form-message success';
+            emailInput.value = '';
+            emailValidation.value = '';
+            btnText.textContent = 'subscribe';
+            submitBtn.disabled = false;
+
+            // Clear message after 5 seconds
+            setTimeout(() => {
+              formMessage.textContent = '';
+              formMessage.className = 'form-message';
+            }, 5000);
+          }
         });
 
         form.addEventListener('submit', (e) => {
@@ -76,23 +100,7 @@ const currentYear = new Date().getFullYear();
           const btnText = submitBtn.querySelector('.btn-text');
           btnText.textContent = 'sending...';
           submitBtn.disabled = true;
-
-          // Listen for iframe load (indicates form was submitted)
-          hiddenIframe.onload = () => {
-            // Show success message
-            formMessage.textContent = '✓ Subscribed successfully!';
-            formMessage.className = 'form-message success';
-            emailInput.value = '';
-            emailValidation.value = '';
-            btnText.textContent = 'subscribe';
-            submitBtn.disabled = false;
-
-            // Clear message after 5 seconds
-            setTimeout(() => {
-              formMessage.textContent = '';
-              formMessage.className = 'form-message';
-            }, 5000);
-          };
+          isSubmitting = true;
         });
       </script>
     </div>
