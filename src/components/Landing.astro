@@ -4,244 +4,328 @@ import WaitlistForm from './WaitlistForm.astro';
 ---
 
 <div class="landing">
-	<!-- Animated circuit/datacenter background -->
-	<div class="circuit-bg">
-		<svg class="circuit-svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
-			<defs>
-				<!-- Gradient for circuit traces -->
-				<linearGradient id="traceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-					<stop offset="0%" stop-color="#44d62c" stop-opacity="0" />
-					<stop offset="50%" stop-color="#44d62c" stop-opacity="0.8" />
-					<stop offset="100%" stop-color="#44d62c" stop-opacity="0" />
-				</linearGradient>
+  <!-- Animated Datacenter SVG Background -->
+  <div class="bg-overlay" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -160 1480 750" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+      <defs>
+        <filter id="ledGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="signalGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
 
-				<!-- Glow filter -->
-				<filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-					<feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-					<feMerge>
-						<feMergeNode in="coloredBlur"/>
-						<feMergeNode in="SourceGraphic"/>
-					</feMerge>
-				</filter>
+      <!-- CIRCUIT TRACES (straight + angled) -->
+      <g stroke="#44d62c" stroke-opacity="0.12" stroke-width="1" fill="none">
+        <line x1="0" y1="180" x2="1400" y2="180" stroke-opacity="0.06"/>
+        <line x1="0" y1="400" x2="1400" y2="400" stroke-opacity="0.06"/>
+        <polyline points="195,200 195,180 350,180 350,140 420,140 420,120"/>
+        <polyline points="195,300 250,300 290,260 620,260 660,220 660,150"/>
+        <polyline points="480,280 480,400 680,400 720,360 900,360 900,180"/>
+        <polyline points="720,320 720,400 850,400 890,360 1050,360 1050,200"/>
+        <polyline points="960,300 1020,300 1060,260 1200,260 1200,180"/>
+        <polyline points="480,180 520,180 560,140 660,140 660,120"/>
+        <polyline points="1100,200 1100,180 1140,140 1200,140 1200,120"/>
+        <polyline points="250,350 290,310 500,310 540,350 540,400" stroke-opacity="0.08"/>
+        <polyline points="130,350 130,450 400,450 440,410 800,410 840,450 1260,450 1260,350" stroke-opacity="0.06"/>
+        <polyline points="660,260 660,400" stroke-opacity="0.06"/>
+        <polyline points="900,360 900,450" stroke-opacity="0.06"/>
+        <polyline points="350,180 350,260" stroke-opacity="0.06"/>
+      </g>
 
-				<!-- Node pulse animation gradient -->
-				<radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-					<stop offset="0%" stop-color="#44d62c" stop-opacity="0.8" />
-					<stop offset="100%" stop-color="#44d62c" stop-opacity="0" />
-				</radialGradient>
-			</defs>
+      <!-- SIGNAL PULSES -->
+      <g filter="url(#signalGlow)">
+        <circle r="2.5" fill="#44d62c" opacity="0.8"><animateMotion dur="4s" repeatCount="indefinite" path="M195,200 L195,180 L350,180 L350,140 L420,140 L420,120"/></circle>
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="6s" repeatCount="indefinite" path="M195,300 L250,300 L290,260 L620,260 L660,220 L660,150"/></circle>
+        <circle r="2.5" fill="#44d62c" opacity="0.8"><animateMotion dur="5s" repeatCount="indefinite" path="M480,280 L480,400 L680,400 L720,360 L900,360 L900,180" begin="1s"/></circle>
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="4.5s" repeatCount="indefinite" path="M960,300 L1020,300 L1060,260 L1200,260 L1200,180" begin="2s"/></circle>
+        <circle r="2" fill="#44d62c" opacity="0.5"><animateMotion dur="10s" repeatCount="indefinite" path="M130,350 L130,450 L400,450 L440,410 L800,410 L840,450 L1260,450 L1260,350"/></circle>
+        <circle r="2" fill="#44d62c" opacity="0.6"><animateMotion dur="5.5s" repeatCount="indefinite" path="M720,320 L720,400 L850,400 L890,360 L1050,360 L1050,200" begin="3s"/></circle>
+      </g>
 
-			<!-- Static circuit traces (background layer) -->
-			<g class="circuit-traces" opacity="0.15">
-				<!-- Horizontal traces -->
-				<path d="M0 200 H400 L450 250 H800" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M0 400 H300 L350 350 H600 L650 400 H1000" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M0 600 H200 L250 650 H500 L550 600 H900" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M0 800 H350 L400 750 H700" stroke="#44d62c" stroke-width="1" fill="none" />
+      <!-- RACK 1 (far left) -->
+      <g transform="translate(100,100)">
+        <rect x="0" y="0" width="90" height="280" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="90" height="280" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="80" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <rect x="12" y="33" width="20" height="3" rx="1" fill="#44d62c" fill-opacity="0.04"/>
+        <circle cx="72" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.2s" repeatCount="indefinite"/></circle>
+        <circle cx="64" cy="32" r="1.5" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="3.1s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="35" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="72" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="64" cy="58" r="1.5" fill="#44d62c" opacity="0.4"/>
+        <rect x="8" y="74" width="74" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.5s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="1.8s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="2.2s" repeatCount="indefinite" begin="1s"/></rect>
+        <rect x="54" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="8" y="96" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="72" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <rect x="12" y="133" width="22" height="3" rx="1" fill="#44d62c" fill-opacity="0.04"/>
+        <circle cx="72" cy="132" r="2" fill="#44d62c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.15;0.6" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="64" cy="132" r="1.5" fill="#44d62c" opacity="0.3"/>
+        <rect x="8" y="148" width="74" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="18" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="24" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="30" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.45;0.18" dur="2.1s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="36" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="42" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.9s" repeatCount="indefinite" begin="0.8s"/></rect>
+        <rect x="8" y="170" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="175" width="25" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="72" cy="180" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="196" width="74" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+        <rect x="8" y="222" width="74" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+        <rect x="8" y="248" width="74" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+      </g>
 
-				<path d="M1920 300 H1500 L1450 350 H1100" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1920 500 H1600 L1550 450 H1200 L1150 500 H900" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1920 700 H1400 L1350 650 H1000" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1920 900 H1550 L1500 850 H1200" stroke="#44d62c" stroke-width="1" fill="none" />
+      <!-- RACK 2 (center-left) -->
+      <g transform="translate(380,70)">
+        <rect x="0" y="0" width="100" height="260" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="100" height="260" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="90" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="35" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.9s" repeatCount="indefinite"/></circle>
+        <circle cx="74" cy="32" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.8s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="40" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.3s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="79" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="84" r="2" fill="#44d62c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.6s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="100" width="84" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="1.4s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="2s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="30" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"/>
+        <rect x="36" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="1.7s" repeatCount="indefinite" begin="0.6s"/></rect>
+        <rect x="42" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="48" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.45;0.18" dur="2.3s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="54" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="60" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="1.9s" repeatCount="indefinite" begin="1s"/></rect>
+        <rect x="8" y="122" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="132" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="2.1s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="38" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="158" r="2" fill="#44d62c" opacity="0.5"/>
+        <rect x="8" y="174" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="179" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="184" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.4s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="200" width="84" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+        <rect x="8" y="226" width="84" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+      </g>
 
-				<!-- Vertical traces -->
-				<path d="M300 0 V200 L350 250 V500" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M500 1080 V800 L550 750 V400" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1400 0 V300 L1350 350 V600" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1600 1080 V700 L1550 650 V300" stroke="#44d62c" stroke-width="1" fill="none" />
+      <!-- RACK 3 (center) -->
+      <g transform="translate(620,80)">
+        <rect x="0" y="0" width="95" height="290" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="95" height="290" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="85" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="33" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.3;0.85" dur="2s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <circle cx="69" cy="32" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3.3s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.7s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="79" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="2.1s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.55;0.22" dur="1.3s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.14"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="1.8s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="8" y="96" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="36" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.7s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.9s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="25" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.2s" repeatCount="indefinite" begin="1s"/></circle>
+        <rect x="8" y="174" width="79" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="2s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="18" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.45;0.2" dur="1.5s" repeatCount="indefinite"/></rect>
+        <rect x="30" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.8s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="8" y="196" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="201" width="34" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="206" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.5s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="222" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="227" width="29" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="232" r="2" fill="#44d62c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.15;0.6" dur="3.2s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="248" width="79" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+      </g>
 
-				<!-- Diagonal connections -->
-				<path d="M200 100 L400 300 L400 500 L600 700" stroke="#44d62c" stroke-width="1" fill="none" />
-				<path d="M1700 150 L1500 350 L1500 550 L1300 750" stroke="#44d62c" stroke-width="1" fill="none" />
-			</g>
+      <!-- RACK 4 (center-right) -->
+      <g transform="translate(860,90)">
+        <rect x="0" y="0" width="95" height="260" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="95" height="260" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="85" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="69" cy="32" r="1.5" fill="#44d62c" opacity="0.35"><animate attributeName="opacity" values="0.35;0.1;0.35" dur="3.5s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="36" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.6s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="79" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="2.2s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.5;0.22" dur="1.8s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.7s" repeatCount="indefinite" begin="0.8s"/></rect>
+        <rect x="8" y="96" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.8s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="27" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.4s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="34" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="1.9s" repeatCount="indefinite" begin="0.7s"/></circle>
+        <rect x="8" y="174" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="179" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="184" r="2" fill="#44d62c" opacity="0.45"/>
+        <rect x="8" y="200" width="79" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+        <rect x="8" y="226" width="79" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+      </g>
 
-			<!-- Circuit nodes (intersection points) -->
-			<g class="circuit-nodes">
-				<!-- Left side nodes -->
-				<circle cx="400" cy="250" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="350" cy="350" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="250" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="400" cy="750" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="300" cy="200" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="550" cy="750" r="4" fill="#44d62c" opacity="0.4" class="node" />
+      <!-- RACK 5 (right) -->
+      <g transform="translate(1050,60)">
+        <rect x="0" y="0" width="85" height="300" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="85" height="300" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="75" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.1s" repeatCount="indefinite" begin="0.3s"/></circle>
+        <rect x="8" y="48" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="59" cy="58" r="1.5" fill="#44d62c" opacity="0.3"/>
+        <rect x="8" y="74" width="69" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.7s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="2s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="1.5s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="8" y="96" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.6s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="3s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="33" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2s" repeatCount="indefinite" begin="1.2s"/></circle>
+        <rect x="8" y="174" width="69" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="1.9s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.45;0.15" dur="2.3s" repeatCount="indefinite" begin="0.6s"/></rect>
+        <rect x="30" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="8" y="196" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="201" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="206" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.4s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="222" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="227" width="24" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="232" r="2" fill="#44d62c" opacity="0.4"/>
+        <rect x="8" y="248" width="69" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+        <rect x="8" y="274" width="69" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+      </g>
 
-				<!-- Right side nodes -->
-				<circle cx="1450" cy="350" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1550" cy="450" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1350" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1500" cy="850" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1400" cy="300" r="4" fill="#44d62c" opacity="0.4" class="node" />
-				<circle cx="1550" cy="650" r="4" fill="#44d62c" opacity="0.4" class="node" />
-			</g>
+      <!-- RACK 6 (far right) -->
+      <g transform="translate(1200,100)">
+        <rect x="0" y="0" width="80" height="240" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="80" height="240" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="70" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="2.2s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.7s" repeatCount="indefinite"/></circle>
+        <circle cx="54" cy="58" r="1.5" fill="#44d62c" opacity="0.3"><animate attributeName="opacity" values="0.3;0.08;0.3" dur="2.9s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="64" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="2.1s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.45;0.15" dur="1.4s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="8" y="96" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="24" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.3;0.85" dur="2.5s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <rect x="8" y="122" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.8s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="22" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2s" repeatCount="indefinite" begin="0.8s"/></circle>
+        <rect x="8" y="174" width="64" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+        <rect x="8" y="200" width="64" height="20" rx="2" fill="none" stroke="#44d62c" stroke-opacity="0.05" stroke-dasharray="4 3"/>
+      </g>
 
-			<!-- Animated data signals -->
-			<g class="data-signals" filter="url(#glow)">
-				<!-- Signal 1 -->
-				<circle r="3" fill="#44d62c" class="signal signal-1">
-					<animateMotion dur="4s" repeatCount="indefinite">
-						<mpath href="#signal-path-1" />
-					</animateMotion>
-				</circle>
-				<path id="signal-path-1" d="M0 200 H400 L450 250 H800 L850 300 H1100" fill="none" stroke="none" />
+      <!-- JUNCTION NODES -->
+      <g fill="#44d62c">
+        <circle cx="195" cy="180" r="2.5" opacity="0.25"/>
+        <circle cx="350" cy="180" r="2.5" opacity="0.25"/>
+        <circle cx="480" cy="400" r="2.5" opacity="0.25"/>
+        <circle cx="660" cy="260" r="2.5" opacity="0.25"/>
+        <circle cx="720" cy="400" r="2.5" opacity="0.25"/>
+        <circle cx="900" cy="360" r="2.5" opacity="0.25"/>
+        <circle cx="1050" cy="360" r="2.5" opacity="0.25"/>
+        <circle cx="1200" cy="260" r="2.5" opacity="0.25"/>
+        <circle cx="540" cy="400" r="2" opacity="0.2"/>
+        <circle cx="840" cy="450" r="2" opacity="0.2"/>
+        <circle cx="660" cy="260" r="5" opacity="0"><animate attributeName="r" values="2;8;2" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;0;0.3" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="900" cy="360" r="5" opacity="0"><animate attributeName="r" values="2;8;2" dur="3.5s" repeatCount="indefinite" begin="1.5s"/><animate attributeName="opacity" values="0.25;0;0.25" dur="3.5s" repeatCount="indefinite" begin="1.5s"/></circle>
+        <circle cx="350" cy="180" r="5" opacity="0"><animate attributeName="r" values="2;7;2" dur="4s" repeatCount="indefinite" begin="2s"/><animate attributeName="opacity" values="0.2;0;0.2" dur="4s" repeatCount="indefinite" begin="2s"/></circle>
+      </g>
 
-				<!-- Signal 2 -->
-				<circle r="3" fill="#44d62c" class="signal signal-2">
-					<animateMotion dur="5s" repeatCount="indefinite">
-						<mpath href="#signal-path-2" />
-					</animateMotion>
-				</circle>
-				<path id="signal-path-2" d="M1920 500 H1600 L1550 450 H1200 L1150 500 H900 L850 450 H600" fill="none" stroke="none" />
+      <!-- SCATTERED NODES -->
+      <g fill="#44d62c" opacity="0.1">
+        <rect x="50" y="480" width="4" height="4" rx="1"/>
+        <rect x="300" y="520" width="3" height="3" rx="0.5"/>
+        <rect x="550" y="490" width="4" height="4" rx="1"/>
+        <rect x="780" y="510" width="3" height="3" rx="0.5"/>
+        <rect x="1000" y="480" width="4" height="4" rx="1"/>
+        <rect x="1300" y="500" width="3" height="3" rx="0.5"/>
+        <rect x="160" y="510" width="3" height="3" rx="0.5"/>
+        <rect x="440" y="540" width="4" height="4" rx="1"/>
+        <rect x="700" y="550" width="3" height="3" rx="0.5"/>
+        <rect x="920" y="530" width="4" height="4" rx="1"/>
+        <rect x="1150" y="540" width="3" height="3" rx="0.5"/>
+      </g>
+      <g stroke="#44d62c" stroke-opacity="0.06" stroke-width="0.75" fill="none">
+        <polyline points="52,484 52,475 60,467"/>
+        <polyline points="301,523 310,523 318,515"/>
+        <polyline points="552,494 552,486 560,478"/>
+        <polyline points="1002,484 1010,484 1018,476"/>
+        <polyline points="162,513 170,513 178,505"/>
+        <polyline points="922,534 930,534 930,524"/>
+      </g>
+    </svg>
+  </div>
 
-				<!-- Signal 3 -->
-				<circle r="3" fill="#44d62c" class="signal signal-3">
-					<animateMotion dur="6s" repeatCount="indefinite">
-						<mpath href="#signal-path-3" />
-					</animateMotion>
-				</circle>
-				<path id="signal-path-3" d="M300 0 V200 L350 250 V500 L400 550 V800" fill="none" stroke="none" />
-
-				<!-- Signal 4 -->
-				<circle r="3" fill="#44d62c" class="signal signal-4">
-					<animateMotion dur="4.5s" repeatCount="indefinite">
-						<mpath href="#signal-path-4" />
-					</animateMotion>
-				</circle>
-				<path id="signal-path-4" d="M1600 1080 V700 L1550 650 V300 L1500 250 V0" fill="none" stroke="none" />
-
-				<!-- Signal 5 - diagonal -->
-				<circle r="3" fill="#44d62c" class="signal signal-5">
-					<animateMotion dur="5.5s" repeatCount="indefinite">
-						<mpath href="#signal-path-5" />
-					</animateMotion>
-				</circle>
-				<path id="signal-path-5" d="M200 100 L400 300 L400 500 L600 700 L600 900" fill="none" stroke="none" />
-			</g>
-
-			<!-- Server rack icons (left) -->
-			<g class="server-rack" transform="translate(80, 300)" opacity="0.3">
-				<rect x="0" y="0" width="60" height="120" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<rect x="8" y="10" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="28" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="46" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="64" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="82" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="100" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<!-- Blinking LEDs -->
-				<circle cx="48" cy="16" r="2" fill="#44d62c" class="led led-1" />
-				<circle cx="48" cy="34" r="2" fill="#44d62c" class="led led-2" />
-				<circle cx="48" cy="52" r="2" fill="#44d62c" class="led led-3" />
-				<circle cx="48" cy="70" r="2" fill="#44d62c" class="led led-4" />
-				<circle cx="48" cy="88" r="2" fill="#44d62c" class="led led-5" />
-				<circle cx="48" cy="106" r="2" fill="#44d62c" class="led led-6" />
-			</g>
-
-			<!-- Server rack icons (right) -->
-			<g class="server-rack" transform="translate(1780, 450)" opacity="0.3">
-				<rect x="0" y="0" width="60" height="120" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<rect x="8" y="10" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="28" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="46" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="64" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="82" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<rect x="8" y="100" width="44" height="12" rx="2" fill="#44d62c" opacity="0.3" class="server-unit" />
-				<!-- Blinking LEDs -->
-				<circle cx="12" cy="16" r="2" fill="#44d62c" class="led led-7" />
-				<circle cx="12" cy="34" r="2" fill="#44d62c" class="led led-8" />
-				<circle cx="12" cy="52" r="2" fill="#44d62c" class="led led-9" />
-				<circle cx="12" cy="70" r="2" fill="#44d62c" class="led led-10" />
-				<circle cx="12" cy="88" r="2" fill="#44d62c" class="led led-11" />
-				<circle cx="12" cy="106" r="2" fill="#44d62c" class="led led-12" />
-			</g>
-
-			<!-- Network hub (bottom left) -->
-			<g class="network-hub" transform="translate(150, 750)" opacity="0.25">
-				<rect x="0" y="0" width="100" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<circle cx="20" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="60" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" />
-			</g>
-
-			<!-- Network hub (bottom right) -->
-			<g class="network-hub" transform="translate(1670, 820)" opacity="0.25">
-				<rect x="0" y="0" width="100" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<circle cx="20" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="40" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="60" cy="20" r="4" fill="#44d62c" class="port-light" />
-				<circle cx="80" cy="20" r="4" fill="#44d62c" class="port-light" />
-			</g>
-
-			<!-- Chip/CPU icons -->
-			<g class="cpu-chip" transform="translate(50, 600)" opacity="0.2">
-				<rect x="10" y="10" width="40" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<!-- Pins -->
-				<line x1="0" y1="20" x2="10" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="30" x2="10" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="40" x2="10" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="20" x2="60" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="30" x2="60" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="40" x2="60" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="0" x2="20" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="0" x2="30" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="0" x2="40" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="50" x2="20" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="50" x2="30" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="50" x2="40" y2="60" stroke="#44d62c" stroke-width="1" />
-				<!-- Core -->
-				<rect x="22" y="22" width="16" height="16" fill="#44d62c" opacity="0.4" class="cpu-core" />
-			</g>
-
-			<g class="cpu-chip" transform="translate(1810, 200)" opacity="0.2">
-				<rect x="10" y="10" width="40" height="40" rx="4" fill="none" stroke="#44d62c" stroke-width="1" />
-				<!-- Pins -->
-				<line x1="0" y1="20" x2="10" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="30" x2="10" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="0" y1="40" x2="10" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="20" x2="60" y2="20" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="30" x2="60" y2="30" stroke="#44d62c" stroke-width="1" />
-				<line x1="50" y1="40" x2="60" y2="40" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="0" x2="20" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="0" x2="30" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="0" x2="40" y2="10" stroke="#44d62c" stroke-width="1" />
-				<line x1="20" y1="50" x2="20" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="30" y1="50" x2="30" y2="60" stroke="#44d62c" stroke-width="1" />
-				<line x1="40" y1="50" x2="40" y2="60" stroke="#44d62c" stroke-width="1" />
-				<!-- Core -->
-				<rect x="22" y="22" width="16" height="16" fill="#44d62c" opacity="0.4" class="cpu-core" />
-			</g>
-
-			<!-- Binary data streams -->
-			<g class="binary-stream" opacity="0.1">
-				<text x="180" y="180" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-1">10110101</text>
-				<text x="1650" y="250" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-2">01101001</text>
-				<text x="120" y="850" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-3">11010110</text>
-				<text x="1720" y="650" fill="#44d62c" font-family="JetBrains Mono, monospace" font-size="10" class="binary binary-4">00101101</text>
-			</g>
-
-			<!-- Connection lines between elements -->
-			<g class="connections" opacity="0.1">
-				<line x1="140" y1="360" x2="300" y2="200" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
-				<line x1="1840" y1="510" x2="1600" y2="700" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
-				<line x1="200" y1="770" x2="500" y2="600" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
-				<line x1="1720" y1="840" x2="1400" y2="700" stroke="#44d62c" stroke-width="1" stroke-dasharray="4,4" class="connection-line" />
-			</g>
-		</svg>
-	</div>
-
-	<!-- Overlay gradient for depth -->
-	<div class="bg-overlay"></div>
-
-	<!-- Animated background glows -->
-	<div class="bg-glow bg-glow-1"></div>
-	<div class="bg-glow bg-glow-2"></div>
-	<div class="bg-glow bg-glow-3"></div>
-
-	<!-- Floating particles -->
-	<div class="particles">
-		{Array.from({ length: 15 }).map((_, i) => (
-			<div class="particle" style={`--delay: ${i * 0.7}s; --x: ${Math.random() * 100}%; --duration: ${18 + Math.random() * 15}s;`}></div>
-		))}
-	</div>
 
 	<!-- Main content -->
 	<main class="content">
@@ -314,20 +398,6 @@ import WaitlistForm from './WaitlistForm.astro';
 		overflow: hidden;
 		padding-top: 5rem;
 		isolation: isolate;
-	}
-
-	/* Circuit background */
-	.circuit-bg {
-		position: absolute;
-		inset: 0;
-		pointer-events: none;
-		z-index: 0;
-	}
-
-	.circuit-svg {
-		width: 100%;
-		height: 100%;
-		opacity: 1;
 	}
 
 	/* Overlay gradient for depth */
