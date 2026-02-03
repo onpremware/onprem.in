@@ -6,7 +6,8 @@
       "Bash(npm run dev:*)",
       "WebFetch(domain:docs.google.com)",
       "Bash(curl:*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(lsof:*)"
     ]
   }
 }

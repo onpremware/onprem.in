@@ -124,7 +124,7 @@ const currentYear = new Date().getFullYear();
       </p>
       <div class="status-line">
         <span class="status-dot"></span>
-        <span class="status-text">Building the future of on-premise</span>
+        <span class="status-text">Building the future of modern on-premise software</span>
       </div>
     </div>
 
@@ -175,9 +175,8 @@ const currentYear = new Date().getFullYear();
         <span class="copyright-symbol">©</span>
         <span>{currentYear}</span>
         <span class="separator">//</span>
-        <span>ScaleNinja</span>
+        <a href="https://scaleninja.com/" target="_blank" rel="noopener" class="scaleninja-link">ScaleNinja</a>
         <span class="separator">//</span>
-        <span class="tagline">Infrastructure Sovereignty</span>
       </div>
 
       <div class="footer-meta">
@@ -187,7 +186,7 @@ const currentYear = new Date().getFullYear();
         <span class="separator">|</span>
         <span class="build-info">
           <span class="build-label">build:</span>
-          <span class="build-hash">v1.0.0</span>
+          <span class="build-hash">v0.0.1</span>
         </span>
       </div>
     </div>
@@ -536,9 +535,14 @@ const currentYear = new Date().getFullYear();
     margin: 0 0.25rem;
   }
 
-  .tagline {
-    color: #52525b;
-    font-style: italic;
+  .scaleninja-link {
+    color: #71717a;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .scaleninja-link:hover {
+    color: #44d62c;
   }
 
   .footer-meta {
