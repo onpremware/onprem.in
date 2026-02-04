@@ -7,7 +7,9 @@
       "WebFetch(domain:docs.google.com)",
       "Bash(curl:*)",
       "Bash(pkill:*)",
-      "Bash(lsof:*)"
+      "Bash(lsof:*)",
+      "Bash(npx astro check:*)",
+      "Bash(npx astro build:*)"
     ]
   }
 }
