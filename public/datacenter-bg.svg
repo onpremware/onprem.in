@@ -1,0 +1,880 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="28 -42 1000 500" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+      <defs>
+        <filter id="ledGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="signalGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="4" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <!-- Ambient light gradients for visibility -->
+        <radialGradient id="ambientGlow1" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#44d62c" stop-opacity="0.07"/>
+          <stop offset="70%" stop-color="#44d62c" stop-opacity="0.02"/>
+          <stop offset="100%" stop-color="#44d62c" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ambientGlow2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2ea318" stop-opacity="0.06"/>
+          <stop offset="60%" stop-color="#2ea318" stop-opacity="0.015"/>
+          <stop offset="100%" stop-color="#2ea318" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="ambientGlow3" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#44d62c" stop-opacity="0.045"/>
+          <stop offset="80%" stop-color="#44d62c" stop-opacity="0.01"/>
+          <stop offset="100%" stop-color="#44d62c" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- AMBIENT LIT AREAS -->
+      <ellipse cx="150" cy="260" rx="220" ry="200" fill="url(#ambientGlow1)"/>
+      <ellipse cx="500" cy="220" rx="260" ry="220" fill="url(#ambientGlow2)"/>
+      <ellipse cx="680" cy="280" rx="280" ry="240" fill="url(#ambientGlow1)"/>
+      <ellipse cx="1000" cy="240" rx="250" ry="210" fill="url(#ambientGlow3)"/>
+      <ellipse cx="1280" cy="260" rx="200" ry="190" fill="url(#ambientGlow2)"/>
+      <ellipse cx="350" cy="400" rx="180" ry="130" fill="url(#ambientGlow3)"/>
+      <ellipse cx="850" cy="380" rx="200" ry="150" fill="url(#ambientGlow3)"/>
+
+
+      <!-- RACK 1 (far left) -->
+      <g transform="translate(100,100)">
+        <rect x="0" y="0" width="90" height="280" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="90" height="280" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="80" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <rect x="12" y="33" width="20" height="3" rx="1" fill="#44d62c" fill-opacity="0.04"/>
+        <circle cx="72" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.2s" repeatCount="indefinite"/></circle>
+        <circle cx="64" cy="32" r="1.5" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="3.1s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="35" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="72" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="64" cy="58" r="1.5" fill="#44d62c" opacity="0.4"/>
+        <rect x="8" y="74" width="74" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.5s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="2s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="1.8s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="2.2s" repeatCount="indefinite" begin="1s"/></rect>
+        <rect x="54" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="8" y="96" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="72" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <rect x="12" y="133" width="22" height="3" rx="1" fill="#44d62c" fill-opacity="0.04"/>
+        <circle cx="72" cy="132" r="2" fill="#44d62c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.15;0.6" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="64" cy="132" r="1.5" fill="#44d62c" opacity="0.3"/>
+        <rect x="8" y="148" width="74" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="18" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="24" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="30" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.45;0.18" dur="2.1s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="36" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="42" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.9s" repeatCount="indefinite" begin="0.8s"/></rect>
+        <rect x="8" y="170" width="74" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="175" width="25" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="72" cy="180" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 1 -->
+        <rect x="8" y="196" width="74" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.3"><animate attributeName="fill-opacity" values="0.3;0.65;0.3" dur="0.6s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.5s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.7s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="47" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.55;0.22" dur="0.45s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="52" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="57" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="0.55s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="12" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"><animate attributeName="fill-opacity" values="0.12;0.5;0.12" dur="0.65s" repeatCount="indefinite" begin="0.35s"/></rect>
+        <rect x="17" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="27" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.5s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="32" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="37" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.6s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <circle cx="72" cy="206" r="1.5" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="1.8s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="222" width="74" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.5s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.45s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="27" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.7s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.28"><animate attributeName="fill-opacity" values="0.28;0.7;0.28" dur="0.35s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="37" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="42" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="0.6s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="47" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="52" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="0.5s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="57" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.6;0.25" dur="0.4s" repeatCount="indefinite"/></rect>
+        <rect x="12" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="17" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="0.55s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="22" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.65s" repeatCount="indefinite"/></rect>
+        <rect x="27" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <circle cx="72" cy="232" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 3 -->
+        <rect x="8" y="248" width="74" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.55s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.65;0.25" dur="0.4s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="27" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"><animate attributeName="fill-opacity" values="0.12;0.5;0.12" dur="0.7s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="32" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.5s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="42" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.6s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="47" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="52" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.45s" repeatCount="indefinite"/></rect>
+        <rect x="57" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="0.55s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <circle cx="72" cy="258" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.2s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 2 (center-left) -->
+      <g transform="translate(380,70)">
+        <rect x="0" y="0" width="100" height="260" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="100" height="260" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="90" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="35" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.9s" repeatCount="indefinite"/></circle>
+        <circle cx="74" cy="32" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.8s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="40" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.3s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="79" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="84" r="2" fill="#44d62c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.6s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="100" width="84" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="1.4s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="2s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="30" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"/>
+        <rect x="36" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="1.7s" repeatCount="indefinite" begin="0.6s"/></rect>
+        <rect x="42" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="48" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.45;0.18" dur="2.3s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="54" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="60" y="104" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="1.9s" repeatCount="indefinite" begin="1s"/></rect>
+        <rect x="8" y="122" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="132" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="2.1s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="38" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="158" r="2" fill="#44d62c" opacity="0.5"/>
+        <rect x="8" y="174" width="84" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="179" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="82" cy="184" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.4s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 1 -->
+        <rect x="8" y="200" width="84" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.45s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.28"><animate attributeName="fill-opacity" values="0.28;0.7;0.28" dur="0.5s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.6s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="42" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.55s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="47" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="52" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.6;0.25" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="57" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="62" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="0.65s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="12" y="210" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.5s" repeatCount="indefinite" begin="0.35s"/></rect>
+        <rect x="17" y="210" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="22" y="210" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.45s" repeatCount="indefinite"/></rect>
+        <circle cx="82" cy="210" r="1.5" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="1.9s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="226" width="84" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.5s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="27" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="0.6s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="37" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.45s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="42" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="47" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.55s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="52" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="57" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <circle cx="82" cy="236" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.1s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 3 (center) -->
+      <g transform="translate(620,80)">
+        <rect x="0" y="0" width="95" height="290" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="95" height="290" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="85" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="33" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.3;0.85" dur="2s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <circle cx="69" cy="32" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3.3s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.7s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="79" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="2.1s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.55;0.22" dur="1.3s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.14"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="1.8s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="8" y="96" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="36" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.7s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.9s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="25" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.2s" repeatCount="indefinite" begin="1s"/></circle>
+        <rect x="8" y="174" width="79" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="2s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="18" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.45;0.2" dur="1.5s" repeatCount="indefinite"/></rect>
+        <rect x="30" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.8s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="8" y="196" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="201" width="34" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="206" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.5s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="222" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="227" width="29" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="232" r="2" fill="#44d62c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.15;0.6" dur="3.2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node -->
+        <rect x="8" y="248" width="79" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="22" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.65;0.25" dur="0.45s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="32" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.6s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="37" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.5s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="47" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.4s" repeatCount="indefinite"/></rect>
+        <rect x="52" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.55s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="12" y="258" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.6s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="17" y="258" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.45s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="258" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <circle cx="77" cy="258" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="2s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 4 (center-right) -->
+      <g transform="translate(860,90)">
+        <rect x="0" y="0" width="95" height="260" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="95" height="260" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="85" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="69" cy="32" r="1.5" fill="#44d62c" opacity="0.35"><animate attributeName="opacity" values="0.35;0.1;0.35" dur="3.5s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="36" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.6s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="79" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="2.2s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.5;0.22" dur="1.8s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.7s" repeatCount="indefinite" begin="0.8s"/></rect>
+        <rect x="8" y="96" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.8s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="27" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.4s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="34" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="1.9s" repeatCount="indefinite" begin="0.7s"/></circle>
+        <rect x="8" y="174" width="79" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="179" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="77" cy="184" r="2" fill="#44d62c" opacity="0.45"/>
+        <!-- Storage node 1 -->
+        <rect x="8" y="200" width="79" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.5s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="22" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite"/></rect>
+        <rect x="27" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.55s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="32" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.45s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="42" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="47" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.6s" repeatCount="indefinite" begin="0.35s"/></rect>
+        <rect x="52" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="12" y="210" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="17" y="210" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.45s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="22" y="210" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <circle cx="77" cy="210" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="226" width="79" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.4s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="22" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="27" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="37" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.45s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="47" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="52" y="230" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.6s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <circle cx="77" cy="236" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.2s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 5 (right) -->
+      <g transform="translate(1050,60)">
+        <rect x="0" y="0" width="85" height="300" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="85" height="300" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="75" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.1s" repeatCount="indefinite" begin="0.3s"/></circle>
+        <rect x="8" y="48" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="59" cy="58" r="1.5" fill="#44d62c" opacity="0.3"/>
+        <rect x="8" y="74" width="69" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.7s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="2s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="1.5s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="8" y="96" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.6s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="122" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="3s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="33" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2s" repeatCount="indefinite" begin="1.2s"/></circle>
+        <rect x="8" y="174" width="69" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="1.9s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.45;0.15" dur="2.3s" repeatCount="indefinite" begin="0.6s"/></rect>
+        <rect x="30" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="8" y="196" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="201" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="206" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.4s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="222" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="227" width="24" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="232" r="2" fill="#44d62c" opacity="0.4"/>
+        <!-- Storage node 1 -->
+        <rect x="8" y="248" width="69" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.45s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.55s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="47" y="252" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.6s" repeatCount="indefinite"/></rect>
+        <rect x="12" y="258" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"><animate attributeName="fill-opacity" values="0.12;0.5;0.12" dur="0.55s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="17" y="258" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="22" y="258" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <circle cx="67" cy="258" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="1.9s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="274" width="69" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.45s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="27" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.6s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="42" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="47" y="278" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.5s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <circle cx="67" cy="284" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.1s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 6 (far right) -->
+      <g transform="translate(1200,100)">
+        <rect x="0" y="0" width="80" height="240" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.15" stroke-width="1.5"/>
+        <rect x="0" y="0" width="80" height="240" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="70" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="8" y="22" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="2.2s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="48" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.7s" repeatCount="indefinite"/></circle>
+        <circle cx="54" cy="58" r="1.5" fill="#44d62c" opacity="0.3"><animate attributeName="opacity" values="0.3;0.08;0.3" dur="2.9s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="74" width="64" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="2.1s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.45;0.15" dur="1.4s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="8" y="96" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="24" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.3;0.85" dur="2.5s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <rect x="8" y="122" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.1;0.5" dur="2.8s" repeatCount="indefinite"/></circle>
+        <rect x="8" y="148" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="22" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2s" repeatCount="indefinite" begin="0.8s"/></circle>
+        <!-- Storage node 1 -->
+        <rect x="8" y="174" width="64" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.65;0.25" dur="0.4s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="32" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="37" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.6s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="12" y="184" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.45s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="17" y="184" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="184" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <circle cx="62" cy="184" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="200" width="64" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.5s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.65;0.2" dur="0.45s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="27" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.4s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="42" y="204" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <circle cx="62" cy="210" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.2s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 7 (far left, depth) -->
+      <g transform="translate(-10,150)">
+        <rect x="0" y="0" width="75" height="220" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.13" stroke-width="1.5"/>
+        <rect x="0" y="0" width="75" height="220" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="65" height="8" rx="1" fill="#44d62c" fill-opacity="0.07"/>
+        <!-- Server unit 1 -->
+        <rect x="8" y="22" width="59" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="22" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="57" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2.1s" repeatCount="indefinite"/></circle>
+        <circle cx="50" cy="32" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3.2s" repeatCount="indefinite"/></circle>
+        <circle cx="43" cy="32" r="1" fill="#44d62c" opacity="0.3"><animate attributeName="opacity" values="0.3;0.08;0.3" dur="2.7s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <!-- Server unit 2 -->
+        <rect x="8" y="48" width="59" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="57" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.9s" repeatCount="indefinite"/></circle>
+        <circle cx="50" cy="58" r="1.5" fill="#44d62c" opacity="0.35"/>
+        <!-- Drive bay -->
+        <rect x="8" y="74" width="59" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.4s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="1.8s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="2.1s" repeatCount="indefinite" begin="0.6s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <!-- Server unit 3 -->
+        <rect x="8" y="96" width="59" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="20" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="57" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.4s" repeatCount="indefinite" begin="0.3s"/></circle>
+        <circle cx="50" cy="106" r="1.5" fill="#44d62c" opacity="0.3"><animate attributeName="opacity" values="0.3;0.1;0.3" dur="3.5s" repeatCount="indefinite"/></circle>
+        <!-- Server unit 4 -->
+        <rect x="8" y="122" width="59" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="24" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="57" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.12;0.5" dur="2.8s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 1 -->
+        <rect x="8" y="148" width="59" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="152" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="152" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="152" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.45s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="152" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="152" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="152" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.55s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="12" y="158" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.5s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="17" y="158" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="158" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <circle cx="57" cy="158" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="174" width="59" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.45s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="22" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="27" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="178" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <circle cx="57" cy="184" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.1s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 3 -->
+        <rect x="8" y="196" width="59" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="199" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="199" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.45s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="22" y="199" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="27" y="199" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="199" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="37" y="199" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.4s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <circle cx="57" cy="205" r="1.5" fill="#44d62c" opacity="0.35"><animate attributeName="opacity" values="0.35;0.1;0.35" dur="2.3s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 8 (between R1 and R2) -->
+      <g transform="translate(250,135)">
+        <rect x="0" y="0" width="80" height="250" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.14" stroke-width="1.5"/>
+        <rect x="0" y="0" width="80" height="250" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="70" height="8" rx="1" fill="#44d62c" fill-opacity="0.07"/>
+        <!-- Server unit 1 -->
+        <rect x="8" y="22" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <rect x="12" y="33" width="18" height="3" rx="1" fill="#44d62c" fill-opacity="0.04"/>
+        <circle cx="62" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2s" repeatCount="indefinite"/></circle>
+        <circle cx="55" cy="32" r="1.5" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.6s" repeatCount="indefinite"/></circle>
+        <circle cx="48" cy="32" r="1" fill="#44d62c" opacity="0.35"><animate attributeName="opacity" values="0.35;0.1;0.35" dur="3.1s" repeatCount="indefinite" begin="0.4s"/></circle>
+        <!-- Server unit 2 -->
+        <rect x="8" y="48" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.7s" repeatCount="indefinite"/></circle>
+        <circle cx="55" cy="58" r="1.5" fill="#44d62c" opacity="0.4"/>
+        <!-- Drive bay -->
+        <rect x="8" y="74" width="64" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="2s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="1.5s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="1.9s" repeatCount="indefinite" begin="1s"/></rect>
+        <!-- Server unit 3 -->
+        <rect x="8" y="96" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="24" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="55" cy="106" r="1.5" fill="#44d62c" opacity="0.3"><animate attributeName="opacity" values="0.3;0.08;0.3" dur="3.4s" repeatCount="indefinite" begin="0.6s"/></circle>
+        <!-- Server unit 4 -->
+        <rect x="8" y="122" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="132" r="2" fill="#44d62c" opacity="0.6"><animate attributeName="opacity" values="0.6;0.15;0.6" dur="2.9s" repeatCount="indefinite"/></circle>
+        <!-- Drive bay 2 -->
+        <rect x="8" y="148" width="64" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="18" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.55;0.22" dur="1.7s" repeatCount="indefinite"/></rect>
+        <rect x="24" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="30" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="2.2s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="36" y="152" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <!-- Server unit 5 -->
+        <rect x="8" y="170" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="175" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="180" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2.1s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <!-- Storage node 1 -->
+        <rect x="8" y="196" width="64" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="22" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="32" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="37" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.45s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="47" y="200" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="12" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.6s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="17" y="206" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.45s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <circle cx="62" cy="206" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="222" width="64" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.45s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.5s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="47" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.45s" repeatCount="indefinite"/></rect>
+        <circle cx="62" cy="232" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.2s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 9 (between R2 and R3) -->
+      <g transform="translate(530,115)">
+        <rect x="0" y="0" width="85" height="270" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.14" stroke-width="1.5"/>
+        <rect x="0" y="0" width="85" height="270" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="75" height="8" rx="1" fill="#44d62c" fill-opacity="0.08"/>
+        <!-- Server unit 1 -->
+        <rect x="8" y="22" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.2s" repeatCount="indefinite" begin="0.2s"/></circle>
+        <circle cx="60" cy="32" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.1;0.45" dur="2.9s" repeatCount="indefinite"/></circle>
+        <circle cx="53" cy="32" r="1" fill="#44d62c" opacity="0.3"><animate attributeName="opacity" values="0.3;0.05;0.3" dur="3.6s" repeatCount="indefinite" begin="0.8s"/></circle>
+        <!-- Server unit 2 -->
+        <rect x="8" y="48" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="35" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <rect x="12" y="59" width="20" height="3" rx="1" fill="#44d62c" fill-opacity="0.04"/>
+        <circle cx="67" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/></circle>
+        <!-- Drive bay -->
+        <rect x="8" y="74" width="69" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="1.5s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="2.1s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="1.3s" repeatCount="indefinite" begin="0.6s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.14"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="1.7s" repeatCount="indefinite" begin="0.9s"/></rect>
+        <rect x="54" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <!-- Server unit 3 -->
+        <rect x="8" y="96" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.5s" repeatCount="indefinite"/></circle>
+        <circle cx="60" cy="106" r="1.5" fill="#44d62c" opacity="0.35"><animate attributeName="opacity" values="0.35;0.1;0.35" dur="3s" repeatCount="indefinite" begin="0.4s"/></circle>
+        <!-- Server unit 4 -->
+        <rect x="8" y="122" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="32" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="132" r="2" fill="#44d62c" opacity="0.55"><animate attributeName="opacity" values="0.55;0.12;0.55" dur="2.6s" repeatCount="indefinite"/></circle>
+        <!-- Server unit 5 -->
+        <rect x="8" y="148" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="25" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="2s" repeatCount="indefinite" begin="0.7s"/></circle>
+        <!-- Drive bay 2 -->
+        <rect x="8" y="174" width="69" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.8s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="18" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="1.4s" repeatCount="indefinite"/></rect>
+        <rect x="30" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.5;0.18" dur="2s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <!-- Server unit 6 -->
+        <rect x="8" y="196" width="69" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="201" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="67" cy="206" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="2.3s" repeatCount="indefinite" begin="1s"/></circle>
+        <!-- Storage node 1 -->
+        <rect x="8" y="222" width="69" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.45s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.55s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="47" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="52" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="0.6s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="12" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"><animate attributeName="fill-opacity" values="0.12;0.5;0.12" dur="0.55s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="17" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.4s" repeatCount="indefinite"/></rect>
+        <circle cx="67" cy="232" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="1.9s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="248" width="69" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="251" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.45s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="251" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="22" y="251" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="27" y="251" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.55s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="251" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="37" y="251" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.4s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <circle cx="67" cy="257" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.1s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- RACK 10 (between R3 and R4) -->
+      <g transform="translate(770,100)">
+        <rect x="0" y="0" width="80" height="260" rx="3" fill="none" stroke="#44d62c" stroke-opacity="0.14" stroke-width="1.5"/>
+        <rect x="0" y="0" width="80" height="260" rx="3" fill="#44d62c" fill-opacity="0.02"/>
+        <rect x="5" y="5" width="70" height="8" rx="1" fill="#44d62c" fill-opacity="0.07"/>
+        <!-- Server unit 1 -->
+        <rect x="8" y="22" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="27" width="26" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="32" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.3;0.85" dur="2.1s" repeatCount="indefinite" begin="0.4s"/></circle>
+        <circle cx="55" cy="32" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="3s" repeatCount="indefinite"/></circle>
+        <circle cx="48" cy="32" r="1" fill="#44d62c" opacity="0.25"><animate attributeName="opacity" values="0.25;0.05;0.25" dur="3.8s" repeatCount="indefinite" begin="0.6s"/></circle>
+        <!-- Server unit 2 -->
+        <rect x="8" y="48" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="53" width="30" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="58" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="55" cy="58" r="1.5" fill="#44d62c" opacity="0.35"/>
+        <!-- Drive bay -->
+        <rect x="8" y="74" width="64" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.6s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="24" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="1.3s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="30" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="36" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="2s" repeatCount="indefinite" begin="0.7s"/></rect>
+        <rect x="42" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="48" y="78" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="1.5s" repeatCount="indefinite" begin="1s"/></rect>
+        <!-- Server unit 3 -->
+        <rect x="8" y="96" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="101" width="22" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="106" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.4s" repeatCount="indefinite"/></circle>
+        <!-- Server unit 4 -->
+        <rect x="8" y="122" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="127" width="28" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <rect x="12" y="133" width="18" height="3" rx="1" fill="#44d62c" fill-opacity="0.04"/>
+        <circle cx="62" cy="132" r="2" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.12;0.5" dur="2.7s" repeatCount="indefinite"/></circle>
+        <circle cx="55" cy="132" r="1.5" fill="#44d62c" opacity="0.3"/>
+        <!-- Server unit 5 -->
+        <rect x="8" y="148" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="153" width="25" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="158" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" begin="0.9s"/></circle>
+        <!-- Drive bay 2 -->
+        <rect x="8" y="174" width="64" height="16" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.1"/>
+        <rect x="12" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.5;0.2" dur="1.9s" repeatCount="indefinite"/></rect>
+        <rect x="18" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.45;0.15" dur="2.3s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="30" y="178" width="4" height="6" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <!-- Server unit 6 -->
+        <rect x="8" y="196" width="64" height="20" rx="2" fill="#0d1a0a" stroke="#44d62c" stroke-opacity="0.12"/>
+        <rect x="12" y="201" width="24" height="3" rx="1" fill="#44d62c" fill-opacity="0.06"/>
+        <circle cx="62" cy="206" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.75;0.2;0.75" dur="2.2s" repeatCount="indefinite" begin="0.3s"/></circle>
+        <!-- Storage node 1 -->
+        <rect x="8" y="222" width="64" height="20" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="17" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="22" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.65;0.22" dur="0.45s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="27" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.25"><animate attributeName="fill-opacity" values="0.25;0.7;0.25" dur="0.4s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="32" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="37" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.55s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="42" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.5s" repeatCount="indefinite"/></rect>
+        <rect x="47" y="226" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="12" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.55;0.2" dur="0.6s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="17" y="232" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.45s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <circle cx="62" cy="232" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.12;0.45" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Storage node 2 -->
+        <rect x="8" y="248" width="64" height="8" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.10"/>
+        <rect x="12" y="250" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.22"><animate attributeName="fill-opacity" values="0.22;0.6;0.22" dur="0.5s" repeatCount="indefinite" begin="0.05s"/></rect>
+        <rect x="17" y="250" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="22" y="250" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.45s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="27" y="250" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="32" y="250" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.4s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="37" y="250" width="3" height="3" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.5s" repeatCount="indefinite"/></rect>
+      </g>
+
+      <!-- CLEAN NETWORK INTERCONNECT LINES -->
+      <!-- Nothing here - bottom network moved below ToR section -->
+
+      <!-- TOP-OF-RACK (ToR) SWITCHES -->
+      <!-- ToR Switch - Rack 1 -->
+      <g transform="translate(100,78)">
+        <rect x="0" y="0" width="90" height="18" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.22" stroke-width="1"/>
+        <rect x="4" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.6;0.15" dur="0.8s" repeatCount="indefinite"/></rect>
+        <rect x="9" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="14" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.65;0.2" dur="1.1s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="19" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.9s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="29" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="34" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1.2s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="39" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="44" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.7s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="49" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="54" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="1s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="59" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <circle cx="74" cy="9" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/></circle>
+        <circle cx="82" cy="9" r="1.5" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.15;0.5" dur="2s" repeatCount="indefinite"/></circle>
+      </g>
+      <!-- ToR Switch - Rack 2 -->
+      <g transform="translate(380,48)">
+        <rect x="0" y="0" width="100" height="18" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.22" stroke-width="1"/>
+        <rect x="4" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="9" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.9s" repeatCount="indefinite"/></rect>
+        <rect x="14" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="19" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.65;0.18" dur="1.1s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="24" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="29" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.8s" repeatCount="indefinite" begin="0.35s"/></rect>
+        <rect x="34" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="39" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.7;0.2" dur="1s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="44" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="49" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.7s" repeatCount="indefinite" begin="0.1s"/></rect>
+        <rect x="54" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="59" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="1.2s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="64" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <circle cx="82" cy="9" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="91" cy="9" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.1;0.45" dur="2.2s" repeatCount="indefinite"/></circle>
+      </g>
+      <!-- ToR Switch - Rack 3 -->
+      <g transform="translate(620,58)">
+        <rect x="0" y="0" width="95" height="18" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.22" stroke-width="1"/>
+        <rect x="4" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.85s" repeatCount="indefinite"/></rect>
+        <rect x="9" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="14" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="1s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="19" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.9s" repeatCount="indefinite" begin="0.35s"/></rect>
+        <rect x="29" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="34" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.65;0.2" dur="1.1s" repeatCount="indefinite" begin="0.5s"/></rect>
+        <rect x="39" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="44" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="0.75s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="49" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="54" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.2s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <circle cx="72" cy="9" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.6s" repeatCount="indefinite" begin="0.3s"/></circle>
+        <circle cx="82" cy="9" r="1.5" fill="#44d62c" opacity="0.5"><animate attributeName="opacity" values="0.5;0.12;0.5" dur="2.1s" repeatCount="indefinite"/></circle>
+      </g>
+      <!-- ToR Switch - Rack 4 -->
+      <g transform="translate(860,68)">
+        <rect x="0" y="0" width="95" height="18" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.22" stroke-width="1"/>
+        <rect x="4" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.9s" repeatCount="indefinite"/></rect>
+        <rect x="9" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="14" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.65;0.2" dur="1.1s" repeatCount="indefinite" begin="0.25s"/></rect>
+        <rect x="19" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.6;0.18" dur="0.85s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="29" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="34" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.5;0.15" dur="1s" repeatCount="indefinite" begin="0.55s"/></rect>
+        <rect x="39" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="44" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.8s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="49" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <circle cx="72" cy="9" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.85;0.25;0.85" dur="1.7s" repeatCount="indefinite" begin="0.5s"/></circle>
+        <circle cx="82" cy="9" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.3s" repeatCount="indefinite"/></circle>
+      </g>
+      <!-- ToR Switch - Rack 5 -->
+      <g transform="translate(1050,38)">
+        <rect x="0" y="0" width="85" height="18" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.22" stroke-width="1"/>
+        <rect x="4" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="9" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.6;0.2" dur="0.9s" repeatCount="indefinite"/></rect>
+        <rect x="14" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="19" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.65;0.18" dur="1.1s" repeatCount="indefinite" begin="0.3s"/></rect>
+        <rect x="24" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="29" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.55;0.15" dur="0.8s" repeatCount="indefinite" begin="0.45s"/></rect>
+        <rect x="34" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="39" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.7;0.2" dur="1s" repeatCount="indefinite" begin="0.15s"/></rect>
+        <rect x="44" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <circle cx="62" cy="9" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.4s" repeatCount="indefinite" begin="0.2s"/></circle>
+        <circle cx="72" cy="9" r="1.5" fill="#44d62c" opacity="0.45"><animate attributeName="opacity" values="0.45;0.1;0.45" dur="2s" repeatCount="indefinite"/></circle>
+      </g>
+      <!-- ToR Switch - Rack 6 -->
+      <g transform="translate(1200,78)">
+        <rect x="0" y="0" width="80" height="18" rx="2" fill="#0a150a" stroke="#44d62c" stroke-opacity="0.22" stroke-width="1"/>
+        <rect x="4" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="0.85s" repeatCount="indefinite"/></rect>
+        <rect x="9" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.1"/>
+        <rect x="14" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.15"><animate attributeName="fill-opacity" values="0.15;0.6;0.15" dur="1s" repeatCount="indefinite" begin="0.2s"/></rect>
+        <rect x="19" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <rect x="24" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.2"><animate attributeName="fill-opacity" values="0.2;0.65;0.2" dur="0.9s" repeatCount="indefinite" begin="0.4s"/></rect>
+        <rect x="29" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.12"/>
+        <rect x="34" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.18"><animate attributeName="fill-opacity" values="0.18;0.55;0.18" dur="1.1s" repeatCount="indefinite" begin="0.55s"/></rect>
+        <rect x="39" y="4" width="3" height="10" rx="0.5" fill="#44d62c" fill-opacity="0.08"/>
+        <circle cx="58" cy="9" r="2" fill="#44d62c" filter="url(#ledGlow)"><animate attributeName="opacity" values="0.8;0.25;0.8" dur="1.6s" repeatCount="indefinite"/></circle>
+        <circle cx="68" cy="9" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.4s" repeatCount="indefinite"/></circle>
+      </g>
+
+      <!-- ToR SWITCH INTERCONNECT - Single horizontal backbone with vertical drops -->
+      <g stroke="#44d62c" fill="none">
+        <!-- Single horizontal backbone line -->
+        <line x1="145" y1="30" x2="1240" y2="30" stroke-opacity="0.12" stroke-width="1.5"/>
+        <!-- Vertical connections from backbone down to each ToR switch -->
+        <line x1="145" y1="30" x2="145" y2="78" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="430" y1="30" x2="430" y2="48" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="667" y1="30" x2="667" y2="58" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="907" y1="30" x2="907" y2="68" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="1092" y1="30" x2="1092" y2="38" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="1240" y1="30" x2="1240" y2="78" stroke-opacity="0.12" stroke-width="1.2"/>
+      </g>
+
+      <!-- ToR DATA TRANSMISSION PULSES - 3 packets moving along the backbone -->
+      <g filter="url(#signalGlow)">
+        <!-- Packet travelling east along backbone -->
+        <circle r="2.5" fill="#44d62c" opacity="0.8"><animateMotion dur="10s" repeatCount="indefinite" path="M145,30 L1240,30"/></circle>
+        <!-- Packet from ToR1 up to backbone, across to ToR5, then down -->
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="8s" repeatCount="indefinite" path="M145,78 L145,30 L1092,30 L1092,38" begin="3s"/></circle>
+        <!-- Packet from ToR6 up, across backbone west, down to ToR3 -->
+        <circle r="2" fill="#44d62c" opacity="0.65"><animateMotion dur="7s" repeatCount="indefinite" path="M1240,78 L1240,30 L667,30 L667,58" begin="6s"/></circle>
+      </g>
+
+      <!-- BOTTOM NETWORK BACKBONE - Single horizontal line connecting all racks -->
+      <g stroke="#44d62c" fill="none">
+        <!-- Single horizontal backbone at rack bottom -->
+        <line x1="27" y1="420" x2="1280" y2="420" stroke-opacity="0.12" stroke-width="1.5"/>
+        <!-- Vertical connections from ALL racks to backbone -->
+        <!-- Rack 7 (far left) -->
+        <line x1="27" y1="370" x2="27" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 1 -->
+        <line x1="145" y1="380" x2="145" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 8 -->
+        <line x1="290" y1="385" x2="290" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 2 -->
+        <line x1="430" y1="330" x2="430" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 9 -->
+        <line x1="572" y1="385" x2="572" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 3 -->
+        <line x1="667" y1="370" x2="667" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 10 -->
+        <line x1="810" y1="360" x2="810" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 4 -->
+        <line x1="907" y1="350" x2="907" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 5 -->
+        <line x1="1092" y1="360" x2="1092" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 6 -->
+        <line x1="1240" y1="340" x2="1240" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+      </g>
+      <!-- Bottom network traffic animation -->
+      <g filter="url(#signalGlow)">
+        <!-- Packet from rack 1 down to backbone, across to rack 5, up into rack -->
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="9s" repeatCount="indefinite" path="M145,380 L145,420 L1092,420 L1092,360"/></circle>
+        <!-- Packet from rack 2 down, east along backbone, up to rack 6 -->
+        <circle r="2" fill="#44d62c" opacity="0.65"><animateMotion dur="8s" repeatCount="indefinite" path="M430,330 L430,420 L1240,420 L1240,340" begin="3s"/></circle>
+        <!-- Packet travelling west from rack 4, down, across backbone, up into rack 7 -->
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="7s" repeatCount="indefinite" path="M907,350 L907,420 L27,420 L27,370" begin="6s"/></circle>
+      </g>
+    </svg>
