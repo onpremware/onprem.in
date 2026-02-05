@@ -6,7 +6,7 @@ import WaitlistForm from './WaitlistForm.astro';
 <div class="landing">
   <!-- Animated Datacenter SVG Background -->
   <div class="bg-overlay" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="-25 -40 1000 560" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="28 -42 1000 500" preserveAspectRatio="xMidYMid slice" width="100%" height="100%">
       <defs>
         <filter id="ledGlow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="2" result="blur"/>
@@ -43,72 +43,6 @@ import WaitlistForm from './WaitlistForm.astro';
       <ellipse cx="350" cy="400" rx="180" ry="130" fill="url(#ambientGlow3)"/>
       <ellipse cx="850" cy="380" rx="200" ry="150" fill="url(#ambientGlow3)"/>
 
-      <!-- CIRCUIT TRACES (straight + angled, no curves) -->
-      <g stroke="#44d62c" stroke-opacity="0.12" stroke-width="1" fill="none">
-        <!-- Horizontal bus lines -->
-        <line x1="-60" y1="180" x2="1400" y2="180" stroke-opacity="0.06"/>
-        <line x1="-60" y1="400" x2="1400" y2="400" stroke-opacity="0.06"/>
-        <line x1="-60" y1="300" x2="1400" y2="300" stroke-opacity="0.04"/>
-        <!-- Original traces -->
-        <polyline points="195,200 195,180 350,180 350,140 420,140 420,120"/>
-        <polyline points="195,300 250,300 290,260 620,260 660,220 660,150"/>
-        <polyline points="480,280 480,400 680,400 720,360 900,360 900,180"/>
-        <polyline points="720,320 720,400 850,400 890,360 1050,360 1050,200"/>
-        <polyline points="960,300 1020,300 1060,260 1200,260 1200,180"/>
-        <polyline points="480,180 520,180 560,140 660,140 660,120"/>
-        <polyline points="1100,200 1100,180 1140,140 1200,140 1200,120"/>
-        <polyline points="250,350 290,310 500,310 540,350 540,400" stroke-opacity="0.08"/>
-        <polyline points="130,350 130,450 400,450 440,410 800,410 840,450 1260,450 1260,350" stroke-opacity="0.06"/>
-        <polyline points="660,260 660,400" stroke-opacity="0.06"/>
-        <polyline points="900,360 900,450" stroke-opacity="0.06"/>
-        <polyline points="350,180 350,260" stroke-opacity="0.06"/>
-        <!-- New traces connecting new racks -->
-        <!-- Rack 7 (far left) connections -->
-        <polyline points="65,200 65,180 100,180" stroke-opacity="0.10"/>
-        <polyline points="65,300 65,350 130,350" stroke-opacity="0.08"/>
-        <polyline points="40,250 40,400 130,400" stroke-opacity="0.06"/>
-        <!-- Rack 8 connections -->
-        <polyline points="330,180 330,200 290,240 290,300" stroke-opacity="0.10"/>
-        <polyline points="290,260 250,260 250,180" stroke-opacity="0.08"/>
-        <polyline points="330,300 330,350 290,350" stroke-opacity="0.08"/>
-        <polyline points="250,300 250,400" stroke-opacity="0.06"/>
-        <!-- Rack 9 connections -->
-        <polyline points="570,180 570,140 620,140" stroke-opacity="0.10"/>
-        <polyline points="570,260 620,260" stroke-opacity="0.10"/>
-        <polyline points="530,300 530,350 480,350 480,400" stroke-opacity="0.08"/>
-        <polyline points="615,350 615,400 660,400" stroke-opacity="0.06"/>
-        <!-- Rack 10 connections -->
-        <polyline points="810,180 860,180" stroke-opacity="0.10"/>
-        <polyline points="810,260 810,300 860,300" stroke-opacity="0.10"/>
-        <polyline points="770,350 770,400 720,400" stroke-opacity="0.08"/>
-        <polyline points="850,350 850,410 800,410" stroke-opacity="0.06"/>
-        <!-- Cross-connections between new racks -->
-        <polyline points="65,240 100,240 250,240 250,180" stroke-opacity="0.06"/>
-        <polyline points="330,260 420,260 530,260" stroke-opacity="0.06"/>
-        <polyline points="615,300 700,300 770,300" stroke-opacity="0.06"/>
-        <!-- Vertical drops from bus -->
-        <polyline points="250,300 250,400" stroke-opacity="0.04"/>
-        <polyline points="570,300 570,400" stroke-opacity="0.04"/>
-        <polyline points="810,300 810,400" stroke-opacity="0.04"/>
-      </g>
-
-      <!-- SIGNAL PULSES -->
-      <g filter="url(#signalGlow)">
-        <circle r="2.5" fill="#44d62c" opacity="0.8"><animateMotion dur="4s" repeatCount="indefinite" path="M195,200 L195,180 L350,180 L350,140 L420,140 L420,120"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="6s" repeatCount="indefinite" path="M195,300 L250,300 L290,260 L620,260 L660,220 L660,150"/></circle>
-        <circle r="2.5" fill="#44d62c" opacity="0.8"><animateMotion dur="5s" repeatCount="indefinite" path="M480,280 L480,400 L680,400 L720,360 L900,360 L900,180" begin="1s"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="4.5s" repeatCount="indefinite" path="M960,300 L1020,300 L1060,260 L1200,260 L1200,180" begin="2s"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.5"><animateMotion dur="10s" repeatCount="indefinite" path="M130,350 L130,450 L400,450 L440,410 L800,410 L840,450 L1260,450 L1260,350"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.6"><animateMotion dur="5.5s" repeatCount="indefinite" path="M720,320 L720,400 L850,400 L890,360 L1050,360 L1050,200" begin="3s"/></circle>
-        <!-- New signal pulses on new traces -->
-        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="3.5s" repeatCount="indefinite" path="M65,200 L65,180 L100,180 L195,180" begin="0.5s"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.6"><animateMotion dur="4s" repeatCount="indefinite" path="M330,180 L330,200 L290,240 L290,300" begin="1.5s"/></circle>
-        <circle r="2.5" fill="#44d62c" opacity="0.7"><animateMotion dur="3s" repeatCount="indefinite" path="M570,180 L570,140 L620,140 L660,140" begin="2.5s"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.65"><animateMotion dur="4.5s" repeatCount="indefinite" path="M810,180 L860,180 L900,180" begin="0.8s"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.55"><animateMotion dur="5s" repeatCount="indefinite" path="M65,240 L100,240 L250,240 L250,180" begin="3.5s"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.5"><animateMotion dur="6s" repeatCount="indefinite" path="M330,260 L420,260 L530,260 L620,260" begin="4s"/></circle>
-        <circle r="2" fill="#44d62c" opacity="0.6"><animateMotion dur="4.5s" repeatCount="indefinite" path="M615,300 L700,300 L770,300 L810,300" begin="1.2s"/></circle>
-      </g>
 
       <!-- RACK 1 (far left) -->
       <g transform="translate(100,100)">
@@ -893,135 +827,63 @@ import WaitlistForm from './WaitlistForm.astro';
         <circle cx="68" cy="9" r="1.5" fill="#44d62c" opacity="0.4"><animate attributeName="opacity" values="0.4;0.1;0.4" dur="2.4s" repeatCount="indefinite"/></circle>
       </g>
 
-      <!-- ToR SWITCH INTERCONNECT CABLES (spine backbone + direct links) -->
-      <g stroke="#44d62c" stroke-opacity="0.14" stroke-width="1.2" fill="none">
-        <!-- Spine backbone running above all racks -->
-        <line x1="80" y1="28" x2="1300" y2="28" stroke-opacity="0.08"/>
-        <line x1="80" y1="32" x2="1300" y2="32" stroke-opacity="0.05"/>
-        <!-- Vertical uplinks from ToR switches to backbone -->
-        <polyline points="145,78 145,28" stroke-opacity="0.12"/>
-        <polyline points="430,48 430,28" stroke-opacity="0.12"/>
-        <polyline points="667,58 667,28" stroke-opacity="0.12"/>
-        <polyline points="907,68 907,28" stroke-opacity="0.12"/>
-        <polyline points="1092,38 1092,28" stroke-opacity="0.12"/>
-        <polyline points="1240,78 1240,28" stroke-opacity="0.12"/>
-        <!-- Direct adjacent ToR-to-ToR cables -->
-        <polyline points="190,87 240,87 240,57 380,57" stroke-opacity="0.10"/>
-        <polyline points="480,57 550,57 550,67 620,67" stroke-opacity="0.10"/>
-        <polyline points="715,67 790,67 790,77 860,77" stroke-opacity="0.10"/>
-        <polyline points="955,77 1005,77 1005,47 1050,47" stroke-opacity="0.10"/>
-        <polyline points="1135,47 1168,47 1168,87 1200,87" stroke-opacity="0.10"/>
-        <!-- Cross-connect cables (longer spans) -->
-        <polyline points="190,82 190,42 620,42 620,58" stroke-opacity="0.06"/>
-        <polyline points="480,52 480,36 907,36 907,68" stroke-opacity="0.06"/>
-        <polyline points="715,62 715,22 1092,22 1092,38" stroke-opacity="0.06"/>
-      </g>
-      <!-- ToR backbone junction pads -->
-      <g fill="#44d62c">
-        <rect x="143" y="26" width="4" height="8" rx="1" opacity="0.2"/>
-        <rect x="428" y="26" width="4" height="8" rx="1" opacity="0.2"/>
-        <rect x="665" y="26" width="4" height="8" rx="1" opacity="0.2"/>
-        <rect x="905" y="26" width="4" height="8" rx="1" opacity="0.2"/>
-        <rect x="1090" y="26" width="4" height="8" rx="1" opacity="0.2"/>
-        <rect x="1238" y="26" width="4" height="8" rx="1" opacity="0.2"/>
-      </g>
-
-      <!-- ToR DATA TRANSMISSION PULSES -->
-      <g filter="url(#signalGlow)">
-        <!-- Backbone east-bound -->
-        <circle r="2.5" fill="#44d62c" opacity="0.8"><animateMotion dur="8s" repeatCount="indefinite" path="M80,30 L1300,30"/></circle>
-        <!-- Backbone west-bound -->
-        <circle r="2" fill="#44d62c" opacity="0.6"><animateMotion dur="9s" repeatCount="indefinite" path="M1300,30 L80,30" begin="2s"/></circle>
-        <!-- R1→R2 direct link -->
-        <circle r="2" fill="#44d62c" opacity="0.75"><animateMotion dur="2.5s" repeatCount="indefinite" path="M190,87 L240,87 L240,57 L380,57" begin="0.5s"/></circle>
-        <!-- R2→R3 direct link -->
-        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="2.5s" repeatCount="indefinite" path="M480,57 L550,57 L550,67 L620,67" begin="1.5s"/></circle>
-        <!-- R3→R4 direct link -->
-        <circle r="2" fill="#44d62c" opacity="0.75"><animateMotion dur="2.5s" repeatCount="indefinite" path="M715,67 L790,67 L790,77 L860,77" begin="0.8s"/></circle>
-        <!-- R4→R5 direct link -->
-        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="2s" repeatCount="indefinite" path="M955,77 L1005,77 L1005,47 L1050,47" begin="2s"/></circle>
-        <!-- R5→R6 direct link -->
-        <circle r="2" fill="#44d62c" opacity="0.65"><animateMotion dur="2s" repeatCount="indefinite" path="M1135,47 L1168,47 L1168,87 L1200,87" begin="3s"/></circle>
-        <!-- Cross-connect R1→R3 -->
-        <circle r="2" fill="#44d62c" opacity="0.5"><animateMotion dur="5s" repeatCount="indefinite" path="M190,82 L190,42 L620,42 L620,58" begin="1s"/></circle>
-        <!-- Cross-connect R2→R4 -->
-        <circle r="2" fill="#44d62c" opacity="0.5"><animateMotion dur="5s" repeatCount="indefinite" path="M480,52 L480,36 L907,36 L907,68" begin="3.5s"/></circle>
-        <!-- Cross-connect R3→R5 -->
-        <circle r="2" fill="#44d62c" opacity="0.45"><animateMotion dur="5s" repeatCount="indefinite" path="M715,62 L715,22 L1092,22 L1092,38" begin="2.5s"/></circle>
-        <!-- Uplink pulses (ToR to backbone) -->
-        <circle r="1.5" fill="#44d62c" opacity="0.6"><animateMotion dur="1s" repeatCount="indefinite" path="M145,78 L145,28" begin="0s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.6"><animateMotion dur="1s" repeatCount="indefinite" path="M430,48 L430,28" begin="0.8s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.6"><animateMotion dur="1.2s" repeatCount="indefinite" path="M667,58 L667,28" begin="1.6s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.6"><animateMotion dur="1.2s" repeatCount="indefinite" path="M907,68 L907,28" begin="2.4s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.6"><animateMotion dur="0.8s" repeatCount="indefinite" path="M1092,38 L1092,28" begin="3.2s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.6"><animateMotion dur="1.5s" repeatCount="indefinite" path="M1240,78 L1240,28" begin="4s"/></circle>
-      </g>
-
-      <!-- CLEAN NETWORK ACTIVITY LINES (rack-to-rack interconnect) -->
+      <!-- ToR SWITCH INTERCONNECT - Single horizontal backbone with vertical drops -->
       <g stroke="#44d62c" fill="none">
-        <!-- Primary horizontal backbone at rack bottom -->
-        <line x1="-40" y1="420" x2="1340" y2="420" stroke-opacity="0.10" stroke-width="1.5"/>
-        <!-- Clean vertical drops from each rack to backbone -->
-        <line x1="27" y1="370" x2="27" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="145" y1="380" x2="145" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="290" y1="385" x2="290" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="430" y1="330" x2="430" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="572" y1="385" x2="572" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="667" y1="370" x2="667" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="810" y1="360" x2="810" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="907" y1="350" x2="907" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="1092" y1="360" x2="1092" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <line x1="1240" y1="340" x2="1240" y2="420" stroke-opacity="0.12" stroke-width="1"/>
-        <!-- Direct rack-to-rack horizontal links (clean straight lines) -->
-        <line x1="27" y1="440" x2="145" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="145" y1="440" x2="290" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="290" y1="440" x2="430" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="430" y1="440" x2="572" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="572" y1="440" x2="667" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="667" y1="440" x2="810" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="810" y1="440" x2="907" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="907" y1="440" x2="1092" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="1092" y1="440" x2="1240" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <!-- Short vertical taps connecting backbone to lower link line -->
-        <line x1="27" y1="420" x2="27" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="145" y1="420" x2="145" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="290" y1="420" x2="290" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="430" y1="420" x2="430" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="572" y1="420" x2="572" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="667" y1="420" x2="667" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="810" y1="420" x2="810" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="907" y1="420" x2="907" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="1092" y1="420" x2="1092" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <line x1="1240" y1="420" x2="1240" y2="440" stroke-opacity="0.08" stroke-width="0.8"/>
-        <!-- Redundant diagonal cross-connects for mesh topology -->
-        <line x1="145" y1="420" x2="430" y2="440" stroke-opacity="0.05" stroke-width="0.6"/>
-        <line x1="430" y1="420" x2="667" y2="440" stroke-opacity="0.05" stroke-width="0.6"/>
-        <line x1="667" y1="420" x2="907" y2="440" stroke-opacity="0.05" stroke-width="0.6"/>
-        <line x1="907" y1="420" x2="1240" y2="440" stroke-opacity="0.05" stroke-width="0.6"/>
-        <line x1="290" y1="440" x2="572" y2="420" stroke-opacity="0.05" stroke-width="0.6"/>
-        <line x1="572" y1="440" x2="810" y2="420" stroke-opacity="0.05" stroke-width="0.6"/>
-        <line x1="810" y1="440" x2="1092" y2="420" stroke-opacity="0.05" stroke-width="0.6"/>
+        <!-- Single horizontal backbone line -->
+        <line x1="145" y1="30" x2="1240" y2="30" stroke-opacity="0.12" stroke-width="1.5"/>
+        <!-- Vertical connections from backbone down to each ToR switch -->
+        <line x1="145" y1="30" x2="145" y2="78" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="430" y1="30" x2="430" y2="48" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="667" y1="30" x2="667" y2="58" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="907" y1="30" x2="907" y2="68" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="1092" y1="30" x2="1092" y2="38" stroke-opacity="0.12" stroke-width="1.2"/>
+        <line x1="1240" y1="30" x2="1240" y2="78" stroke-opacity="0.12" stroke-width="1.2"/>
       </g>
-      <!-- Network activity signal pulses on clean lines -->
+
+      <!-- ToR DATA TRANSMISSION PULSES - 3 packets moving along the backbone -->
       <g filter="url(#signalGlow)">
-        <!-- East-bound on backbone -->
-        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="10s" repeatCount="indefinite" path="M-40,420 L1340,420"/></circle>
-        <!-- West-bound on backbone -->
-        <circle r="2" fill="#44d62c" opacity="0.55"><animateMotion dur="11s" repeatCount="indefinite" path="M1340,420 L-40,420" begin="2s"/></circle>
-        <!-- East-bound on lower link -->
-        <circle r="1.5" fill="#44d62c" opacity="0.5"><animateMotion dur="9s" repeatCount="indefinite" path="M27,440 L1240,440" begin="1s"/></circle>
-        <!-- West-bound on lower link -->
-        <circle r="1.5" fill="#44d62c" opacity="0.4"><animateMotion dur="10s" repeatCount="indefinite" path="M1240,440 L27,440" begin="4s"/></circle>
-        <!-- Vertical drop pulses (rack to backbone) -->
-        <circle r="1.5" fill="#44d62c" opacity="0.6"><animateMotion dur="1.5s" repeatCount="indefinite" path="M145,380 L145,440" begin="0s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.55"><animateMotion dur="1.8s" repeatCount="indefinite" path="M430,330 L430,440" begin="0.6s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.5"><animateMotion dur="1.5s" repeatCount="indefinite" path="M667,370 L667,440" begin="1.2s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.55"><animateMotion dur="1.6s" repeatCount="indefinite" path="M907,350 L907,440" begin="1.8s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.5"><animateMotion dur="1.4s" repeatCount="indefinite" path="M1092,360 L1092,440" begin="2.4s"/></circle>
-        <!-- Cross-connect activity -->
-        <circle r="1.5" fill="#44d62c" opacity="0.4"><animateMotion dur="3s" repeatCount="indefinite" path="M145,420 L430,440" begin="0.5s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.35"><animateMotion dur="3s" repeatCount="indefinite" path="M667,420 L907,440" begin="2s"/></circle>
-        <circle r="1.5" fill="#44d62c" opacity="0.4"><animateMotion dur="3.5s" repeatCount="indefinite" path="M572,440 L810,420" begin="3s"/></circle>
+        <!-- Packet travelling east along backbone -->
+        <circle r="2.5" fill="#44d62c" opacity="0.8"><animateMotion dur="10s" repeatCount="indefinite" path="M145,30 L1240,30"/></circle>
+        <!-- Packet from ToR1 up to backbone, across to ToR5, then down -->
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="8s" repeatCount="indefinite" path="M145,78 L145,30 L1092,30 L1092,38" begin="3s"/></circle>
+        <!-- Packet from ToR6 up, across backbone west, down to ToR3 -->
+        <circle r="2" fill="#44d62c" opacity="0.65"><animateMotion dur="7s" repeatCount="indefinite" path="M1240,78 L1240,30 L667,30 L667,58" begin="6s"/></circle>
+      </g>
+
+      <!-- BOTTOM NETWORK BACKBONE - Single horizontal line connecting all racks -->
+      <g stroke="#44d62c" fill="none">
+        <!-- Single horizontal backbone at rack bottom -->
+        <line x1="27" y1="420" x2="1280" y2="420" stroke-opacity="0.12" stroke-width="1.5"/>
+        <!-- Vertical connections from ALL racks to backbone -->
+        <!-- Rack 7 (far left) -->
+        <line x1="27" y1="370" x2="27" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 1 -->
+        <line x1="145" y1="380" x2="145" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 8 -->
+        <line x1="290" y1="385" x2="290" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 2 -->
+        <line x1="430" y1="330" x2="430" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 9 -->
+        <line x1="572" y1="385" x2="572" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 3 -->
+        <line x1="667" y1="370" x2="667" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 10 -->
+        <line x1="810" y1="360" x2="810" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 4 -->
+        <line x1="907" y1="350" x2="907" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 5 -->
+        <line x1="1092" y1="360" x2="1092" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+        <!-- Rack 6 -->
+        <line x1="1240" y1="340" x2="1240" y2="420" stroke-opacity="0.12" stroke-width="1.2"/>
+      </g>
+      <!-- Bottom network traffic animation -->
+      <g filter="url(#signalGlow)">
+        <!-- Packet from rack 1 down to backbone, across to rack 5, up into rack -->
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="9s" repeatCount="indefinite" path="M145,380 L145,420 L1092,420 L1092,360"/></circle>
+        <!-- Packet from rack 2 down, east along backbone, up to rack 6 -->
+        <circle r="2" fill="#44d62c" opacity="0.65"><animateMotion dur="8s" repeatCount="indefinite" path="M430,330 L430,420 L1240,420 L1240,340" begin="3s"/></circle>
+        <!-- Packet travelling west from rack 4, down, across backbone, up into rack 7 -->
+        <circle r="2" fill="#44d62c" opacity="0.7"><animateMotion dur="7s" repeatCount="indefinite" path="M907,350 L907,420 L27,420 L27,370" begin="6s"/></circle>
       </g>
     </svg>
   </div>
