@@ -3,71 +3,62 @@ import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import WaitlistForm from '../components/WaitlistForm.astro';
 
-const products = [];
-/*
 const products = [
   {
-    name: "DataVault",
-    category: "Database Platform",
-    description: "Self-hosted database infrastructure with automated backups, replication, and monitoring. PostgreSQL, MySQL, MongoDB - your choice, your hardware.",
+    name: "Forge",
+    category: "CI/CD Platform",
+    description: "Self-hosted CI/CD that scales with your infrastructure. Build, test, and deploy with pipelines that run on your infra — no SaaS dependency, no per-seat pricing.",
     features: [
-      "Automated failover & replication",
-      "Point-in-time recovery",
-      "Performance analytics",
-      "Zero vendor lock-in"
+      "Declarative pipelines",
+      "Parallel & distributed builds",
+      "Native container & Kubernetes support",
+      "Secrets management built-in",
+      "Audit logs & compliance reports"
     ],
     status: "Coming Soon"
   },
   {
-    name: "SecureGate",
-    category: "Identity & Access",
-    description: "Zero-trust authentication platform. SSO, MFA, RBAC - all running on your infrastructure with complete audit trails.",
+    name: "Stash",
+    category: "Container Registry",
+    description: "Enterprise container registry and artifact storage. Push, pull, and manage your Docker images, Helm charts, and OCI artifacts — all on infra you control.",
     features: [
-      "OIDC/SAML support",
-      "Hardware token integration",
-      "Compliance-ready logging",
-      "Self-service user management"
+      "OCI-compliant image storage",
+      "Vulnerability scanning & SBOM",
+      "Role-based access control",
+      "Replicated & high availability",
+      "Artifact lifecycle management"
     ],
     status: "Coming Soon"
   },
   {
-    name: "CloudBreak",
-    category: "Migration Tools",
-    description: "Automated cloud-to-premise migration platform. Extract your data and applications from AWS/GCP/Azure without the pain.",
+    name: "Gatekeeper",
+    category: "Auth & Identity",
+    description: "Drop-in authentication platform that just works. SSO, MFA, user management — deploy in minutes, not weeks. All the power of enterprise IAM without the complexity.",
     features: [
-      "Infrastructure discovery",
-      "Automated dependency mapping",
-      "Zero-downtime migrations",
-      "Cost analysis & optimization"
+      "One-click SSO (OIDC, SAML, LDAP)",
+      "Passwordless & MFA out of the box",
+      "Pre-built login UI components",
+      "Simple REST API & SDKs",
+      "Audit logs & compliance ready"
     ],
     status: "Coming Soon"
   },
+  /*
   {
-    name: "ObserveStack",
-    category: "Monitoring Platform",
-    description: "Complete observability stack: metrics, logs, traces, and alerts. Grafana, Prometheus, Loki - integrated and optimized.",
+    name: "Foundry",
+    category: "Cloud Platform",
+    description: "Private cloud infrastructure specially built for CI/CD workloads. Spin up runners, orchestrate builds, and scale compute — seamlessly integrated with Forge, Stash, and Gatekeeper.",
     features: [
-      "Pre-configured dashboards",
-      "Intelligent alerting",
-      "Long-term storage",
-      "Multi-cluster support"
-    ],
-    status: "Coming Soon"
-  },
-  {
-    name: "EdgeProxy",
-    category: "API Gateway",
-    description: "High-performance API gateway and reverse proxy. Rate limiting, caching, authentication - at line speed.",
-    features: [
-      "Sub-millisecond latency",
-      "Dynamic routing",
-      "Request transformation",
-      "Built-in DDoS protection"
+      "On-demand build runners",
+      "Auto-scaling compute pools",
+      "Native integration with Forge, Stash and Gatekeeper",
+      "Bare metal & VM provisioning",
+      "Cost visibility & resource quotas"
     ],
     status: "Coming Soon"
   }
+  */
 ];
-*/
 ---
 
 <Layout
@@ -91,7 +82,7 @@ const products = [
 
         <h1 class="title">
           <span class="title-symbol">&gt;&gt;</span>
-          Coming soon...
+          Products
         </h1>
 
         <p class="subtitle">
@@ -134,6 +125,10 @@ const products = [
         ))}
       </div>
 
+      <section class="ecosystem-tagline">
+        <p>Run your pipelines on <strong>forge</strong>, store artifacts in <strong>stash</strong>, authenticate with <strong>gatekeeper</strong> — all powered by <strong>onprem foundry</strong>.</p>
+      </section>
+
       <section class="philosophy">
         <div class="philosophy-content">
           <h2 class="philosophy-title">Our Philosophy</h2>
@@ -145,7 +140,7 @@ const products = [
                 </svg>
               </div>
               <h3>Your Data, Your Control</h3>
-              <p>No cloud dependencies. No external API calls. Your infrastructure is truly yours.</p>
+              <p>No SaaS or cloud dependencies. No external API calls. Your infrastructure is truly yours.</p>
             </div>
 
             <div class="principle">
@@ -405,6 +400,27 @@ const products = [
 
   .learn-more:hover .arrow {
     transform: translateX(4px);
+  }
+
+  .ecosystem-tagline {
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-bottom: 4rem;
+    border-top: 1px solid rgba(68, 214, 44, 0.1);
+    border-bottom: 1px solid rgba(68, 214, 44, 0.1);
+  }
+
+  .ecosystem-tagline p {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .ecosystem-tagline strong {
+    color: #44d62c;
+    font-weight: 600;
   }
 
   .philosophy {
