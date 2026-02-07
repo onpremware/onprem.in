@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.16.11"><meta name="description" content="Why developers and companies are building their own infrastructure again, and how modern tooling makes it easier than ever."><meta name="theme-color" content="#0a0a0f"><!-- Open Graph --><meta property="og:title" content="The Self-Hosting Renaissance | onprem.in"><meta property="og:description" content="Why developers and companies are building their own infrastructure again, and how modern tooling makes it easier than ever."><meta property="og:type" content="website"><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"><title>The Self-Hosting Renaissance | onprem.in</title><link rel="stylesheet" href="/_astro/_slug_.DEqlF_ZE.css">
+<link rel="stylesheet" href="/_astro/_slug_.CCc2mQM7.css"></head> <body>  <nav class="nav" data-astro-cid-pux6a34n> <div class="nav-container" data-astro-cid-pux6a34n> <a href="/" class="nav-brand" data-astro-cid-pux6a34n> <img src="/logo.svg" alt="onprem.in" class="brand-icon" data-astro-cid-pux6a34n> <span class="brand-bracket" data-astro-cid-pux6a34n>[</span> <span class="brand-text" data-astro-cid-pux6a34n>onprem</span> <span class="brand-dot" data-astro-cid-pux6a34n>.</span> <span class="brand-text" data-astro-cid-pux6a34n>in</span> <span class="brand-bracket" data-astro-cid-pux6a34n>]</span> </a> <div class="nav-links" data-astro-cid-pux6a34n> <a href="/" class data-astro-cid-pux6a34n> <span class="link-symbol" data-astro-cid-pux6a34n>~/</span>home
+</a> <a href="/products" class data-astro-cid-pux6a34n> <span class="link-symbol" data-astro-cid-pux6a34n>$</span>products
+</a> <a href="/solutions" class data-astro-cid-pux6a34n> <span class="link-symbol" data-astro-cid-pux6a34n>&gt;</span>solutions
+</a> <a href="/blog" class="active" data-astro-cid-pux6a34n> <span class="link-symbol" data-astro-cid-pux6a34n>#</span>blog
+</a> </div> <a href="/contact" class="nav-cta" data-astro-cid-pux6a34n> <span class="cta-text" data-astro-cid-pux6a34n>contact</span> <span class="cta-cursor" data-astro-cid-pux6a34n>_</span> </a> </div> </nav>  <div class="page" data-astro-cid-4sn4zg3r> <div class="bg-grid" data-astro-cid-4sn4zg3r></div> <main class="container" data-astro-cid-4sn4zg3r> <article class="article" data-astro-cid-4sn4zg3r> <header class="article-header" data-astro-cid-4sn4zg3r> <div class="breadcrumb" data-astro-cid-4sn4zg3r> <a href="/blog" data-astro-cid-4sn4zg3r>← blog</a> </div> <div class="meta" data-astro-cid-4sn4zg3r> <span class="category" data-astro-cid-4sn4zg3r>Self-Hosting</span> <span class="separator" data-astro-cid-4sn4zg3r>/</span> <time datetime="2026-01-22T00:00:00.000Z" data-astro-cid-4sn4zg3r> January 22, 2026 </time> </div> <h1 class="article-title" data-astro-cid-4sn4zg3r>The Self-Hosting Renaissance</h1> <p class="article-description" data-astro-cid-4sn4zg3r>Why developers and companies are building their own infrastructure again, and how modern tooling makes it easier than ever.</p> <div class="tags" data-astro-cid-4sn4zg3r> <span class="tag" data-astro-cid-4sn4zg3r>#self-hosting</span><span class="tag" data-astro-cid-4sn4zg3r>#DevOps</span><span class="tag" data-astro-cid-4sn4zg3r>#infrastructure</span><span class="tag" data-astro-cid-4sn4zg3r>#kubernetes</span> </div> </header> <div class="content" data-astro-cid-4sn4zg3r> <h1 id="the-self-hosting-renaissance">The Self-Hosting Renaissance</h1>
+<p>Something interesting is happening in the tech world. Developers who grew up on Heroku and AWS are now spinning up Raspberry Pis in their closets. Companies are dusting off those server racks. The self-hosting renaissance is here.</p>
+<h2 id="why-now">Why Now?</h2>
+<p>Three forces are converging:</p>
+<h3 id="1-cloud-costs-are-insane">1. Cloud Costs Are Insane</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#6A737D">// Your monthly AWS bill</span></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> bill</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> calculateAWSCost</span><span style="color:#E1E4E8">(yourApp);</span></span>
+<span class="line"><span style="color:#E1E4E8">console.</span><span style="color:#B392F0">log</span><span style="color:#E1E4E8">(bill); </span><span style="color:#6A737D">// $47,382.91</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Narrator: "It should have been $200"</span></span></code></pre>
+<p>Egress fees, API calls, storage tiers, data transfer costs—it adds up fast. Self-hosting gives you predictable economics.</p>
+<h3 id="2-privacy-matters-again">2. Privacy Matters Again</h3>
+<p>People are tired of being the product. GDPR fines are real. Enterprise clients demand data residency guarantees. Self-hosting is the only way to truly own your data chain.</p>
+<h3 id="3-modern-tools-make-it-easy">3. Modern Tools Make It Easy</h3>
+<p>The tooling has caught up. Docker, Kubernetes, Ansible, Terraform—self-hosting in 2026 isn’t about babysitting bare metal. It’s about declaring what you want and letting automation handle the rest.</p>
+<h2 id="what-can-you-self-host">What Can You Self-Host?</h2>
+<p>Pretty much everything:</p>
+<ul>
+<li><strong>Communication</strong>: Matrix, Rocket.Chat, Zulip</li>
+<li><strong>Collaboration</strong>: GitLab, Nextcloud, Outline</li>
+<li><strong>Monitoring</strong>: Prometheus, Grafana, Uptime Kuma</li>
+<li><strong>Databases</strong>: PostgreSQL, Redis, MongoDB</li>
+<li><strong>Analytics</strong>: Plausible, Umami, Matomo</li>
+<li><strong>CI/CD</strong>: Jenkins, Drone, Woodpecker</li>
+</ul>
+<p>The list grows daily.</p>
+<h2 id="the-economics">The Economics</h2>
+<p>Let’s do the math for a typical startup:</p>
+<p><strong>Cloud (AWS/GCP):</strong></p>
+<ul>
+<li>Compute: $3,200/mo</li>
+<li>Storage: $800/mo</li>
+<li>Bandwidth: $1,500/mo</li>
+<li><strong>Total: $5,500/mo = $66,000/year</strong></li>
+</ul>
+<p><strong>Self-Hosted:</strong></p>
+<ul>
+<li>Hardware: $8,000 (one-time)</li>
+<li>Colocation: $300/mo = $3,600/year</li>
+<li>Bandwidth: Included</li>
+<li><strong>Year 1 Total: $11,600</strong></li>
+</ul>
+<p>Even with added operational overhead, the ROI is clear.</p>
+<h2 id="the-technical-reality">The Technical Reality</h2>
+<p>Modern self-hosting looks like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#6A737D"># infrastructure/production.yml</span></span>
+<span class="line"><span style="color:#85E89D">apiVersion</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">apps/v1</span></span>
+<span class="line"><span style="color:#85E89D">kind</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Deployment</span></span>
+<span class="line"><span style="color:#85E89D">metadata</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">your-app</span></span>
+<span class="line"><span style="color:#85E89D">spec</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">  replicas</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3</span></span>
+<span class="line"><span style="color:#85E89D">  template</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">    spec</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">      containers</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">      - </span><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">app</span></span>
+<span class="line"><span style="color:#85E89D">        image</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">your-registry/app:latest</span></span>
+<span class="line"><span style="color:#85E89D">        resources</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">          limits</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#85E89D">            memory</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"2Gi"</span></span>
+<span class="line"><span style="color:#85E89D">            cpu</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"1000m"</span></span></code></pre>
+<p>Push to main, watch it deploy. Just like the cloud, but on your terms.</p>
+<h2 id="security-considerations">Security Considerations</h2>
+<p>Self-hosting isn’t a security risk—it’s a security opportunity:</p>
+<ul>
+<li>You control the attack surface</li>
+<li>No third-party data sharing</li>
+<li>Custom security policies</li>
+<li>Faster incident response</li>
+<li>No cloud provider backdoors</li>
+</ul>
+<h2 id="the-hybrid-path">The Hybrid Path</h2>
+<p>You don’t have to go all-in. Start with:</p>
+<ol>
+<li>Self-host your databases</li>
+<li>Keep compute in the cloud</li>
+<li>Gradually migrate workloads</li>
+<li>Optimize based on data</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>The cloud will always have a place. But blind cloud-first strategies are over. Smart companies are reclaiming control, cutting costs, and building resilient infrastructure.</p>
+<p>The future is hybrid. The future is self-hosted.</p>
+<hr>
+<p><strong>Want to start your self-hosting journey?</strong> We can help you design and implement the perfect setup.</p> </div> <footer class="article-footer" data-astro-cid-4sn4zg3r> <div class="footer-content" data-astro-cid-4sn4zg3r> <p data-astro-cid-4sn4zg3r>Written by onprem.in Team</p> <p data-astro-cid-4sn4zg3r>Published on January 22, 2026</p> </div> </footer> </article> <aside class="related" data-astro-cid-4sn4zg3r> <h2 class="related-title" data-astro-cid-4sn4zg3r> <span class="title-symbol" data-astro-cid-4sn4zg3r>//</span>
+Related Posts
+</h2> <div class="related-grid" data-astro-cid-4sn4zg3r> <a href="/blog/modern-onprem-philosophy" class="related-card" data-astro-cid-4sn4zg3r> <div class="related-meta" data-astro-cid-4sn4zg3r> <span class="category" data-astro-cid-4sn4zg3r>Self-Hosting</span> <span class="date" data-astro-cid-4sn4zg3r>February 1, 2026</span> </div> <h3 data-astro-cid-4sn4zg3r>The Modern On-Prem Philosophy</h3> <p data-astro-cid-4sn4zg3r>Data sovereignty, ownership, and why the pay-once model is the antidote to SaaS exploitation.</p> </a> </div> </aside> <div class="back-link" data-astro-cid-4sn4zg3r> <a href="/blog" data-astro-cid-4sn4zg3r> <span data-astro-cid-4sn4zg3r>←</span> Back to all posts
+</a> </div> </main> </div>  <footer class="footer" data-astro-cid-sz7xmlte> <!-- Newsletter Section --> <div class="newsletter-section" data-astro-cid-sz7xmlte> <div class="newsletter-content" data-astro-cid-sz7xmlte> <div class="newsletter-header" data-astro-cid-sz7xmlte> <div class="terminal-prompt" data-astro-cid-sz7xmlte> <span class="prompt-user" data-astro-cid-sz7xmlte>user@onprem.in</span> <span class="prompt-separator" data-astro-cid-sz7xmlte>:</span> <span class="prompt-path" data-astro-cid-sz7xmlte>~/subscribe</span> <span class="prompt-symbol" data-astro-cid-sz7xmlte>$</span> </div> <h3 class="newsletter-title" data-astro-cid-sz7xmlte>Stay in the loop</h3> <p class="newsletter-description" data-astro-cid-sz7xmlte>
+Get notified when we launch products, publish new technical posts, and share infrastructure insights.
+</p> </div> <!-- Hidden iframe for Google Form submission --> <iframe name="hidden-google-form" id="hidden-google-form" style="display:none;" data-astro-cid-sz7xmlte></iframe> <form class="newsletter-form" id="newsletter-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdmypu25LKFRnerbdorlPk60dvwwFen7YFB2le05cdxkdZvzQ/formResponse" method="POST" target="hidden-google-form" data-astro-cid-sz7xmlte> <div class="input-wrapper" data-astro-cid-sz7xmlte> <span class="input-prompt" data-astro-cid-sz7xmlte>&gt;</span> <input type="email" name="entry.887339015" id="newsletter-email" placeholder="your.email@company.com" required class="email-input" data-astro-cid-sz7xmlte> <!-- Hidden duplicate for email validation field --> <input type="hidden" name="entry.1769037418" id="newsletter-email-validation" data-astro-cid-sz7xmlte> <button type="submit" class="submit-button" id="subscribe-btn" data-astro-cid-sz7xmlte> <span class="btn-text" data-astro-cid-sz7xmlte>subscribe</span> <span class="button-icon" data-astro-cid-sz7xmlte>↗</span> </button> </div> <p class="form-message" id="form-message" data-astro-cid-sz7xmlte></p> </form> <script type="module">const d=document.getElementById("newsletter-form"),t=document.getElementById("newsletter-email"),m=document.getElementById("newsletter-email-validation"),n=document.getElementById("subscribe-btn"),e=document.getElementById("form-message"),i=document.getElementById("hidden-google-form");let l=!1;t.addEventListener("input",()=>{m.value=t.value});i.addEventListener("load",()=>{if(l){l=!1;const s=n.querySelector(".btn-text");e.textContent="✓ Subscribed successfully!",e.className="form-message success",t.value="",m.value="",s.textContent="subscribe",n.disabled=!1,setTimeout(()=>{e.textContent="",e.className="form-message"},5e3)}});d.addEventListener("submit",s=>{const a=t.value.trim();if(!a){s.preventDefault();return}m.value=a;const o=n.querySelector(".btn-text");o.textContent="sending...",n.disabled=!0,l=!0});</script> </div> </div> <div class="footer-grid" data-astro-cid-sz7xmlte> <!-- Brand Section --> <div class="footer-section brand-section" data-astro-cid-sz7xmlte> <div class="footer-brand" data-astro-cid-sz7xmlte> <img src="/logo.svg" alt="onprem.in" class="brand-icon" data-astro-cid-sz7xmlte> <div class="brand-text-wrapper" data-astro-cid-sz7xmlte> <span class="brand-bracket" data-astro-cid-sz7xmlte>[</span> <span class="brand-text" data-astro-cid-sz7xmlte>onprem</span> <span class="brand-dot" data-astro-cid-sz7xmlte>.</span> <span class="brand-text" data-astro-cid-sz7xmlte>in</span> <span class="brand-bracket" data-astro-cid-sz7xmlte>]</span> </div> </div> <p class="footer-tagline" data-astro-cid-sz7xmlte> <span class="prompt" data-astro-cid-sz7xmlte>$</span> Run on Your Infra. Stay in Control.
+</p> <div class="status-line" data-astro-cid-sz7xmlte> <span class="status-dot" data-astro-cid-sz7xmlte></span> <span class="status-text" data-astro-cid-sz7xmlte>All systems online.</span> </div> </div> <!-- Quick Links --> <div class="footer-section" data-astro-cid-sz7xmlte> <h3 class="section-title" data-astro-cid-sz7xmlte> <span class="title-prompt" data-astro-cid-sz7xmlte>~/</span>navigate
+</h3> <ul class="footer-links" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Home</a></li> <li data-astro-cid-sz7xmlte><a href="/products" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Products</a></li> <li data-astro-cid-sz7xmlte><a href="/solutions" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Solutions</a></li> <li data-astro-cid-sz7xmlte><a href="/blog" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Blog</a></li> </ul> </div> <!-- Resources --> <div class="footer-section" data-astro-cid-sz7xmlte> <h3 class="section-title" data-astro-cid-sz7xmlte> <span class="title-prompt" data-astro-cid-sz7xmlte>$</span>resources
+</h3> <ul class="footer-links" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/blog" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Technical Guides</a></li> <li data-astro-cid-sz7xmlte><a href="https://github.com/onpremware" target="_blank" rel="noopener" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>GitHub</a></li> <li data-astro-cid-sz7xmlte><a href="/blog" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Documentation</a></li> <li data-astro-cid-sz7xmlte><a href="mailto:support@onprem.in" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Support</a></li> </ul> </div> <!-- Connect --> <div class="footer-section" data-astro-cid-sz7xmlte> <h3 class="section-title" data-astro-cid-sz7xmlte> <span class="title-prompt" data-astro-cid-sz7xmlte>#</span>connect
+</h3> <ul class="footer-links" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="/contact" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>Contact Us</a></li> <li data-astro-cid-sz7xmlte><a href="https://x.com/onpremware" target="_blank" rel="noopener" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>@onpremware</a></li> <li data-astro-cid-sz7xmlte><a href="https://linkedin.com/company/onpremware" target="_blank" rel="noopener" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>LinkedIn</a></li> <li data-astro-cid-sz7xmlte><a href="https://github.com/onpremware" target="_blank" rel="noopener" data-astro-cid-sz7xmlte><span class="link-icon" data-astro-cid-sz7xmlte>→</span>GitHub</a></li> </ul> </div> </div> <!-- Bottom Bar --> <div class="footer-bottom" data-astro-cid-sz7xmlte> <div class="footer-bottom-content" data-astro-cid-sz7xmlte> <div class="copyright" data-astro-cid-sz7xmlte> <span class="copyright-symbol" data-astro-cid-sz7xmlte>©</span> <span data-astro-cid-sz7xmlte>2026 onprem.in</span> <span class="separator" data-astro-cid-sz7xmlte>//</span>
+🍺 Brewed in Gurugram <!--by <a href="https://scaleninja.com/" target="_blank" rel="noopener" class="scaleninja-link">ScaleNinja</a> --> <span class="separator" data-astro-cid-sz7xmlte>//</span> </div> <div class="footer-meta" data-astro-cid-sz7xmlte> <a href="/privacy" data-astro-cid-sz7xmlte>Privacy</a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <a href="/terms" data-astro-cid-sz7xmlte>Terms</a> <span class="separator" data-astro-cid-sz7xmlte>|</span> <span class="build-info" data-astro-cid-sz7xmlte> <span class="build-label" data-astro-cid-sz7xmlte>build:</span> <span class="build-hash" data-astro-cid-sz7xmlte>v0.0.1</span> </span> </div> </div> </div> </footer>  </body></html>  
