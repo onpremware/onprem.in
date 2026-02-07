@@ -4,28 +4,6 @@
       <stop offset="0%" stop-color="#44d62c"/>
       <stop offset="100%" stop-color="#2ea318"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="softglow">
-      <feGaussianBlur stdDeviation="4" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <filter id="ledGlow" x="-100%" y="-100%" width="300%" height="300%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
   </defs>
 
   <!-- Dark background -->
@@ -34,10 +12,10 @@
   <!-- Curly braces with glow -->
   <path
     d="m 2.2061275,71.089242 v -9.280644 h 0.8313372 c 5.6905405,0 8.5358113,-3.123132 8.5358113,-9.369396 V 33.790286 c 0,-11.002112 6.216305,-17.247627 18.648916,-18.736544 v 9.369395 c -6.245514,0.495806 -9.368272,3.61819 -9.368272,9.367149 v 18.648916 c 0,5.429157 -2.11579,10.098875 -6.347372,14.009156 4.231582,3.940239 6.347372,8.609958 6.347372,14.009156 V 99.10643 c 0,5.80813 3.123132,8.93126 9.369396,9.3694 v 9.36827 C 17.790704,116.4136 11.574399,110.16808 11.574399,99.107554 V 80.458637 c 0,-6.246263 -2.8460186,-9.369395 -8.5380577,-9.369395 z M 130.08489,61.808598 v 9.280644 h -0.83133 c -5.69205,0 -8.53806,3.123132 -8.53806,9.369395 v 18.648917 c 0,11.032066 -6.2163,17.277576 -18.64892,18.736546 v -9.3694 c 6.24626,-0.52427 9.3694,-3.64665 9.3694,-9.367146 V 80.458637 c 0,-5.399947 2.08657,-10.069665 6.25974,-14.009156 -4.17391,-3.940238 -6.26087,-8.609957 -6.26087,-14.009155 V 33.791409 c 0,-5.778917 -3.12276,-8.902049 -9.36827,-9.369395 v -9.367149 c 12.43262,1.430499 18.64892,7.676015 18.64892,18.736544 v 18.648917 c 0,6.246263 2.84601,9.369395 8.53806,9.369395 z"
-    fill="url(#g1)" stroke="url(#g1)" stroke-width="2" filter="url(#glow)"/>
+    fill="url(#g1)" stroke="url(#g1)" stroke-width="2"/>
 
   <!-- Server rack with soft glow -->
-  <g filter="url(#softglow)">
+  <g>
     <!-- Unit 1 -->
     <rect x="36.49" y="31.42" width="59.44" height="16.84" rx="2" fill="url(#g1)" opacity="0.28"/>
     <rect x="36.49" y="31.42" width="59.44" height="16.84" rx="2" fill="none" stroke="url(#g1)" stroke-width="1.2" opacity="0.8"/>
@@ -64,7 +42,7 @@
   </g>
 
   <!-- Activity LEDs - matching datacenter background style -->
-  <g filter="url(#ledGlow)">
+  <g>
     <circle cx="90" cy="39.97" r="2.4" fill="#44d62c" opacity="0.9">
       <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.2s" repeatCount="indefinite"/>
     </circle>

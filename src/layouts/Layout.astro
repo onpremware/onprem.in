@@ -70,4 +70,9 @@ const {
 	code, pre {
 		font-family: 'JetBrains Mono', monospace;
 	}
+
+	/* Glow effect for logo SVG via CSS instead of SVG filters (fixes iOS blurry rendering) */
+	img[src$="logo.svg"] {
+		filter: drop-shadow(0 0 3px rgba(68, 214, 44, 0.6));
+	}
 </style>
